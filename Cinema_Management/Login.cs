@@ -6,5 +6,11 @@ namespace Cinema_Management
         {
             InitializeComponent();
         }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
+            this.Icon = Properties.Resources.IconLogin;
+        }
     }
 }
