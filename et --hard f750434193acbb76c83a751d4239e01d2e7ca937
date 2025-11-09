@@ -1,0 +1,48 @@
+[33mcommit 2869c680e0d977624557f14037e9063f37f241fb[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmainhatcuong[m[33m)[m
+Merge: f750434 fd4eb60
+Author: Mei-IwI <c2005vn@gmail.com>
+Date:   Mon Nov 10 02:02:57 2025 +0700
+
+    Resolved merge conflict for Cinema_Management
+
+[33mcommit f750434193acbb76c83a751d4239e01d2e7ca937[m[33m ([m[1;31morigin/mainhatcuong[m[33m)[m
+Author: Mei-IwI <c2005vn@gmail.com>
+Date:   Mon Nov 10 01:49:14 2025 +0700
+
+    Add TheaterRoomForm
+
+[33mcommit fd4eb600dc190445a6302635002016dc16584027[m
+Author: Đăng Nguyễn <dang20467@gmail.com>
+Date:   Mon Nov 10 00:01:12 2025 +0700
+
+    Update
+
+[33mcommit 2b72f3a50783f9979bd364a29888eb131dd9a33b[m
+Author: Đăng Nguyễn <dang20467@gmail.com>
+Date:   Sun Nov 9 22:34:24 2025 +0700
+
+    Add project files.
+
+[33mcommit 72a7501cabaaaf2d5a13072fb4421bf8ec6ac10b[m
+Author: Đăng Nguyễn <dang20467@gmail.com>
+Date:   Sun Nov 9 22:34:21 2025 +0700
+
+    Add .gitattributes and .gitignore.
+
+[33mcommit a5a3b7ce5275fe0b2ad1f0647ab12b552087c2a2[m[33m ([m[1;31morigin/trantanphat[m[33m, [m[1;31morigin/dangnguyenminhdang[m[33m, [m[1;32mtrantanphat[m[33m, [m[1;32mdangnguyenminhdang[m[33m)[m
+Author: Mei-IwI <c2005vn@gmail.com>
+Date:   Mon Oct 6 22:01:32 2025 +0700
+
+    Add Resource
+
+[33mcommit b6d0d7bfa8e23d674765e700987df63c08f6e292[m
+Author: Mei-IwI <c2005vn@gmail.com>
+Date:   Mon Oct 6 21:44:19 2025 +0700
+
+    Add project files.
+
+[33mcommit fad664bcaec6ed10fbf8e455fbf587de20577c4a[m
+Author: Mei-IwI <c2005vn@gmail.com>
+Date:   Mon Oct 6 21:44:15 2025 +0700
+
+    Add .gitattributes and .gitignore.
