@@ -45,7 +45,8 @@ namespace Cinema_Management
             }
 
 
-            if (string.IsNullOrEmpty(txtMail.Text)){
+            if (string.IsNullOrEmpty(txtMail.Text))
+            {
                 errorProvider.SetError(txtMail, "Vui lòng nhập email!");
             }
             else
@@ -148,7 +149,7 @@ namespace Cinema_Management
 
                 this.Hide();
 
-                Change change = new Change(txtUsername.Text, str );
+                Change change = new Change(txtUsername.Text, str);
 
                 change.Show();
             }
@@ -190,6 +191,14 @@ namespace Cinema_Management
             }
 
             lblTime.Text = $"{remaining.Minutes:D2}:{remaining.Seconds:D2}";
+        }
+
+        private void btnCancel_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            Login login = new Login();
+            login.Show();
         }
     }
 }
