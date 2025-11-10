@@ -5,9 +5,11 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cinema_Management", "Cinema_Management\Cinema_Management.csproj", "{FA3994EA-780B-489E-80DD-E7EC503095DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheaterRoomForm", "TheaterRoomForm\TheaterRoomForm.csproj", "{5F11EB48-296D-4364-9763-A287C0EE1ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheaterRoomForm", "TheaterRoomForm\TheaterRoomForm.csproj", "{5F11EB48-296D-4364-9763-A287C0EE1ABD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{829429D5-B38C-4421-84ED-2A79A7DE3A98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{829429D5-B38C-4421-84ED-2A79A7DE3A98}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeatForm", "SeatForm\SeatForm.csproj", "{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{829429D5-B38C-4421-84ED-2A79A7DE3A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{829429D5-B38C-4421-84ED-2A79A7DE3A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{829429D5-B38C-4421-84ED-2A79A7DE3A98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
