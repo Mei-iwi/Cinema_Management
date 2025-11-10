@@ -14,9 +14,9 @@ namespace TheaterRoomForm
 
         SqlConnection con;
 
-        DataSet listTable;
+        public DataSet listTable;
 
-        SqlDataAdapter readRooms;
+        public SqlDataAdapter readRooms;
 
         DataColumn[] keyRooms = new DataColumn[1];
 
@@ -50,7 +50,10 @@ namespace TheaterRoomForm
 
             // Strcon = ConnectionHelper.GetconnectionString();
 
-            Strcon = ConnectionHelper.CreateConnectionString("34.133.93.201", "QL_Rap_Phim", "sqlserver", "123456789");
+            Strcon = ConnectionHelper.CreateConnectionString(Cinema_Management.Login.DataSource, 
+                Cinema_Management.Login.InitialCatalog,
+                Cinema_Management.Login.UserID,
+                Cinema_Management.Login.Password);
 
             //Khởi tạo kết nối
             con = new SqlConnection(Strcon);
@@ -64,6 +67,7 @@ namespace TheaterRoomForm
             string sql = "SELECT * FROM PHONGCHIEU";
 
             readRooms = new SqlDataAdapter(sql, con);
+
 
             readRooms.Fill(listTable, "PHONGCHIEU");
 
@@ -236,7 +240,9 @@ namespace TheaterRoomForm
                     readRooms.Update(listTable, "PHONGCHIEU");
 
                     DataTable temp = new DataTable();
+
                     readRooms.Fill(temp);
+
                     listTable.Tables["PHONGCHIEU"].Merge(temp);
 
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -356,6 +362,8 @@ namespace TheaterRoomForm
             TheaterRoomDetails details = new TheaterRoomDetails(ID, Name, listTable);
 
             details.Show();
+
+            this.Hide();
         }
     }
 }
