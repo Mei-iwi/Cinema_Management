@@ -28,6 +28,8 @@ namespace TheaterRoomForm
 
         SqlDataAdapter readCategory;
 
+        SqlDataAdapter readListChairs;
+
 
         TheaterRoom room;
 
@@ -38,6 +40,13 @@ namespace TheaterRoomForm
         DataColumn[] keyRooms = new DataColumn[2];
 
         DataColumn[] keyCategory = new DataColumn[1];
+
+        DataColumn[] keyLIstChair = new DataColumn[1];
+
+        SqlDataAdapter sqlDataAdapter;
+
+        DataColumn[] keyDetails = new DataColumn[2];
+
 
         public TheaterRoomDetails(string id, string name, DataSet list)
         {
@@ -82,7 +91,7 @@ namespace TheaterRoomForm
 
             //Khởi tạo DataAdapter
 
-            string sql = "SELECT MAGHE, MAPHONG, LOAIGHE, TRANGTHAI FROM GHE WHERE 1 = 1";
+            string sql = "SELECT CT.MAGHE, P.MAPHONG, TENPHONG, TRANGTHAI, TONGSOGHE, LOAIGHE  FROM CT_GHE_PHONG CT INNER JOIN PHONGCHIEU P ON P.MAPHONG = CT.MAPHONG INNER JOIN GHE G ON G.MAGHE = CT.MAGHE\r\n WHERE 1 = 1";
 
             string sqlcategory = "SELECT DISTINCT LOAIGHE FROM GHE";
 
@@ -114,6 +123,22 @@ namespace TheaterRoomForm
             dv = new DataView(listTable.Tables["GHE"]);
             dv.RowFilter = $"MAPHONG = '{IDRooms}'";
 
+
+            string Query = "SELECT * FROM CT_GHE_PHONG";
+
+            sqlDataAdapter = new SqlDataAdapter(Query, con);
+
+            SqlCommandBuilder cmbListChairs = new SqlCommandBuilder(sqlDataAdapter);
+
+
+            sqlDataAdapter.Fill(listTable, "CT_GHE_PHONG");
+
+            keyDetails[0] = listTable.Tables["CT_GHE_PHONG"].Columns[0];
+
+            keyDetails[1] = listTable.Tables["CT_GHE_PHONG"].Columns[1];
+
+            listTable.Tables["CT_GHE_PHONG"].PrimaryKey = keyDetails;
+
         }
 
         void load_datagridview()
@@ -124,20 +149,14 @@ namespace TheaterRoomForm
 
             dgv_Chair.Columns[0].HeaderText = "Mã ghế";
             dgv_Chair.Columns[1].HeaderText = "Mã phòng";
-            dgv_Chair.Columns[2].HeaderText = "Loại ghê";
-            dgv_Chair.Columns[3].HeaderText = "Trạng thái ghế";
+            dgv_Chair.Columns[2].HeaderText = "Tên phòng";
+            dgv_Chair.Columns[3].HeaderText = "Trạng thái";
+            dgv_Chair.Columns[4].Visible = false;
+            dgv_Chair.Columns[5].HeaderText = "Loại ghê";
+
         }
 
-        void load_cbo()
-        {
-
-            cboLoaiGhe.DataSource = listTable.Tables["Category"];
-
-            cboLoaiGhe.DisplayMember = "LOAIGHE";
-
-            cboLoaiGhe.ValueMember = "LOAIGHE";
-        }
-
+   
         void load_phong()
         {
             cboMaPHong.DataSource = list.Tables["PHONGCHIEU"];
@@ -148,13 +167,13 @@ namespace TheaterRoomForm
 
         void Bingding(DataView dv)
         {
-            txtMaGhe.DataBindings.Clear();
+            cboMaGhe.DataBindings.Clear();
             cboMaPHong.DataBindings.Clear();
-            cboLoaiGhe.DataBindings.Clear();
+            txtTrangThai.DataBindings.Clear();
 
-            txtMaGhe.DataBindings.Add("Text", dv, "MAGHE");
+            cboMaGhe.DataBindings.Add("SelectedValue", dv, "MAGHE");
             cboMaPHong.DataBindings.Add("SelectedValue", dv, "MAPHONG");
-            cboLoaiGhe.DataBindings.Add("SelectedValue", dv, "LOAIGHE");
+            txtTrangThai.DataBindings.Add("Text", dv, "TRANGTHAI");
         }
 
         void EnableButton(bool status = false)
@@ -183,11 +202,18 @@ namespace TheaterRoomForm
             }
         }
 
+        void load_maGhe()
+        {
+            cboMaGhe.DataSource = listTable.Tables["CT_GHE_PHONG"];
+
+            cboMaGhe.DisplayMember = "MAGHE";
+            cboMaGhe.ValueMember = "MAGHE";
+        }
         private void TheaterRoomDetails_Load(object sender, EventArgs e)
         {
             load_datagridview();
 
-            load_cbo();
+            load_maGhe();
 
             load_phong();
 
@@ -203,6 +229,8 @@ namespace TheaterRoomForm
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Hide();
+            room = new TheaterRoom();
+            room.Show();
         }
 
         private void dgv_Chair_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -219,6 +247,7 @@ namespace TheaterRoomForm
             enableCbo(true);
             EnableTextBox(true);
             btnSave.Enabled = true;
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -235,7 +264,7 @@ namespace TheaterRoomForm
 
                 CheckKey check = new CheckKey();
 
-                int checkFK = check.CheckForeignKey(Str, sql, txtMaGhe.Text.Trim());
+                int checkFK = check.CheckForeignKey(Str, sql, cboMaGhe.SelectedValue.ToString().Trim());
 
                 if (checkFK == 1)
                 {
@@ -243,13 +272,33 @@ namespace TheaterRoomForm
                     return;
                 }
 
-                DataRow dr = listTable.Tables["GHE"].Rows.Find(txtMaGhe.Text.Trim());
+                DataRow dr = listTable.Tables["CT_GHE_PHONG"].Rows.Find(new object[] { cboMaGhe.SelectedValue.ToString().Trim(), cboMaPHong.SelectedValue.ToString().Trim()});
 
-                dr.Delete();
+                if(dr != null)
+                {
+                    dr.Delete();
+                }
 
-                SqlCommandBuilder cmb = new SqlCommandBuilder(readChairs);
+                sqlDataAdapter.Update(listTable, "CT_GHE_PHONG");
 
-                readChairs.Update(listTable, "GHE");
+                // Load lại bảng GHE từ database
+                DataTable temp = new DataTable();
+                readChairs.Fill(temp);
+
+                // Chỉ lấy ghế của phòng hiện tại
+                DataView dvTemp = new DataView(temp);
+                dvTemp.RowFilter = $"MAPHONG = '{IDRooms}'";
+                DataTable filtered = dvTemp.ToTable();
+
+                // Xóa bảng GHE cũ và thêm dữ liệu mới
+                listTable.Tables["GHE"].Clear();
+                listTable.Tables["GHE"].Merge(filtered);
+
+                // Refresh DataView hiển thị
+                dv = new DataView(listTable.Tables["GHE"]);
+                dv.RowFilter = $"MAPHONG = '{IDRooms}'";
+                dgv_Chair.DataSource = dv;
+
 
                 MessageBox.Show("Xóa ghế thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -259,19 +308,19 @@ namespace TheaterRoomForm
         {
             int cnt = 0;
             // Kiểm tra dữ liệu nhập
-            if (string.IsNullOrEmpty(txtMaGhe.Text))
+            if (string.IsNullOrEmpty(cboMaGhe.SelectedValue.ToString().Trim()))
             {
-                errorProvider.SetError(txtMaGhe, "Mã ghế không được để trống");
+                errorProvider.SetError(cboMaGhe, "Mã ghế không được để trống");
                 cnt++;
             }
-            else if (txtMaGhe.Text.Trim().Length > 10 || txtMaGhe.Text.Trim().Length < 9)
+            else if (cboMaGhe.SelectedValue.ToString().Trim().Length > 10 || cboMaGhe.SelectedValue.ToString().Trim().Length < 9)
             {
-                errorProvider.SetError(txtMaGhe, "Mã ghế phải có 10 ký tự");
+                errorProvider.SetError(cboMaGhe, "Mã ghế phải có 10 ký tự");
                 cnt++;
             }
-            else if (!txtMaGhe.Text.Trim().StartsWith("G"))
+            else if (!cboMaGhe.SelectedValue.ToString().Trim().StartsWith("G"))
             {
-                errorProvider.SetError(txtMaGhe, "Mã ghế phải bắt đầu bằng 'G'");
+                errorProvider.SetError(cboMaGhe, "Mã ghế phải bắt đầu bằng 'G'");
                 cnt++;
             }
             else
@@ -279,14 +328,9 @@ namespace TheaterRoomForm
                 errorProvider.Clear();
             }
             // Kiểm tra loại ghế
-            if (cboLoaiGhe.SelectedValue == null)
+            if (string.IsNullOrEmpty(txtTrangThai.Text) == null)
             {
-                errorProvider.SetError(cboLoaiGhe, "Loại ghế không được để trống");
-                cnt++;
-            }
-            else if (cboLoaiGhe.SelectedValue.ToString().ToUpper() != "THƯỜNG" && cboLoaiGhe.SelectedValue.ToString().ToUpper() != "VIP" && cboLoaiGhe.SelectedValue.ToString().ToUpper() != "COUPLE")
-            {
-                errorProvider.SetError(cboLoaiGhe, "Loại ghế không hợp lệ");
+                errorProvider.SetError(txtTrangThai, "Trạng thái ghế không được để trống");
                 cnt++;
             }
             else
@@ -311,55 +355,64 @@ namespace TheaterRoomForm
 
             try
             {
-                string sql = "SELECT COUNT(*) FROM GHE WHERE MAGHE = @key1 AND MAPHONG = @key2";
+                string sql = "SELECT COUNT(*) FROM CT_GHE_PHONG WHERE MAGHE = @key1 AND MAPHONG = @key2";
 
                 CheckKey check = new CheckKey();
 
-                int checkPK = check.CheckDoublePrimaryKey(Str, txtMaGhe.Text.Trim(), cboMaPHong.SelectedValue.ToString().Trim(), sql);
+                int checkPK = check.CheckDoublePrimaryKey(Str, cboMaGhe.SelectedValue.ToString().Trim(), cboMaPHong.SelectedValue.ToString().Trim(), sql);
 
+              
                 if (checkPK == 1)
                 {
                     // Cập nhật ghế
-                    DataRow dr = listTable.Tables["GHE"].Rows.Find(
-                        new object[] { txtMaGhe.Text.Trim(), cboMaPHong.SelectedValue.ToString().Trim() });
+                    DataRow dr = listTable.Tables["CT_GHE_PHONG"].Rows.Find(
+                        new object[] { cboMaGhe.SelectedValue.ToString().Trim(), cboMaPHong.SelectedValue.ToString().Trim() });
 
-                    dr["MAPHONG"] = cboMaPHong.SelectedValue.ToString().Trim();
-                    dr["LOAIGHE"] = cboLoaiGhe.SelectedValue;
+                    if(dr != null)
+                    {
+                        dr["MAPHONG"] = cboMaPHong.SelectedValue.ToString().Trim();
+                        dr["TRANGTHAI"] = txtTrangThai.Text;
+                    }
 
-                    SqlCommandBuilder cmb = new SqlCommandBuilder(readChairs);
 
-                    readChairs.Update(listTable, "GHE");
+                    sqlDataAdapter.Update(listTable, "CT_GHE_PHONG");
 
-
-                    DataTable temp = new DataTable();
-                    readChairs.Fill(temp);
-                    listTable.Tables["GHE"].Merge(temp);
 
                     MessageBox.Show("Cập nhật ghế thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    DataRow dr = listTable.Tables["GHE"].NewRow();
+                    int exists = 0;
 
-                    dr["MAGHE"] = txtMaGhe.Text.Trim();
+                    string chairs = "SELECT COUNT(*) FROM GHE WHERE MAGHE = @key";
+
+                    string rooms = "SELECT COUNT(*) FROM PHONGCHIEU WHERE MAPHONG = @key";
+
+                    exists = check.CheckForeignKey(Str, chairs, cboMaGhe.SelectedValue.ToString().Trim());
+
+                    if(exists  == 0) {
+                        MessageBox.Show("Ghế không tồn tại trong hệ thống. Vui lòng thêm ghế vào danh mục ghế trước khi thêm vào phòng chiếu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    exists = check.CheckForeignKey(Str, rooms, cboMaPHong.SelectedValue.ToString().Trim());
+                    if(exists == 0) {
+                        MessageBox.Show("Phòng chiếu không tồn tại trong hệ thống. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    DataRow dr = listTable.Tables["CT_GHE_PHONG"].NewRow();
+
+                    dr["MAGHE"] = cboMaGhe.SelectedValue.ToString().Trim();
 
                     dr["MAPHONG"] = cboMaPHong.SelectedValue.ToString().Trim();
 
-                    dr["LOAIGHE"] = cboLoaiGhe.SelectedValue;
-
                     dr["TRANGTHAI"] = "Trống";
 
-                    listTable.Tables["GHE"].Rows.Add(dr);
+                    listTable.Tables["CT_GHE_PHONG"].Rows.Add(dr);
 
 
-                    SqlCommandBuilder cmb = new SqlCommandBuilder(readChairs);
-
-
-                    readChairs.Update(listTable, "GHE");
-
-                    DataTable temp = new DataTable();
-                    readChairs.Fill(temp);
-                    listTable.Tables["GHE"].Merge(temp);
+                    sqlDataAdapter.Update(listTable, "CT_GHE_PHONG");
 
                     MessageBox.Show("Thêm ghế thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -370,6 +423,26 @@ namespace TheaterRoomForm
                 MessageBox.Show("Lỗi khi lưu ghế: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
+            // Load lại bảng GHE từ database
+            DataTable temp = new DataTable();
+            readChairs.Fill(temp);
+
+            // Chỉ lấy ghế của phòng hiện tại
+            DataView dvTemp = new DataView(temp);
+            dvTemp.RowFilter = $"MAPHONG = '{IDRooms}'";
+            DataTable filtered = dvTemp.ToTable();
+
+            // Xóa bảng GHE cũ và thêm dữ liệu mới
+            listTable.Tables["GHE"].Clear();
+            listTable.Tables["GHE"].Merge(filtered);
+
+            // Refresh DataView hiển thị
+            dv = new DataView(listTable.Tables["GHE"]);
+            dv.RowFilter = $"MAPHONG = '{IDRooms}'";
+            dgv_Chair.DataSource = dv;
+
+
+          
         }
     }
 }

@@ -38,12 +38,12 @@
             btnSave = new Button();
             btnClose = new Button();
             grpDetails = new GroupBox();
-            txtMaGhe = new TextBox();
-            cboLoaiGhe = new ComboBox();
+            txtTrangThai = new TextBox();
+            cboMaPHong = new ComboBox();
             dgv_Chair = new DataGridView();
             lblName = new Label();
             errorProvider = new ErrorProvider(components);
-            cboMaPHong = new ComboBox();
+            cboMaGhe = new ComboBox();
             grpDetails.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Chair).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
@@ -67,9 +67,9 @@
             label4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label4.Location = new Point(432, 48);
             label4.Name = "label4";
-            label4.Size = new Size(78, 23);
+            label4.Size = new Size(92, 23);
             label4.TabIndex = 23;
-            label4.Text = "Loại ghế";
+            label4.Text = "Trạng thái";
             // 
             // btnUpdate
             // 
@@ -111,9 +111,9 @@
             label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             label2.Location = new Point(50, 44);
             label2.Name = "label2";
-            label2.Size = new Size(70, 23);
+            label2.Size = new Size(71, 23);
             label2.TabIndex = 21;
-            label2.Text = "Mã ghế";
+            label2.Text = "Mã Ghế";
             // 
             // btnSave
             // 
@@ -141,9 +141,9 @@
             // 
             grpDetails.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             grpDetails.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            grpDetails.Controls.Add(cboMaGhe);
+            grpDetails.Controls.Add(txtTrangThai);
             grpDetails.Controls.Add(cboMaPHong);
-            grpDetails.Controls.Add(txtMaGhe);
-            grpDetails.Controls.Add(cboLoaiGhe);
             grpDetails.Controls.Add(btnClose);
             grpDetails.Controls.Add(btnSave);
             grpDetails.Controls.Add(label2);
@@ -160,22 +160,22 @@
             grpDetails.TabStop = false;
             grpDetails.Text = "Thông tin ghế'";
             // 
-            // txtMaGhe
+            // txtTrangThai
             // 
-            txtMaGhe.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            txtMaGhe.BorderStyle = BorderStyle.FixedSingle;
-            txtMaGhe.Location = new Point(148, 41);
-            txtMaGhe.Name = "txtMaGhe";
-            txtMaGhe.Size = new Size(262, 30);
-            txtMaGhe.TabIndex = 28;
+            txtTrangThai.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            txtTrangThai.BorderStyle = BorderStyle.FixedSingle;
+            txtTrangThai.Location = new Point(545, 41);
+            txtTrangThai.Name = "txtTrangThai";
+            txtTrangThai.Size = new Size(262, 30);
+            txtTrangThai.TabIndex = 30;
             // 
-            // cboLoaiGhe
+            // cboMaPHong
             // 
-            cboLoaiGhe.FormattingEnabled = true;
-            cboLoaiGhe.Location = new Point(528, 36);
-            cboLoaiGhe.Name = "cboLoaiGhe";
-            cboLoaiGhe.Size = new Size(262, 31);
-            cboLoaiGhe.TabIndex = 27;
+            cboMaPHong.FormattingEnabled = true;
+            cboMaPHong.Location = new Point(148, 101);
+            cboMaPHong.Name = "cboMaPHong";
+            cboMaPHong.Size = new Size(262, 31);
+            cboMaPHong.TabIndex = 29;
             // 
             // dgv_Chair
             // 
@@ -206,13 +206,13 @@
             // 
             errorProvider.ContainerControl = this;
             // 
-            // cboMaPHong
+            // cboMaGhe
             // 
-            cboMaPHong.FormattingEnabled = true;
-            cboMaPHong.Location = new Point(148, 101);
-            cboMaPHong.Name = "cboMaPHong";
-            cboMaPHong.Size = new Size(262, 31);
-            cboMaPHong.TabIndex = 29;
+            cboMaGhe.FormattingEnabled = true;
+            cboMaGhe.Location = new Point(148, 44);
+            cboMaGhe.Name = "cboMaGhe";
+            cboMaGhe.Size = new Size(262, 31);
+            cboMaGhe.TabIndex = 31;
             // 
             // TheaterRoomDetails
             // 
@@ -247,9 +247,9 @@
         private GroupBox grpDetails;
         private DataGridView dgv_Chair;
         private Label lblName;
-        private ComboBox cboLoaiGhe;
         private ErrorProvider errorProvider;
-        private TextBox txtMaGhe;
         private ComboBox cboMaPHong;
+        private TextBox txtTrangThai;
+        private ComboBox cboMaGhe;
     }
 }

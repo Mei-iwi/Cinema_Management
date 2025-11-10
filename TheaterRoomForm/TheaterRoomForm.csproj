@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Cinema_Management\Cinema_Management.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
   </ItemGroup>
 
