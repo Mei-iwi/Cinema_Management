@@ -15,6 +15,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\MainForm\MainForm.csproj" />
+    <ProjectReference Include="..\TheaterRoomForm\TheaterRoomForm.csproj" />
   </ItemGroup>
 
   <ItemGroup>

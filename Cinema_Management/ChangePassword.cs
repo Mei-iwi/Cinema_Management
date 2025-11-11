@@ -58,7 +58,7 @@ namespace Cinema_Management
             try
             {
 
-                str = Common.ConnectionHelper.CreateConnectionString(Login.DataSource, Login.InitialCatalog, "sqlserver", "123456789");
+                str = Common.ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "123456789");
 
                 bool checkUser = DataAccess.DataProvider.TestConnection(str);
 

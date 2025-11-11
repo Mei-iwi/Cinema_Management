@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowtimeForm", "ShowtimeFor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketForm", "TicketForm\TicketForm.csproj", "{C2E2E0C5-6DF4-4042-BDED-D8C05762BE9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketTypeForm", "TicketTypeForm\TicketTypeForm.csproj", "{8C287717-D2BA-4C9C-851D-1D188AA0C609}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketTypeForm", "TicketTypeForm\TicketTypeForm.csproj", "{8C287717-D2BA-4C9C-851D-1D188AA0C609}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainForm", "MainForm\MainForm.csproj", "{7EA4BEDF-2AB7-4713-9178-A3C4CE1998D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EA4BEDF-2AB7-4713-9178-A3C4CE1998D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EA4BEDF-2AB7-4713-9178-A3C4CE1998D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EA4BEDF-2AB7-4713-9178-A3C4CE1998D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EA4BEDF-2AB7-4713-9178-A3C4CE1998D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -52,10 +52,7 @@ namespace TheaterRoomForm
 
             //Strcon = ConnectionHelper.GetconnectionString();
 
-            Strcon = ConnectionHelper.CreateConnectionString(Cinema_Management.Login.DataSource,
-                Cinema_Management.Login.InitialCatalog,
-                Cinema_Management.Login.UserID,
-                Cinema_Management.Login.Password);
+            Strcon = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
 
             //Khởi tạo kết nối
             con = new SqlConnection(Strcon);

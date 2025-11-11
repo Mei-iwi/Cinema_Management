@@ -1,11 +1,9 @@
-﻿using Cinema_Management;
-using Common;
-using TheaterRoomForm;
+﻿using Common;
 namespace TicketTypeForm
 {
     public partial class Form1 : Form
     {
-        string str = ConnectionHelper.CreateConnectionString(Login.DataSource, Login.InitialCatalog, "sqlserver", "123456789");
+        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "123456789");
 
 
 

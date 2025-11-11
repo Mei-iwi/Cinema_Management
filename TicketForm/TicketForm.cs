@@ -1,4 +1,3 @@
-using Cinema_Management;
 using Common;
 namespace TicketForm
 {

@@ -1,14 +1,10 @@
 ﻿using Common;
 using System.Diagnostics;
+using MainForm;
 namespace Cinema_Management
 {
     public partial class Login : Form
     {
-
-        public static string DataSource = "34.133.93.201";
-
-        public static string InitialCatalog = "QL_RAP_PHIM";
-
         public static string UserID = "";
 
         public static string Password = "";
@@ -40,7 +36,7 @@ namespace Cinema_Management
                 return;
             }
 
-            string strcon = Common.ConnectionHelper.CreateConnectionString(DataSource, InitialCatalog, txtUsername.Text.Trim(), txtPassword.Text.Trim());
+            string strcon = Common.ConnectionHelper.CreateConnectionString(GlobalData.DataSource,GlobalData.InitialCatalog, txtUsername.Text.Trim(), txtPassword.Text.Trim());
 
             bool checkUser = DataAccess.DataProvider.TestConnection(strcon);
 
@@ -58,6 +54,12 @@ namespace Cinema_Management
                     position = 0; //Khách hàng
                     MessageBox.Show($"Xin chào khách hàng {customer.FullName}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    this.Hide();
+
+                    MainFormForCustomer mainFormForCustomer = new MainFormForCustomer();
+
+                    mainFormForCustomer.ShowDialog();
+
                 }
                 else
                 {
@@ -66,21 +68,34 @@ namespace Cinema_Management
                     {
                         position = 1; // Nhân viên bán vé
                         MessageBox.Show($"Xin chào {em.FullName} Chức vụ nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        this.Hide();
+
+                        MainFormForEmployee mainFormForEmployee = new MainFormForEmployee();
+
+
+                        mainFormForEmployee.ShowDialog();
+
                     }
                     else if (auth.UserType == 2)
                     {
                         position = 2; // Nhân viên quản lý
                         MessageBox.Show($"Xin chào {em.FullName} Chức vụ quản lý.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        //TheaterRoomForm form = new TheaterRoomForm();
-                        //form.ShowDialog();
+                        this.Hide();
+
+                        MainFormForManegement mainFormForManegement = new MainFormForManegement();
+
+
+                        mainFormForManegement.ShowDialog();
                     }
                     else
                     {
                         MessageBox.Show("Người dùng không có quyền truy cập hệ thống.", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                //this.Hide();
+                GlobalData.getGlobalData(username, password, position);
+
             }
             else
             {
