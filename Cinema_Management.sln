@@ -9,7 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TheaterRoomForm", "TheaterR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{829429D5-B38C-4421-84ED-2A79A7DE3A98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeatForm", "SeatForm\SeatForm.csproj", "{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeatForm", "SeatForm\SeatForm.csproj", "{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerForm", "CustomerForm\CustomerForm.csproj", "{C8361FB1-679C-463C-8469-75EEA66F5734}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemberTierForm", "MemberTierForm\MemberTierForm.csproj", "{80D1407B-6298-4E85-BF0C-D9D30CBD9504}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieForm", "MovieForm\MovieForm.csproj", "{836FAD34-94B0-4F18-B829-E143C51AC146}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowtimeForm", "ShowtimeForm\ShowtimeForm.csproj", "{EB1C3F19-36C2-4DBB-B4EC-F413608D6637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketForm", "TicketForm\TicketForm.csproj", "{61462543-149D-4B45-AAE7-1BE62071B4AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +43,26 @@ Global
 		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B54745EA-8EE6-4B70-AFAA-A92AAE48BA69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8361FB1-679C-463C-8469-75EEA66F5734}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8361FB1-679C-463C-8469-75EEA66F5734}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8361FB1-679C-463C-8469-75EEA66F5734}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8361FB1-679C-463C-8469-75EEA66F5734}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80D1407B-6298-4E85-BF0C-D9D30CBD9504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80D1407B-6298-4E85-BF0C-D9D30CBD9504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80D1407B-6298-4E85-BF0C-D9D30CBD9504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80D1407B-6298-4E85-BF0C-D9D30CBD9504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{836FAD34-94B0-4F18-B829-E143C51AC146}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{836FAD34-94B0-4F18-B829-E143C51AC146}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{836FAD34-94B0-4F18-B829-E143C51AC146}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{836FAD34-94B0-4F18-B829-E143C51AC146}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB1C3F19-36C2-4DBB-B4EC-F413608D6637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB1C3F19-36C2-4DBB-B4EC-F413608D6637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB1C3F19-36C2-4DBB-B4EC-F413608D6637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB1C3F19-36C2-4DBB-B4EC-F413608D6637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61462543-149D-4B45-AAE7-1BE62071B4AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61462543-149D-4B45-AAE7-1BE62071B4AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61462543-149D-4B45-AAE7-1BE62071B4AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61462543-149D-4B45-AAE7-1BE62071B4AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
