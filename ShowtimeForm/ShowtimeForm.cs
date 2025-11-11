@@ -1,3 +1,5 @@
+using Cinema_Management;
+using Common;
 namespace ShowtimeForm
 {
     public partial class ShowtimeForm : Form

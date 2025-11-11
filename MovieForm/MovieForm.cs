@@ -1,3 +1,5 @@
+using Cinema_Management;
+using Common;
 namespace MovieForm
 {
     public partial class MovieForm : Form
