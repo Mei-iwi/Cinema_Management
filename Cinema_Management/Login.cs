@@ -1,6 +1,7 @@
 ﻿using Common;
 using System.Diagnostics;
 using MainForm;
+using Cinema_Management;
 namespace Cinema_Management
 {
     public partial class Login : Form
@@ -9,7 +10,7 @@ namespace Cinema_Management
 
         public static string Password = "";
 
-        public static int position = 0;
+        private static int position = 0;
 
         public Login()
         {

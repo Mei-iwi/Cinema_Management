@@ -14,13 +14,13 @@ namespace StaffForm
         }
         private void StaffForm_Load(object sender, EventArgs e)
         {
-            //if (Cinema_Management.Login.position != 2)
-            //{
-            //    MessageBox.Show("❌ Bạn không có quyền truy cập vào khu vực Quản lý!",
-            //                    "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    this.Close();
-            //    return;
-            //}
+            if (GlobalData.Positon != 2)
+            {
+                MessageBox.Show("❌ Bạn không có quyền truy cập vào khu vực Quản lý!",
+                                "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                this.Close();
+                return;
+            }
             mtxtNgaySinh.ValidatingType = typeof(DateTime);
             cboPhai.Items.Add("Nam");
             cboPhai.Items.Add("Nữ");
