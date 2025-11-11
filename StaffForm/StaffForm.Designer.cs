@@ -1,6 +1,6 @@
 ﻿namespace StaffForm
 {
-    partial class Form1
+    partial class StaffForm
     {
         /// <summary>
         ///  Required designer variable.
