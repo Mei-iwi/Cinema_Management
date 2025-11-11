@@ -263,12 +263,12 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private NumericUpDown numAmount;
         private Button btnClose;
         private GroupBox grpDetails;
         private DataGridView dgv_TheaterRoom;
         private Button btnSave;
         private TextBox txtID;
         private ErrorProvider errorProvider;
+        public NumericUpDown numAmount;
     }
 }

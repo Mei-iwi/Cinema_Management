@@ -13,15 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeatForm", "SeatForm\SeatFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaffForm", "StaffForm\StaffForm.csproj", "{1CA235FD-CA59-4728-A872-B7C0AEA6A204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerForm", "CustomerForm\CustomerForm.csproj", "{411FE770-743C-4525-BD0D-D31FEA772F8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerForm", "CustomerForm\CustomerForm.csproj", "{411FE770-743C-4525-BD0D-D31FEA772F8C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemberTierForm", "MemberTierForm\MemberTierForm.csproj", "{09F7F0DB-A811-4264-8BEF-012C4BFE9664}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MemberTierForm", "MemberTierForm\MemberTierForm.csproj", "{09F7F0DB-A811-4264-8BEF-012C4BFE9664}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieForm", "MovieForm\MovieForm.csproj", "{4297C8A8-DBBA-45DC-B41D-28DD9469CBD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieForm", "MovieForm\MovieForm.csproj", "{4297C8A8-DBBA-45DC-B41D-28DD9469CBD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowtimeForm", "ShowtimeForm\ShowtimeForm.csproj", "{C4781E10-428F-4969-ACB6-C106C81AEFD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShowtimeForm", "ShowtimeForm\ShowtimeForm.csproj", "{C4781E10-428F-4969-ACB6-C106C81AEFD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketForm", "TicketForm\TicketForm.csproj", "{C2E2E0C5-6DF4-4042-BDED-D8C05762BE9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicketForm", "TicketForm\TicketForm.csproj", "{C2E2E0C5-6DF4-4042-BDED-D8C05762BE9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicketTypeForm", "TicketTypeForm\TicketTypeForm.csproj", "{8C287717-D2BA-4C9C-851D-1D188AA0C609}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{C2E2E0C5-6DF4-4042-BDED-D8C05762BE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2E2E0C5-6DF4-4042-BDED-D8C05762BE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C2E2E0C5-6DF4-4042-BDED-D8C05762BE9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C287717-D2BA-4C9C-851D-1D188AA0C609}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

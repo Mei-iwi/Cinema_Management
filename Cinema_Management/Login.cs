@@ -1,4 +1,5 @@
 ﻿using Common;
+using System.Diagnostics;
 namespace Cinema_Management
 {
     public partial class Login : Form
@@ -71,6 +72,8 @@ namespace Cinema_Management
                         position = 2; // Nhân viên quản lý
                         MessageBox.Show($"Xin chào {em.FullName} Chức vụ quản lý.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                        //TheaterRoomForm form = new TheaterRoomForm();
+                        //form.ShowDialog();
                     }
                     else
                     {

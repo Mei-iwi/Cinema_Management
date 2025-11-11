@@ -69,6 +69,7 @@
             // 
             // lblGheHienTai
             // 
+            lblGheHienTai.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblGheHienTai.AutoSize = true;
             lblGheHienTai.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGheHienTai.ForeColor = Color.Blue;
@@ -80,30 +81,36 @@
             // 
             // btnMua
             // 
-            btnMua.Location = new Point(224, 590);
+            btnMua.Anchor = AnchorStyles.Bottom;
+            btnMua.Location = new Point(235, 590);
             btnMua.Name = "btnMua";
             btnMua.Size = new Size(174, 48);
             btnMua.TabIndex = 5;
-            btnMua.Text = "Mua Ghế";
+            btnMua.Text = "Bán Ghế";
             btnMua.UseVisualStyleBackColor = true;
+            btnMua.Click += btnMua_Click;
             // 
             // btnHuy
             // 
+            btnHuy.Anchor = AnchorStyles.Bottom;
             btnHuy.Location = new Point(447, 590);
             btnHuy.Name = "btnHuy";
             btnHuy.Size = new Size(174, 48);
             btnHuy.TabIndex = 6;
             btnHuy.Text = "Hủy Mua";
             btnHuy.UseVisualStyleBackColor = true;
+            btnHuy.Click += btnHuy_Click;
             // 
             // btnTaiLai
             // 
+            btnTaiLai.Anchor = AnchorStyles.Bottom;
             btnTaiLai.Location = new Point(658, 590);
             btnTaiLai.Name = "btnTaiLai";
             btnTaiLai.Size = new Size(174, 48);
             btnTaiLai.TabIndex = 7;
             btnTaiLai.Text = "Refresh";
             btnTaiLai.UseVisualStyleBackColor = true;
+            btnTaiLai.Click += btnTaiLai_Click;
             // 
             // pnlSeats
             // 
@@ -133,6 +140,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CinemaRooms";
             Load += CinemaRooms_Load;
+            Resize += CinemaRooms_Resize;
             ResumeLayout(false);
             PerformLayout();
         }

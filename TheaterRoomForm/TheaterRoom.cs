@@ -24,6 +24,8 @@ namespace TheaterRoomForm
         {
             InitializeComponent();
 
+            
+
             this.Icon = Properties.Resources.TheaterRoom;
 
             //Thêm ảnh vào button
@@ -48,9 +50,9 @@ namespace TheaterRoomForm
 
             numAmount.TextAlign = HorizontalAlignment.Right;
 
-            // Strcon = ConnectionHelper.GetconnectionString();
+            //Strcon = ConnectionHelper.GetconnectionString();
 
-            Strcon = ConnectionHelper.CreateConnectionString(Cinema_Management.Login.DataSource, 
+            Strcon = ConnectionHelper.CreateConnectionString(Cinema_Management.Login.DataSource,
                 Cinema_Management.Login.InitialCatalog,
                 Cinema_Management.Login.UserID,
                 Cinema_Management.Login.Password);
@@ -129,6 +131,7 @@ namespace TheaterRoomForm
         }
         private void TheaterRoom_Load(object sender, EventArgs e)
         {
+
 
             EnableButton();
 

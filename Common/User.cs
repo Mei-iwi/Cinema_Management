@@ -33,7 +33,5 @@ namespace Common
             Gender = gender;
         }
 
-
-
     }
 }

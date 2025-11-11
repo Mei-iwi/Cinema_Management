@@ -9,7 +9,12 @@ namespace SeatForm
         SqlConnection con;
         DataSet ds;
         SqlDataAdapter da_Phong, da_Ghe, da_CTPG;
+
         private string selectedSeat = null;
+
+        private string maPhongHienTai = null;
+
+        private string maGheHienTaiDaMua = null;
 
         // Cấu hình ghế
         private int seatSize = 50;
@@ -38,8 +43,8 @@ namespace SeatForm
                 ds.Tables["CT_GHE_PHONG"].Columns["MAPHONG"]
             };
 
-            pnlSeats.Paint += pnlSeats_Paint;
-            pnlSeats.MouseClick += pnlSeats_MouseClick;
+            //pnlSeats.Paint += pnlSeats_Paint;
+            //pnlSeats.MouseClick += pnlSeats_MouseClick;
         }
 
         private void CinemaRooms_Load(object sender, EventArgs e)
@@ -106,9 +111,10 @@ namespace SeatForm
                     string seatType = ghe["LOAIGHE"].ToString();
 
                     DataRow drCT = ds.Tables["CT_GHE_PHONG"].Rows.Find(new object[] { seatID, maphong });
+
                     bool isBooked = drCT != null && bool.TryParse(drCT["TRANGTHAI"].ToString(), out bool b) && b;
 
-                    Color seatColor = isBooked ? Color.Red :
+                    Color seatColor = isBooked ? Color.Gray :
                                       seatType == "VIP" ? Color.Gold :
                                       seatType == "COUPLE" ? Color.LightPink :
                                       Color.Green;
@@ -164,19 +170,23 @@ namespace SeatForm
                     if (seatRect.Contains(e.Location))
                     {
                         string seatID = listGhe[seatIndex]["MAGHE"].ToString();
+
                         DataRow drCT = ds.Tables["CT_GHE_PHONG"].Rows.Find(new object[] { seatID, maphong });
 
-                        if (drCT == null || drCT["TRANGTHAI"].ToString() != "True")
+                        if (drCT == null || drCT["TRANGTHAI"].ToString() == "False")
                         {
                             selectedSeat = seatID;
                             pnlSeats.Invalidate();
                             lblGheHienTai.Text = "Ghế đang chọn: " + seatID;
-                           // MessageBox.Show("Bạn chọn ghế: " + seatID);
                         }
-                        else
+                        else if (drCT["TRANGTHAI"].ToString() == "True")
                         {
-                            MessageBox.Show("Ghế đã được đặt!");
+                            MessageBox.Show("Ghế đã được bán!");
+                            lblGheHienTai.Text = "Hủy ghế đang chọn: " + seatID;
+                            maGheHienTaiDaMua = seatID;
+
                         }
+                        maPhongHienTai = maphong;
                         return;
                     }
                 }
@@ -186,6 +196,124 @@ namespace SeatForm
         private void btnTim_Click(object sender, EventArgs e)
         {
             pnlSeats.Invalidate();
+        }
+
+        private void btnTaiLai_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn cập nhật lại trạng thái ghế trống không?",
+    "Cập nhật", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                try
+                {
+                    foreach (DataRow row in ds.Tables["CT_GHE_PHONG"].Rows)
+                    {
+                        if (row["MAPHONG"].ToString() == cboPhong.SelectedValue.ToString().Trim())
+                        {
+                            row["TRANGTHAI"] = "False"; 
+                        }
+                    }
+
+                    SqlCommandBuilder builder = new SqlCommandBuilder(da_CTPG);
+                    da_CTPG.Update(ds, "CT_GHE_PHONG");
+
+                    MessageBox.Show("Cập nhật trạng thái ghế thành công.");
+                    pnlSeats.Invalidate();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi cập nhật: " + ex.Message);
+                }
+            }
+
+        }
+
+        private void btnMua_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedSeat))
+            {
+                MessageBox.Show("Vui lòng chọn ghế trước khi mua.");
+                return;
+            }
+
+            if (string.IsNullOrEmpty(maPhongHienTai))
+            {
+                MessageBox.Show("Lỗi: Không xác định được phòng chiếu.");
+                return;
+            }
+
+            DataRow drCT = ds.Tables["CT_GHE_PHONG"].Rows.Find(new object[] { selectedSeat, maPhongHienTai });
+
+            if (drCT != null)
+            {
+                if (MessageBox.Show("Bạn có chắc muốn bán ghế này", "Hủy mua", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    drCT["TRANGTHAI"] = "True"; // Đánh dấu ghế là đã bán
+                    SqlCommandBuilder builder = new SqlCommandBuilder(da_CTPG);
+                    da_CTPG.Update(ds, "CT_GHE_PHONG");
+
+                    MessageBox.Show($"Mua ghế {selectedSeat} thành công!");
+
+                    // Xóa ghế đã chọn
+                    selectedSeat = null;
+                    maPhongHienTai = null;
+                    lblGheHienTai.Text = "Ghế đang chọn: None";
+                    pnlSeats.Invalidate();
+                }
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Lỗi: Không tìm thấy thông tin ghế trong phòng.");
+            }
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(maGheHienTaiDaMua))
+            {
+                MessageBox.Show("Vui lòng chọn ghế đã mua để hủy.");
+                return;
+            }
+            if (string.IsNullOrEmpty(maPhongHienTai))
+            {
+                MessageBox.Show("Lỗi: Không xác định được phòng chiếu.");
+                return;
+            }
+            DataRow drCT = ds.Tables["CT_GHE_PHONG"].Rows.Find(new object[] { maGheHienTaiDaMua, maPhongHienTai });
+            if (drCT != null)
+            {
+                if (MessageBox.Show("Bạn có chắc muốn hủy mua ghế này", "Hủy mua", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    drCT["TRANGTHAI"] = "False"; // Đánh dấu ghế là chưa bán
+                    SqlCommandBuilder builder = new SqlCommandBuilder(da_CTPG);
+                    da_CTPG.Update(ds, "CT_GHE_PHONG");
+
+                    MessageBox.Show($"Hủy ghế {maGheHienTaiDaMua} thành công!");
+
+                    // Xóa ghế đã chọn
+                    maGheHienTaiDaMua = null;
+                    maPhongHienTai = null;
+                    lblGheHienTai.Text = "Ghế đang chọn: None";
+                    pnlSeats.Invalidate();
+                }
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Lỗi: Không tìm thấy thông tin ghế trong phòng.");
+            }
+        }
+
+        private void CinemaRooms_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+            {
+                pnlSeats.Invalidate();
+            }
+            else if (this.WindowState == FormWindowState.Normal)
+            {
+                pnlSeats.Invalidate();
+            }
         }
     }
 }
