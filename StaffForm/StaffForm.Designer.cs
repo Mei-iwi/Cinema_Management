@@ -28,12 +28,365 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            txtMaNhanVien = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
+            txtTen = new TextBox();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            txtSdt = new TextBox();
+            txtDiaChi = new TextBox();
+            txtLuong = new TextBox();
+            txtEmail = new TextBox();
+            txtChucVu = new TextBox();
+            txtMaNQL = new TextBox();
+            mtxtNgaySinh = new MaskedTextBox();
+            cboPhai = new ComboBox();
+            cboCaTruc = new ComboBox();
+            btnThem = new Button();
+            btnXoa = new Button();
+            btnSua = new Button();
+            btnHienThiTatCa = new Button();
+            SuspendLayout();
+            // 
+            // txtMaNhanVien
+            // 
+            txtMaNhanVien.Location = new Point(182, 82);
+            txtMaNhanVien.Margin = new Padding(4, 3, 4, 3);
+            txtMaNhanVien.Name = "txtMaNhanVien";
+            txtMaNhanVien.Size = new Size(208, 35);
+            txtMaNhanVien.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 91);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(161, 26);
+            label1.TabIndex = 1;
+            label1.Text = "Mã Nhân Viên";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(515, 29);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(217, 26);
+            label2.TabIndex = 2;
+            label2.Text = "Quản Lý Nhân Viên";
+            // 
+            // txtTen
+            // 
+            txtTen.Location = new Point(604, 88);
+            txtTen.Margin = new Padding(4, 3, 4, 3);
+            txtTen.Name = "txtTen";
+            txtTen.Size = new Size(208, 35);
+            txtTen.TabIndex = 3;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(426, 98);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(165, 26);
+            label3.TabIndex = 4;
+            label3.Text = "Tên Nhân Viên";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(855, 98);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(0, 26);
+            label4.TabIndex = 5;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(820, 91);
+            label5.Margin = new Padding(4, 0, 4, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(156, 26);
+            label5.TabIndex = 6;
+            label5.Text = "Số Điện Thoại";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(19, 160);
+            label6.Margin = new Padding(4, 0, 4, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(97, 26);
+            label6.TabIndex = 7;
+            label6.Text = "Địa Chỉ ";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(425, 176);
+            label7.Margin = new Padding(4, 0, 4, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(117, 26);
+            label7.TabIndex = 8;
+            label7.Text = "Ngày Sinh";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(820, 176);
+            label8.Margin = new Padding(4, 0, 4, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 26);
+            label8.TabIndex = 9;
+            label8.Text = "Phái";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(821, 246);
+            label9.Margin = new Padding(4, 0, 4, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(68, 26);
+            label9.TabIndex = 10;
+            label9.Text = "email";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(19, 246);
+            label10.Margin = new Padding(4, 0, 4, 0);
+            label10.Name = "label10";
+            label10.Size = new Size(80, 26);
+            label10.TabIndex = 11;
+            label10.Text = "Lương";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(426, 246);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(91, 26);
+            label11.TabIndex = 12;
+            label11.Text = "Ca trực";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(25, 319);
+            label12.Margin = new Padding(4, 0, 4, 0);
+            label12.Name = "label12";
+            label12.Size = new Size(103, 26);
+            label12.TabIndex = 13;
+            label12.Text = "Chức Vụ";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(426, 319);
+            label13.Margin = new Padding(4, 0, 4, 0);
+            label13.Name = "label13";
+            label13.Size = new Size(111, 26);
+            label13.TabIndex = 14;
+            label13.Text = "Ma_NQL";
+            // 
+            // txtSdt
+            // 
+            txtSdt.Location = new Point(985, 82);
+            txtSdt.Margin = new Padding(4, 3, 4, 3);
+            txtSdt.Name = "txtSdt";
+            txtSdt.Size = new Size(208, 35);
+            txtSdt.TabIndex = 15;
+            // 
+            // txtDiaChi
+            // 
+            txtDiaChi.Location = new Point(182, 151);
+            txtDiaChi.Margin = new Padding(4, 3, 4, 3);
+            txtDiaChi.Name = "txtDiaChi";
+            txtDiaChi.Size = new Size(208, 35);
+            txtDiaChi.TabIndex = 16;
+            // 
+            // txtLuong
+            // 
+            txtLuong.Location = new Point(182, 237);
+            txtLuong.Margin = new Padding(4, 3, 4, 3);
+            txtLuong.Name = "txtLuong";
+            txtLuong.Size = new Size(208, 35);
+            txtLuong.TabIndex = 18;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(985, 237);
+            txtEmail.Margin = new Padding(4, 3, 4, 3);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(208, 35);
+            txtEmail.TabIndex = 19;
+            // 
+            // txtChucVu
+            // 
+            txtChucVu.Location = new Point(182, 316);
+            txtChucVu.Margin = new Padding(4, 3, 4, 3);
+            txtChucVu.Name = "txtChucVu";
+            txtChucVu.Size = new Size(208, 35);
+            txtChucVu.TabIndex = 20;
+            // 
+            // txtMaNQL
+            // 
+            txtMaNQL.Location = new Point(604, 310);
+            txtMaNQL.Margin = new Padding(4, 3, 4, 3);
+            txtMaNQL.Name = "txtMaNQL";
+            txtMaNQL.Size = new Size(208, 35);
+            txtMaNQL.TabIndex = 21;
+            // 
+            // mtxtNgaySinh
+            // 
+            mtxtNgaySinh.Location = new Point(604, 167);
+            mtxtNgaySinh.Mask = "00/00/0000";
+            mtxtNgaySinh.Name = "mtxtNgaySinh";
+            mtxtNgaySinh.Size = new Size(209, 35);
+            mtxtNgaySinh.TabIndex = 22;
+            mtxtNgaySinh.TypeValidationCompleted += mtxtNgaySinh_TypeValidationCompleted;
+            // 
+            // cboPhai
+            // 
+            cboPhai.FormattingEnabled = true;
+            cboPhai.Location = new Point(985, 173);
+            cboPhai.Name = "cboPhai";
+            cboPhai.Size = new Size(208, 34);
+            cboPhai.TabIndex = 23;
+            // 
+            // cboCaTruc
+            // 
+            cboCaTruc.FormattingEnabled = true;
+            cboCaTruc.Location = new Point(604, 243);
+            cboCaTruc.Name = "cboCaTruc";
+            cboCaTruc.Size = new Size(208, 34);
+            cboCaTruc.TabIndex = 24;
+            // 
+            // btnThem
+            // 
+            btnThem.Location = new Point(249, 382);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(112, 34);
+            btnThem.TabIndex = 25;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
+            // 
+            // btnXoa
+            // 
+            btnXoa.Location = new Point(466, 382);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(112, 34);
+            btnXoa.TabIndex = 26;
+            btnXoa.Text = "Xóa";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
+            // 
+            // btnSua
+            // 
+            btnSua.Location = new Point(701, 382);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(112, 34);
+            btnSua.TabIndex = 27;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
+            // 
+            // btnHienThiTatCa
+            // 
+            btnHienThiTatCa.Location = new Point(855, 382);
+            btnHienThiTatCa.Name = "btnHienThiTatCa";
+            btnHienThiTatCa.Size = new Size(345, 34);
+            btnHienThiTatCa.TabIndex = 28;
+            btnHienThiTatCa.Text = "Hiển Thị Tất Cả thông tin";
+            btnHienThiTatCa.UseVisualStyleBackColor = true;
+            btnHienThiTatCa.Click += btnHienThiTatCa_Click;
+            // 
+            // StaffForm
+            // 
+            AutoScaleDimensions = new SizeF(14F, 26F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1216, 468);
+            Controls.Add(btnHienThiTatCa);
+            Controls.Add(btnSua);
+            Controls.Add(btnXoa);
+            Controls.Add(btnThem);
+            Controls.Add(cboCaTruc);
+            Controls.Add(cboPhai);
+            Controls.Add(mtxtNgaySinh);
+            Controls.Add(txtMaNQL);
+            Controls.Add(txtChucVu);
+            Controls.Add(txtEmail);
+            Controls.Add(txtLuong);
+            Controls.Add(txtDiaChi);
+            Controls.Add(txtSdt);
+            Controls.Add(label13);
+            Controls.Add(label12);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(txtTen);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(txtMaNhanVien);
+            Font = new Font("Times New Roman", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Margin = new Padding(4, 3, 4, 3);
+            Name = "StaffForm";
+            Text = "Quản Lý Nhân Viên";
+            Load += StaffForm_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox txtMaNhanVien;
+        private Label label1;
+        private Label label2;
+        private TextBox txtTen;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private TextBox txtSdt;
+        private TextBox txtDiaChi;
+        private TextBox txtLuong;
+        private TextBox txtEmail;
+        private TextBox txtChucVu;
+        private TextBox txtMaNQL;
+        private MaskedTextBox mtxtNgaySinh;
+        private ComboBox cboPhai;
+        private ComboBox cboCaTruc;
+        private Button btnThem;
+        private Button btnXoa;
+        private Button btnSua;
+        private Button btnHienThiTatCa;
     }
 }
