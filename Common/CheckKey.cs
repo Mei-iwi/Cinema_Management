@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
-using System.Data.SqlClient;
 
-namespace TheaterRoomForm
+namespace Common
 {
-    class CheckKey
+    public class CheckKey
     {
         public int CheckPrimaryKey(string con, string sql, string key)
         {
@@ -31,7 +30,8 @@ namespace TheaterRoomForm
                         }
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return -1; // Error occurred
             }
