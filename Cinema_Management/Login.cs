@@ -9,7 +9,7 @@ namespace Cinema_Management
 
         public static string Password = "";
 
-        private static int position = 0;
+        public static int position = 0;
 
         public Login()
         {
