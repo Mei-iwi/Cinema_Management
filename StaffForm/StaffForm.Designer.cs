@@ -60,7 +60,7 @@
             // 
             // txtMaNhanVien
             // 
-            txtMaNhanVien.Location = new Point(182, 82);
+            txtMaNhanVien.Location = new Point(182, 190);
             txtMaNhanVien.Margin = new Padding(4, 3, 4, 3);
             txtMaNhanVien.Name = "txtMaNhanVien";
             txtMaNhanVien.Size = new Size(208, 35);
@@ -69,7 +69,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(13, 91);
+            label1.Location = new Point(13, 199);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(161, 26);
@@ -79,16 +79,17 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(515, 29);
+            label2.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(535, 19);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(217, 26);
+            label2.Size = new Size(320, 41);
             label2.TabIndex = 2;
             label2.Text = "Quản Lý Nhân Viên";
             // 
             // txtTen
             // 
-            txtTen.Location = new Point(604, 88);
+            txtTen.Location = new Point(604, 196);
             txtTen.Margin = new Padding(4, 3, 4, 3);
             txtTen.Name = "txtTen";
             txtTen.Size = new Size(208, 35);
@@ -97,7 +98,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(426, 98);
+            label3.Location = new Point(425, 199);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(165, 26);
@@ -116,7 +117,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(820, 91);
+            label5.Location = new Point(820, 199);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(156, 26);
@@ -126,7 +127,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(19, 160);
+            label6.Location = new Point(19, 280);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(97, 26);
@@ -136,7 +137,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(425, 176);
+            label7.Location = new Point(426, 280);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(117, 26);
@@ -146,7 +147,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(820, 176);
+            label8.Location = new Point(821, 280);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
             label8.Size = new Size(59, 26);
@@ -156,7 +157,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(821, 246);
+            label9.Location = new Point(821, 347);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
             label9.Size = new Size(68, 26);
@@ -166,7 +167,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(19, 246);
+            label10.Location = new Point(19, 355);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
             label10.Size = new Size(80, 26);
@@ -176,7 +177,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(426, 246);
+            label11.Location = new Point(426, 358);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(91, 26);
@@ -186,7 +187,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(25, 319);
+            label12.Location = new Point(19, 421);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
             label12.Size = new Size(103, 26);
@@ -196,7 +197,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(426, 319);
+            label13.Location = new Point(425, 421);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
             label13.Size = new Size(111, 26);
@@ -205,7 +206,7 @@
             // 
             // txtSdt
             // 
-            txtSdt.Location = new Point(985, 82);
+            txtSdt.Location = new Point(984, 196);
             txtSdt.Margin = new Padding(4, 3, 4, 3);
             txtSdt.Name = "txtSdt";
             txtSdt.Size = new Size(208, 35);
@@ -213,7 +214,7 @@
             // 
             // txtDiaChi
             // 
-            txtDiaChi.Location = new Point(182, 151);
+            txtDiaChi.Location = new Point(182, 271);
             txtDiaChi.Margin = new Padding(4, 3, 4, 3);
             txtDiaChi.Name = "txtDiaChi";
             txtDiaChi.Size = new Size(208, 35);
@@ -221,7 +222,7 @@
             // 
             // txtLuong
             // 
-            txtLuong.Location = new Point(182, 237);
+            txtLuong.Location = new Point(182, 355);
             txtLuong.Margin = new Padding(4, 3, 4, 3);
             txtLuong.Name = "txtLuong";
             txtLuong.Size = new Size(208, 35);
@@ -229,7 +230,7 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(985, 237);
+            txtEmail.Location = new Point(995, 344);
             txtEmail.Margin = new Padding(4, 3, 4, 3);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(208, 35);
@@ -237,7 +238,7 @@
             // 
             // txtChucVu
             // 
-            txtChucVu.Location = new Point(182, 316);
+            txtChucVu.Location = new Point(182, 421);
             txtChucVu.Margin = new Padding(4, 3, 4, 3);
             txtChucVu.Name = "txtChucVu";
             txtChucVu.Size = new Size(208, 35);
@@ -245,7 +246,7 @@
             // 
             // txtMaNQL
             // 
-            txtMaNQL.Location = new Point(604, 310);
+            txtMaNQL.Location = new Point(604, 412);
             txtMaNQL.Margin = new Padding(4, 3, 4, 3);
             txtMaNQL.Name = "txtMaNQL";
             txtMaNQL.Size = new Size(208, 35);
@@ -253,7 +254,7 @@
             // 
             // mtxtNgaySinh
             // 
-            mtxtNgaySinh.Location = new Point(604, 167);
+            mtxtNgaySinh.Location = new Point(603, 271);
             mtxtNgaySinh.Mask = "00/00/0000";
             mtxtNgaySinh.Name = "mtxtNgaySinh";
             mtxtNgaySinh.Size = new Size(209, 35);
@@ -263,7 +264,7 @@
             // cboPhai
             // 
             cboPhai.FormattingEnabled = true;
-            cboPhai.Location = new Point(985, 173);
+            cboPhai.Location = new Point(984, 277);
             cboPhai.Name = "cboPhai";
             cboPhai.Size = new Size(208, 34);
             cboPhai.TabIndex = 23;
@@ -271,14 +272,14 @@
             // cboCaTruc
             // 
             cboCaTruc.FormattingEnabled = true;
-            cboCaTruc.Location = new Point(604, 243);
+            cboCaTruc.Location = new Point(604, 347);
             cboCaTruc.Name = "cboCaTruc";
             cboCaTruc.Size = new Size(208, 34);
             cboCaTruc.TabIndex = 24;
             // 
             // btnThem
             // 
-            btnThem.Location = new Point(249, 382);
+            btnThem.Location = new Point(62, 98);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(112, 34);
             btnThem.TabIndex = 25;
@@ -288,7 +289,7 @@
             // 
             // btnXoa
             // 
-            btnXoa.Location = new Point(466, 382);
+            btnXoa.Location = new Point(219, 98);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(112, 34);
             btnXoa.TabIndex = 26;
@@ -298,7 +299,7 @@
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(701, 382);
+            btnSua.Location = new Point(377, 98);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(112, 34);
             btnSua.TabIndex = 27;
@@ -308,7 +309,7 @@
             // 
             // btnHienThiTatCa
             // 
-            btnHienThiTatCa.Location = new Point(855, 382);
+            btnHienThiTatCa.Location = new Point(544, 98);
             btnHienThiTatCa.Name = "btnHienThiTatCa";
             btnHienThiTatCa.Size = new Size(345, 34);
             btnHienThiTatCa.TabIndex = 28;

@@ -61,7 +61,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(419, -1);
+            label1.Location = new Point(463, -1);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(481, 41);
@@ -220,7 +220,7 @@
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(112, 34);
             btnLoad.TabIndex = 19;
-            btnLoad.Text = "Load";
+            btnLoad.Text = "Làm Mới";
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
             // 
@@ -320,6 +320,7 @@
             Name = "CustomerForm";
             Text = "FormQuanLyKhachHang";
             TopMost = true;
+            FormClosing += CustomerForm_FormClosing;
             Load += CustomerForm_Load;
             ((System.ComponentModel.ISupportInitialize)dgvThongTinKhachHang).EndInit();
             ResumeLayout(false);
