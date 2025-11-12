@@ -6,7 +6,7 @@ namespace ServiceForm
 {
     public partial class ServiceForm : Form
     {
-        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "123456789");
+        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
 
         SqlConnection con;
 
@@ -25,7 +25,7 @@ namespace ServiceForm
         {
             InitializeComponent();
 
-
+            this.Icon = Properties.Resources.Services;
 
             dgv_Service.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
