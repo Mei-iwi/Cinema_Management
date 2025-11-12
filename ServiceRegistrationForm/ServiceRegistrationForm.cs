@@ -7,7 +7,7 @@ namespace ServiceRegistrationForm
     public partial class ServiceRegistrationForm : Form
     {
 
-        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "NV00000008", "Abc12345!");
+        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
 
         SqlConnection con;
 
@@ -29,6 +29,7 @@ namespace ServiceRegistrationForm
 
         BindingSource bsView = new BindingSource();
 
+        bool load = false;
 
         public ServiceRegistrationForm()
         {
@@ -61,7 +62,7 @@ namespace ServiceRegistrationForm
 
             con = new SqlConnection(connectionString);
 
-            string sqlRes = "SELECT DK.MASP, MAVE, SOLUONG, DONGIA  FROM DANGKY DK INNER JOIN DICHVU DV ON DV.MASP = DK.MASP";
+            string sqlRes = "SELECT DK.MASP, MAVE, SOLUONG, DONGIA, HINH_ANH  FROM DANGKY DK INNER JOIN DICHVU DV ON DV.MASP = DK.MASP";
 
             string sqlSer = "SELECT * FROM DICHVU";
 
@@ -117,6 +118,8 @@ namespace ServiceRegistrationForm
                 txt.Enabled = enable;
             }
             cboDV.Enabled = enable;
+
+            numSL.Enabled = enable;
         }
 
         void EnableButotn(bool enable = false)
@@ -134,6 +137,8 @@ namespace ServiceRegistrationForm
             cboDV.DisplayMember = "TENSP";
 
             cboDV.ValueMember = "MaSP";
+
+            load = true;
         }
 
 
@@ -151,9 +156,12 @@ namespace ServiceRegistrationForm
 
             dgv_Service.Columns["SOLUONG"].HeaderText = "Số lượng";
 
+            dgv_Service.Columns["HINH_ANH"].Visible = false;
+
             dataView = new DataView(ds.Tables["DANGKY"]);
 
             dataView.RowFilter = string.Format("MaVE LIKE '%{0}%'", txtMaVE.Text);
+
 
         }
 
@@ -178,7 +186,14 @@ namespace ServiceRegistrationForm
 
             txtTongTien.Clear();
 
-            txtTongTien.Text = (numSL.Value * Convert.ToDecimal(txtDonGia.Text)).ToString("N0") + " VNĐ";
+            if (!string.IsNullOrEmpty(txtDonGia.Text))
+            {
+                txtTongTien.Text = (numSL.Value * Convert.ToDecimal(txtDonGia.Text)).ToString("N0") + " VNĐ";
+            }
+            else
+            {
+                txtTongTien.Text = "0";
+            }
 
         }
 
@@ -203,6 +218,8 @@ namespace ServiceRegistrationForm
             txtTongTien.Clear();
 
             txtTongTien.Text = (numSL.Value * Convert.ToDecimal(txtDonGia.Text)).ToString("N0") + " VNĐ";
+
+
         }
         private void ServiceRegistrationForm_Load(object sender, EventArgs e)
         {
@@ -234,6 +251,11 @@ namespace ServiceRegistrationForm
         {
             // Bind controls 1 lần
             BindControls(bsView);
+            btnAdd.Enabled = true;
+
+            btnDelete.Enabled = true;
+            btnUpdate.Enabled = true;
+            btnChitiet.Enabled = true;
         }
 
         void Reload()
@@ -263,11 +285,13 @@ namespace ServiceRegistrationForm
             cboDV.DataBindings.Clear();
             numSL.DataBindings.Clear();
             txtDonGia.DataBindings.Clear();
+            txtLink.DataBindings.Clear();
 
             txtMaVE.DataBindings.Add("Text", bs, "MaVE", true, DataSourceUpdateMode.OnPropertyChanged);
             cboDV.DataBindings.Add("SelectedValue", bs, "MaSP", true, DataSourceUpdateMode.OnPropertyChanged);
             numSL.DataBindings.Add("Value", bs, "SOLUONG", true, DataSourceUpdateMode.OnPropertyChanged, 0);
             txtDonGia.DataBindings.Add("Text", bs, "DONGIA", true, DataSourceUpdateMode.OnPropertyChanged);
+            txtLink.DataBindings.Add("Text", bs, "HINH_ANH", true, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         private void btnTim_Click(object sender, EventArgs e)
@@ -332,8 +356,288 @@ namespace ServiceRegistrationForm
 
         private void btnReaload_Click(object sender, EventArgs e)
         {
-           dataView.RowFilter = string.Empty;   
+            dataView.RowFilter = string.Empty;
 
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            cboDV.Enabled = true;
+
+            numSL.Value = 0;
+
+            btnSave.Enabled = true;
+
+            numSL.Enabled = true;
+        }
+
+        private void cboDV_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!load) return;
+                DataRow dr = ds.Tables["DICHVU"].Rows.Find(cboDV.SelectedValue);
+
+                txtDonGia.Text = dr["DONGIA"].ToString();
+
+            }
+            catch (Exception ex)
+            {
+                txtDonGia.Clear();
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            btnSave.Enabled = true;
+
+            cboDV.Enabled = false;
+
+            numSL.Enabled = true;
+        }
+
+        private void btnChitiet_Click(object sender, EventArgs e)
+        {
+
+            string sqlDetails = "SELECT DV.MASP AS MASP, TENSP, DONGIA, SOLUONG, SOLUONG*DONGIA AS TT, HINH_ANH FROM DICHVU DV INNER JOIN DANGKY DK ON DV.MASP = DK.MASP WHERE DV.MASP = @MASP";
+            DataTable dtDetails = new DataTable();
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sqlDetails, con))
+                {
+                    cmd.Parameters.Add("@MASP", SqlDbType.NVarChar, 50).Value = cboDV.SelectedValue.ToString().Trim();
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+
+                    adapter.Fill(dtDetails);
+
+
+                }
+            }
+            Details detials = new Details(dtDetails);
+            detials.ShowDialog();
+        }
+
+        private void txtLink_TextChanged(object sender, EventArgs e)
+        {
+            string imagePath = txtLink.Text;
+
+            string SolutionFolder = Path.Combine(Application.StartupPath, @"..\..\..\..");
+
+            string DestinationFoler = Path.Combine(SolutionFolder, "ServiceForm", "Images", "Services");
+
+            string fullImagePath = Path.Combine(DestinationFoler, imagePath);
+
+            if (File.Exists(fullImagePath))
+            {
+                using (FileStream fs = new FileStream(fullImagePath, FileMode.Open, FileAccess.Read))
+                {
+                    pictureBox1.Image = Image.FromStream(fs);
+                }
+            }
+            else
+            {
+                DestinationFoler = Path.Combine(SolutionFolder, "ServiceForm", "Images", "Default");
+                fullImagePath = Path.Combine(DestinationFoler, "default.png");
+                using (FileStream fs = new FileStream(fullImagePath, FileMode.Open, FileAccess.Read))
+                {
+                    pictureBox1.Image = Image.FromStream(fs);
+                }
+            }
+        }
+        private void MergeDataDangKy()
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                string sql = "SELECT * FROM DANGKY"; // hoặc lọc theo MaVE nếu muốn
+                SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+                DataTable dtNew = new DataTable();
+                adapter.Fill(dtNew);
+
+                // Đảm bảo DataTable hiện tại có PrimaryKey
+                DataTable dtCurrent = ds.Tables["DANGKY"];
+                if (dtCurrent.PrimaryKey.Length == 0)
+                {
+                    dtCurrent.PrimaryKey = new DataColumn[] { dtCurrent.Columns["MaVE"], dtCurrent.Columns["MaSP"] };
+                }
+
+                // Merge dữ liệu mới
+                dtCurrent.Merge(dtNew);
+
+                // DataView tự động cập nhật, DataGridView giữ binding
+                dgv_Service.Refresh();
+            }
+        }
+
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            int cnt = 0;
+            if (string.IsNullOrEmpty(txtMaVE.Text))
+            {
+                errorProvider.SetError(txtMaVE, "Mã vé không được để trống!");
+                cnt++;
+            }
+            else
+            {
+                errorProvider.SetError(txtMaVE, "");
+            }
+            if (numSL.Value <= 0)
+            {
+                errorProvider.SetError(numSL, "Số lượng phải lớn hơn 0!");
+                cnt++;
+            }
+            else
+            {
+                errorProvider.SetError(numSL, "");
+            }
+            if (cnt > 0) return;
+
+            CheckKey check = new CheckKey();
+
+            string sqlVe = "SELECT COUNT(*) FROM VE WHERE MaVE = @key";
+
+            string sqlDV = "SELECT COUNT(*) FROM DICHVU WHERE MaSP = @key";
+
+            if (check.CheckPrimaryKey(connectionString, sqlVe, txtMaVE.Text.Trim()) == 0)
+            {
+                MessageBox.Show("Mã vé không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (check.CheckPrimaryKey(connectionString, sqlDV, cboDV.SelectedValue.ToString()) == 0)
+            {
+                MessageBox.Show("Mã dịch vụ không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string sqlDK = "SELECT COUNT(*) FROM DANGKY WHERE MaVE = @key1 AND MaSP = @key2";
+            if (check.CheckDoublePrimaryKey(connectionString, txtMaVE.Text, cboDV.SelectedValue.ToString(), sqlDK) == 1)
+            {
+
+                try
+                {
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        string sqlUpdate = "UPDATE DANGKY SET SOLUONG = @SL WHERE MASP = @MASP AND MAVE = @MAVE";
+                        con.Open();
+
+                        foreach (DataRow row in dataView.Table.Rows)
+                        {
+                            if (row["MaVE"].ToString() == txtMaVE.Text)
+                            {
+                                int newSL = Convert.ToInt32(row["SOLUONG"]);
+                                string maSP = row["MASP"].ToString();
+
+
+                                using (SqlCommand cmd = new SqlCommand(sqlUpdate, con))
+                                {
+                                    cmd.Parameters.Add("@SL", SqlDbType.Int).Value = newSL;
+                                    cmd.Parameters.Add("@MAVE", SqlDbType.NVarChar, 50).Value = txtMaVE.Text;
+                                    cmd.Parameters.Add("@MASP", SqlDbType.NVarChar, 50).Value = maSP;
+                                    cmd.ExecuteNonQuery();
+                                }
+                            }
+                        }
+
+                        MessageBox.Show("Cập nhật số lượng thành công!");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi cập nhật!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+
+            }
+            else
+            {
+                try
+                {
+                    string sqlAdd = "INSERT INTO DANGKY(MASP, MAVE, SOLUONG) VALUES(@MASP, @MAVE, @SOLUONG)";
+
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        con.Open();
+
+                        using (SqlCommand cmd = new SqlCommand(sqlAdd, con))
+                        {
+                            cmd.Parameters.Add("@MASP", SqlDbType.NVarChar, 50).Value = cboDV.SelectedValue.ToString();
+                            cmd.Parameters.Add("@MAVE", SqlDbType.NVarChar, 50).Value = txtMaVE.Text;
+                            cmd.Parameters.Add("@SOLUONG", SqlDbType.Int).Value = Convert.ToInt32(numSL.Value);
+                            cmd.ExecuteNonQuery();
+                        }
+
+                        MessageBox.Show("Thêm dịch vụ thành công!");
+                    }
+
+                    // Thêm vào DataSet
+                    DataRow newRow = ds.Tables["DANGKY"].NewRow();
+                    newRow["MaSP"] = cboDV.SelectedValue.ToString();
+                    newRow["MaVE"] = txtMaVE.Text;
+                    newRow["SOLUONG"] = Convert.ToInt32(numSL.Value);
+                    DataRow drDV = ds.Tables["DICHVU"].Rows.Find(cboDV.SelectedValue.ToString());
+                    newRow["DONGIA"] = drDV["DONGIA"];
+                    newRow["HINH_ANH"] = drDV["HINH_ANH"];
+                    ds.Tables["DANGKY"].Rows.Add(newRow);
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi thêm!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            // MergeDataDangKy();
+
+            this.Refresh();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtMaVE.Text))
+            {
+                MessageBox.Show("Vui lòng chọn mã vé !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DataRow dr = ds.Tables["DANGKY"].Rows.Find(new object[] { txtMaVE.Text, cboDV.SelectedValue.ToString() });
+
+            if (dr == null)
+            {
+                MessageBox.Show("Dịch vụ đăng ký không tồn tại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa dịch vụ đăng ký này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    using (SqlConnection con = new SqlConnection(connectionString))
+                    {
+                        string sqlDelete = "DELETE  DANGKY WHERE MASP = @MASP AND MAVE = @MAVE";
+                        con.Open();
+
+                        using (SqlCommand cmd = new SqlCommand(sqlDelete, con))
+                        {
+                            cmd.Parameters.Add("@MAVE", SqlDbType.NVarChar, 50).Value = txtMaVE.Text;
+                            cmd.Parameters.Add("@MASP", SqlDbType.NVarChar, 50).Value = cboDV.SelectedValue.ToString();
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    MessageBox.Show("Xóa dịch vụ đăng ký thành công!");
+
+                    // Xóa khỏi DataSet
+                    dr.Delete();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            this.Refresh();
         }
     }
 }

@@ -34,14 +34,15 @@
             label1 = new Label();
             errorProvider = new ErrorProvider(components);
             grpChucnag = new GroupBox();
+            pictureBox1 = new PictureBox();
+            txtLink = new TextBox();
             numSL = new NumericUpDown();
             lbl = new Label();
             txtMaVE = new TextBox();
             txtVe = new Label();
             btnTim = new Button();
             cboDV = new ComboBox();
-            btnDuyet = new Button();
-            pictureBox1 = new PictureBox();
+            btnChitiet = new Button();
             txtTongTien = new TextBox();
             txtDonGia = new TextBox();
             txtSum = new Label();
@@ -57,8 +58,8 @@
             btnReaload = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             grpChucnag.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numSL).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numSL).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Service).BeginInit();
             SuspendLayout();
             // 
@@ -91,8 +92,7 @@
             grpChucnag.Controls.Add(txtVe);
             grpChucnag.Controls.Add(btnTim);
             grpChucnag.Controls.Add(cboDV);
-            grpChucnag.Controls.Add(btnDuyet);
-            grpChucnag.Controls.Add(pictureBox1);
+            grpChucnag.Controls.Add(btnChitiet);
             grpChucnag.Controls.Add(txtTongTien);
             grpChucnag.Controls.Add(txtDonGia);
             grpChucnag.Controls.Add(txtSum);
@@ -102,6 +102,8 @@
             grpChucnag.Controls.Add(btnUpdate);
             grpChucnag.Controls.Add(btnDelete);
             grpChucnag.Controls.Add(btnAdd);
+            grpChucnag.Controls.Add(pictureBox1);
+            grpChucnag.Controls.Add(txtLink);
             grpChucnag.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             grpChucnag.Location = new Point(19, 45);
             grpChucnag.Name = "grpChucnag";
@@ -109,6 +111,26 @@
             grpChucnag.TabIndex = 14;
             grpChucnag.TabStop = false;
             grpChucnag.Text = "Chức năng";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
+            pictureBox1.Enabled = false;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(533, 29);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(304, 192);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 20;
+            pictureBox1.TabStop = false;
+            // 
+            // txtLink
+            // 
+            txtLink.Location = new Point(632, 115);
+            txtLink.Name = "txtLink";
+            txtLink.Size = new Size(125, 30);
+            txtLink.TabIndex = 27;
+            txtLink.TextChanged += txtLink_TextChanged;
             // 
             // numSL
             // 
@@ -165,30 +187,20 @@
             cboDV.Name = "cboDV";
             cboDV.Size = new Size(325, 31);
             cboDV.TabIndex = 21;
+            cboDV.SelectedIndexChanged += cboDV_SelectedIndexChanged;
             // 
-            // btnDuyet
+            // btnChitiet
             // 
-            btnDuyet.Anchor = AnchorStyles.Top;
-            btnDuyet.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
-            btnDuyet.ForeColor = Color.Blue;
-            btnDuyet.Location = new Point(758, 182);
-            btnDuyet.Name = "btnDuyet";
-            btnDuyet.Size = new Size(70, 29);
-            btnDuyet.TabIndex = 5;
-            btnDuyet.Text = "Chi tiết";
-            btnDuyet.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BorderStyle = BorderStyle.FixedSingle;
-            pictureBox1.Enabled = false;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(533, 29);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(304, 192);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 20;
-            pictureBox1.TabStop = false;
+            btnChitiet.Anchor = AnchorStyles.Top;
+            btnChitiet.Font = new Font("Segoe UI", 7.8F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
+            btnChitiet.ForeColor = Color.Blue;
+            btnChitiet.Location = new Point(758, 182);
+            btnChitiet.Name = "btnChitiet";
+            btnChitiet.Size = new Size(70, 29);
+            btnChitiet.TabIndex = 5;
+            btnChitiet.Text = "Chi tiết";
+            btnChitiet.UseVisualStyleBackColor = true;
+            btnChitiet.Click += btnChitiet_Click;
             // 
             // txtTongTien
             // 
@@ -241,6 +253,7 @@
             btnSave.TabIndex = 11;
             btnSave.Text = "Lưu hóa đơn";
             btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnUpdate
             // 
@@ -250,6 +263,7 @@
             btnUpdate.TabIndex = 10;
             btnUpdate.Text = "Cập nhật hóa đơn";
             btnUpdate.UseVisualStyleBackColor = true;
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // btnDelete
             // 
@@ -259,6 +273,7 @@
             btnDelete.TabIndex = 9;
             btnDelete.Text = "Xóa hóa đơn";
             btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnAdd
             // 
@@ -268,6 +283,7 @@
             btnAdd.TabIndex = 8;
             btnAdd.Text = "Lập hóa đơn";
             btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += btnAdd_Click;
             // 
             // dgv_Service
             // 
@@ -333,8 +349,8 @@
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             grpChucnag.ResumeLayout(false);
             grpChucnag.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numSL).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numSL).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Service).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -346,7 +362,7 @@
         private Label label1;
         private ErrorProvider errorProvider;
         private GroupBox grpChucnag;
-        private Button btnDuyet;
+        private Button btnChitiet;
         private PictureBox pictureBox1;
         private TextBox txtDonGia;
         private Label lblDG;
@@ -367,5 +383,6 @@
         private TextBox txtTotal;
         private Label label3;
         private Button btnReaload;
+        private TextBox txtLink;
     }
 }
