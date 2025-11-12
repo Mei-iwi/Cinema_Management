@@ -7,7 +7,7 @@ namespace ServiceRegistrationForm
     public partial class ServiceRegistrationForm : Form
     {
 
-        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "NV00000001", "Abc12345!");
+        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
 
         SqlConnection con;
 
