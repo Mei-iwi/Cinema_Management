@@ -61,6 +61,16 @@ namespace ServiceForm.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _default {
+            get {
+                object obj = ResourceManager.GetObject("default", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Addnew {
@@ -117,16 +127,6 @@ namespace ServiceForm.Properties {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap xrp35snr {
-            get {
-                object obj = ResourceManager.GetObject("xrp35snr", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

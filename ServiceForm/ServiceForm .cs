@@ -18,6 +18,9 @@ namespace ServiceForm
 
         OpenFileDialog openFile;
 
+        string oldPictue = "";
+
+        string uniqueName = "";
         public ServiceForm()
         {
             InitializeComponent();
@@ -148,6 +151,25 @@ namespace ServiceForm
             Bingding(ds.Tables["Service"]);
             btnDelete.Enabled = true;
             btnUpdate.Enabled = true;
+
+            oldPictue = txtAh.Text;
+
+            string SolutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\.."));
+
+            string DestinationFolder = Path.Combine(SolutionFolder, "Images", "Services");
+
+            string imagePath = Path.Combine(DestinationFolder, txtAh.Text);
+
+            if (File.Exists(imagePath))
+            {
+                pictureBox1.Image = Image.FromFile(imagePath);
+
+            }
+            else
+            {
+                imagePath = Path.Combine(SolutionFolder, "Images", "Default", "Default.png");
+                pictureBox1.Image = Image.FromFile(imagePath);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -224,6 +246,8 @@ namespace ServiceForm
 
             int exists = checkKey.CheckPrimaryKey(str, sql, txtMaDV.Text);
 
+            string imageFileName = Path.GetFileName(openFile.FileName);
+
             if (exists == 1)
             {
 
@@ -239,14 +263,28 @@ namespace ServiceForm
 
                         using (SqlCommand cmd = new SqlCommand(sqlDV, con))
                         {
+
+
+                            if (pictureBox1.Image != null)
+                            {
+                                pictureBox1.Image.Dispose();
+                                pictureBox1.Image = null;
+                                GC.Collect();
+                                GC.WaitForPendingFinalizers();
+                            }
+
+
+                            DeleteOldPicture(oldPictue);
+
+                            saveImageIntoFolder(openFile.FileName);
+
                             cmd.Parameters.AddWithValue("@TENSP", txtTenDV.Text.Trim());
                             cmd.Parameters.AddWithValue("@DONGIA", decimal.Parse(txtDonGia.Text.Trim()));
-                            cmd.Parameters.AddWithValue("@HINH_ANH", openFile.FileName);
+                            cmd.Parameters.AddWithValue("@HINH_ANH", uniqueName);
                             cmd.Parameters.AddWithValue("@MASP", txtMaDV.Text.Trim());
 
                             int result = cmd.ExecuteNonQuery();
 
-                            saveImageIntoFolder(openFile.FileName);
 
 
                             if (result > 0)
@@ -267,6 +305,7 @@ namespace ServiceForm
             {
                 try
                 {
+                    saveImageIntoFolder(openFile.FileName);
 
                     DataRow row = ds.Tables["Service"].NewRow();
 
@@ -276,11 +315,11 @@ namespace ServiceForm
 
                     row["DONGIA"] = txtDonGia.Text.Trim();
 
-                    row["HINH_ANH"] = openFile.FileName;
+                    row["HINH_ANH"] = uniqueName;
 
                     ds.Tables["Service"].Rows.Add(row);
 
-                    saveImageIntoFolder(openFile.FileName);
+
 
 
                     da_Service.Update(ds, "Service");
@@ -350,13 +389,16 @@ namespace ServiceForm
                 string fileName = Path.GetFileName(sourcePath);
 
                 // đi lên 3 cấp tới thư mục chứa .sln
+                uniqueName = Guid.NewGuid().ToString() + Path.GetExtension(fileName);
+
                 string solutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\.."));
+
                 string destinationFolder = Path.Combine(solutionFolder, "Images", "Services");
 
                 if (!Directory.Exists(destinationFolder))
                     Directory.CreateDirectory(destinationFolder);
 
-                string destinationPath = Path.Combine(destinationFolder, fileName);
+                string destinationPath = Path.Combine(destinationFolder, uniqueName);
 
                 if (File.Exists(destinationPath))
                     File.Delete(destinationPath);
@@ -364,9 +406,13 @@ namespace ServiceForm
                 File.Copy(sourcePath, destinationPath);
 
                 txtAh.Text = destinationPath;
-                pictureBox1.Image = Image.FromFile(destinationPath);
 
-                MessageBox.Show("Đã lưu hình ảnh vào: " + destinationPath, "Thông báo");
+                using (var fs = new FileStream(destinationPath, FileMode.Open, FileAccess.Read))
+                {
+                    pictureBox1.Image = Image.FromStream(fs);
+                }
+
+                //MessageBox.Show("Đã lưu hình ảnh vào: " + destinationPath, "Thông báo");
             }
             catch (Exception ex)
             {
@@ -374,6 +420,21 @@ namespace ServiceForm
             }
         }
 
+        void DeleteOldPicture(string oldPicture)
+        {
+
+            string SolutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\.."));
+
+            string DestinationFolder = Path.Combine(SolutionFolder, "Images", "Services");
+
+            string ImagePath = Path.Combine(DestinationFolder, oldPicture);
+
+            if (File.Exists(ImagePath))
+            {
+                File.Delete(ImagePath);
+            }
+
+        }
 
 
         private void btnDuyet_Click(object sender, EventArgs e)
@@ -395,7 +456,14 @@ namespace ServiceForm
             {
                 if (!string.IsNullOrEmpty(txtAh.Text))
                 {
-                    pictureBox1.Image = Image.FromFile(txtAh.Text);
+                    if (File.Exists(txtAh.Text))
+                    {
+                        using (var fs = new FileStream(txtAh.Text, FileMode.Open, FileAccess.Read))
+                        {
+                            pictureBox1.Image = Image.FromStream(fs);
+                        }
+                    }
+
                 }
                 else
                 {

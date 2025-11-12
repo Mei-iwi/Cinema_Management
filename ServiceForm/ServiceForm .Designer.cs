@@ -223,7 +223,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(526, 29);
+            pictureBox1.Location = new Point(533, 29);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(304, 192);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
