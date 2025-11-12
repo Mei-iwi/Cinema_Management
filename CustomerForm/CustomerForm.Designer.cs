@@ -52,6 +52,8 @@
             label10 = new Label();
             cboPhai = new ComboBox();
             cboMaHang = new ComboBox();
+            txtTichDiem = new TextBox();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvThongTinKhachHang).BeginInit();
             SuspendLayout();
             // 
@@ -176,7 +178,7 @@
             // dgvThongTinKhachHang
             // 
             dgvThongTinKhachHang.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvThongTinKhachHang.Location = new Point(12, 321);
+            dgvThongTinKhachHang.Location = new Point(12, 362);
             dgvThongTinKhachHang.Name = "dgvThongTinKhachHang";
             dgvThongTinKhachHang.RowHeadersWidth = 62;
             dgvThongTinKhachHang.Size = new Size(1291, 284);
@@ -235,7 +237,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(517, 271);
+            label9.Location = new Point(539, 315);
             label9.Name = "label9";
             label9.Size = new Size(296, 27);
             label9.TabIndex = 21;
@@ -266,11 +268,29 @@
             cboMaHang.Size = new Size(182, 35);
             cboMaHang.TabIndex = 24;
             // 
+            // txtTichDiem
+            // 
+            txtTichDiem.Location = new Point(227, 275);
+            txtTichDiem.Name = "txtTichDiem";
+            txtTichDiem.Size = new Size(201, 35);
+            txtTichDiem.TabIndex = 25;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(56, 283);
+            label11.Name = "label11";
+            label11.Size = new Size(108, 27);
+            label11.TabIndex = 26;
+            label11.Text = "Tích điểm";
+            // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(13F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1436, 607);
+            ClientSize = new Size(1436, 658);
+            Controls.Add(label11);
+            Controls.Add(txtTichDiem);
             Controls.Add(cboMaHang);
             Controls.Add(cboPhai);
             Controls.Add(label10);
@@ -332,5 +352,7 @@
         private Label label10;
         private ComboBox cboPhai;
         private ComboBox cboMaHang;
+        private TextBox txtTichDiem;
+        private Label label11;
     }
 }
