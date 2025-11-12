@@ -209,10 +209,11 @@
             Controls.Add(btnThoat);
             Controls.Add(groupBox1);
             Controls.Add(pic);
+            MaximizeBox = false;
             MinimizeBox = false;
             Name = "Details";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Detials";
+            Text = "Details";
             Load += Detials_Load;
             ((System.ComponentModel.ISupportInitialize)pic).EndInit();
             groupBox1.ResumeLayout(false);

@@ -29,7 +29,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MainForm", "MainForm\MainFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceForm", "ServiceForm\ServiceForm.csproj", "{CB337EC5-04A3-4848-9FF5-AB236632B74E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceRegistrationForm", "ServiceRegistrationForm\ServiceRegistrationForm.csproj", "{B9E6197B-AD08-4207-9A84-E16A6C083572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceRegistrationForm", "ServiceRegistrationForm\ServiceRegistrationForm.csproj", "{B9E6197B-AD08-4207-9A84-E16A6C083572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfileForm", "ProfileForm\ProfileForm.csproj", "{45F50B61-6B04-4230-8906-A3D8C6D783B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerServiceForm", "CustomerServiceForm\CustomerServiceForm.csproj", "{AF63FD67-26B7-4371-A4B0-9B6023D328BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerFeedbackForm", "CustomerFeedbackForm\CustomerFeedbackForm.csproj", "{A8EDAC63-7465-4541-B597-F731030C1571}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +99,18 @@ Global
 		{B9E6197B-AD08-4207-9A84-E16A6C083572}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9E6197B-AD08-4207-9A84-E16A6C083572}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9E6197B-AD08-4207-9A84-E16A6C083572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F50B61-6B04-4230-8906-A3D8C6D783B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F50B61-6B04-4230-8906-A3D8C6D783B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F50B61-6B04-4230-8906-A3D8C6D783B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F50B61-6B04-4230-8906-A3D8C6D783B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8EDAC63-7465-4541-B597-F731030C1571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8EDAC63-7465-4541-B597-F731030C1571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8EDAC63-7465-4541-B597-F731030C1571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8EDAC63-7465-4541-B597-F731030C1571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

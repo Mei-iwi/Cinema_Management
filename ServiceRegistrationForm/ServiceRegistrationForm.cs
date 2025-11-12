@@ -7,7 +7,7 @@ namespace ServiceRegistrationForm
     public partial class ServiceRegistrationForm : Form
     {
 
-        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "NV00000001", "Abc12345!");
 
         SqlConnection con;
 
@@ -104,11 +104,6 @@ namespace ServiceRegistrationForm
             dgv_Service.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
             dgv_Service.AllowUserToAddRows = false;
-
-            //dataView = new DataView(ds.Tables["DANGKY"]);
-
-            //dataView.RowFilter = string.Format("MaVE LIKE '%{0}%'", txtMaVE.Text);
-
         }
 
         void EnableTextBox(bool enable = false)

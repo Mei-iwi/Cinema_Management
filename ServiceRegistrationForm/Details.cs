@@ -17,6 +17,8 @@ namespace ServiceRegistrationForm
         {
             InitializeComponent();
 
+            this.Icon = Properties.Resources.Services;
+
             lblMa.Text = dt.Rows[0]["MASP"].ToString();
             lblTen.Text = dt.Rows[0]["TENSP"].ToString();
             lblDonGia.Text = dt.Rows[0]["DonGia"].ToString();
