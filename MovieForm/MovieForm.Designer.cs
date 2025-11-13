@@ -28,19 +28,342 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
+            txtMa = new TextBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            txtTenPhim = new TextBox();
+            label5 = new Label();
+            txtNhaSanXuat = new TextBox();
+            label6 = new Label();
+            cboTheLoai = new ComboBox();
+            cboDangPhim = new ComboBox();
+            mstNgayKhoiChieu = new MaskedTextBox();
+            mstThoiLuong = new MaskedTextBox();
+            label7 = new Label();
+            label8 = new Label();
+            mstNgayKetThuc = new MaskedTextBox();
+            label9 = new Label();
+            label10 = new Label();
+            mstCapNhat = new MaskedTextBox();
+            dgvPhim = new DataGridView();
+            label11 = new Label();
+            btnThem = new Button();
+            btnXoa = new Button();
+            btnSua = new Button();
+            btnLamMoi = new Button();
+            btnDong = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvPhim).BeginInit();
             SuspendLayout();
             // 
-            // Form1
+            // label1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            label1.AutoSize = true;
+            label1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.Highlight;
+            label1.Location = new Point(544, 9);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(225, 41);
+            label1.TabIndex = 0;
+            label1.Text = "Quản Lý Phim";
+            // 
+            // txtMa
+            // 
+            txtMa.Location = new Point(161, 161);
+            txtMa.Name = "txtMa";
+            txtMa.Size = new Size(150, 35);
+            txtMa.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 169);
+            label2.Name = "label2";
+            label2.Size = new Size(100, 27);
+            label2.TabIndex = 2;
+            label2.Text = "Mã Phim";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(331, 169);
+            label3.Name = "label3";
+            label3.Size = new Size(99, 27);
+            label3.TabIndex = 3;
+            label3.Text = "Thể Loại";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(718, 169);
+            label4.Name = "label4";
+            label4.Size = new Size(119, 27);
+            label4.TabIndex = 4;
+            label4.Text = "Dạng Phim";
+            // 
+            // txtTenPhim
+            // 
+            txtTenPhim.Location = new Point(1190, 156);
+            txtTenPhim.Name = "txtTenPhim";
+            txtTenPhim.Size = new Size(150, 35);
+            txtTenPhim.TabIndex = 5;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(1054, 164);
+            label5.Name = "label5";
+            label5.Size = new Size(105, 27);
+            label5.TabIndex = 6;
+            label5.Text = "Tên Phim";
+            // 
+            // txtNhaSanXuat
+            // 
+            txtNhaSanXuat.Location = new Point(161, 222);
+            txtNhaSanXuat.Name = "txtNhaSanXuat";
+            txtNhaSanXuat.Size = new Size(150, 35);
+            txtNhaSanXuat.TabIndex = 7;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(4, 230);
+            label6.Name = "label6";
+            label6.Size = new Size(146, 27);
+            label6.TabIndex = 8;
+            label6.Text = "Nhà Sản Xuất";
+            // 
+            // cboTheLoai
+            // 
+            cboTheLoai.FormattingEnabled = true;
+            cboTheLoai.Location = new Point(498, 161);
+            cboTheLoai.Name = "cboTheLoai";
+            cboTheLoai.Size = new Size(182, 35);
+            cboTheLoai.TabIndex = 11;
+            // 
+            // cboDangPhim
+            // 
+            cboDangPhim.FormattingEnabled = true;
+            cboDangPhim.Location = new Point(855, 161);
+            cboDangPhim.Name = "cboDangPhim";
+            cboDangPhim.Size = new Size(182, 35);
+            cboDangPhim.TabIndex = 12;
+            // 
+            // mstNgayKhoiChieu
+            // 
+            mstNgayKhoiChieu.Location = new Point(498, 227);
+            mstNgayKhoiChieu.Mask = "00/00/0000";
+            mstNgayKhoiChieu.Name = "mstNgayKhoiChieu";
+            mstNgayKhoiChieu.Size = new Size(182, 35);
+            mstNgayKhoiChieu.TabIndex = 13;
+            // 
+            // mstThoiLuong
+            // 
+            mstThoiLuong.Location = new Point(1190, 227);
+            mstThoiLuong.Mask = "00:00:00";
+            mstThoiLuong.Name = "mstThoiLuong";
+            mstThoiLuong.Size = new Size(150, 35);
+            mstThoiLuong.TabIndex = 15;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(317, 230);
+            label7.Name = "label7";
+            label7.Size = new Size(175, 27);
+            label7.TabIndex = 16;
+            label7.Text = "Ngày Khởi chiếu";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(690, 235);
+            label8.Name = "label8";
+            label8.Size = new Size(147, 27);
+            label8.TabIndex = 17;
+            label8.Text = "Ngày kết thúc";
+            // 
+            // mstNgayKetThuc
+            // 
+            mstNgayKetThuc.Location = new Point(855, 227);
+            mstNgayKetThuc.Mask = "00/00/0000";
+            mstNgayKetThuc.Name = "mstNgayKetThuc";
+            mstNgayKetThuc.Size = new Size(182, 35);
+            mstNgayKetThuc.TabIndex = 18;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(1054, 235);
+            label9.Name = "label9";
+            label9.Size = new Size(118, 27);
+            label9.TabIndex = 19;
+            label9.Text = "Thời lượng";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(4, 291);
+            label10.Name = "label10";
+            label10.Size = new Size(151, 27);
+            label10.TabIndex = 20;
+            label10.Text = "Ngày câp nhật";
+            // 
+            // mstCapNhat
+            // 
+            mstCapNhat.Location = new Point(161, 283);
+            mstCapNhat.Mask = "00/00/0000";
+            mstCapNhat.Name = "mstCapNhat";
+            mstCapNhat.Size = new Size(150, 35);
+            mstCapNhat.TabIndex = 21;
+            // 
+            // dgvPhim
+            // 
+            dgvPhim.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPhim.Location = new Point(12, 384);
+            dgvPhim.Name = "dgvPhim";
+            dgvPhim.RowHeadersWidth = 62;
+            dgvPhim.Size = new Size(1302, 225);
+            dgvPhim.TabIndex = 22;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = SystemColors.MenuHighlight;
+            label11.Location = new Point(498, 319);
+            label11.Margin = new Padding(4, 0, 4, 0);
+            label11.Name = "label11";
+            label11.Size = new Size(345, 41);
+            label11.TabIndex = 23;
+            label11.Text = "Hiển thị thông tin phim";
+            // 
+            // btnThem
+            // 
+            btnThem.FlatStyle = FlatStyle.Flat;
+            btnThem.Location = new Point(57, 71);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(112, 34);
+            btnThem.TabIndex = 24;
+            btnThem.Text = "&Thêm";
+            btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click;
+            // 
+            // btnXoa
+            // 
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Location = new Point(161, 71);
+            btnXoa.Name = "btnXoa";
+            btnXoa.Size = new Size(112, 34);
+            btnXoa.TabIndex = 25;
+            btnXoa.Text = "&Xóa";
+            btnXoa.UseVisualStyleBackColor = true;
+            btnXoa.Click += btnXoa_Click;
+            // 
+            // btnSua
+            // 
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Location = new Point(269, 71);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(112, 34);
+            btnSua.TabIndex = 26;
+            btnSua.Text = "&Sửa";
+            btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click;
+            // 
+            // btnLamMoi
+            // 
+            btnLamMoi.FlatStyle = FlatStyle.Flat;
+            btnLamMoi.Location = new Point(380, 71);
+            btnLamMoi.Name = "btnLamMoi";
+            btnLamMoi.Size = new Size(112, 34);
+            btnLamMoi.TabIndex = 27;
+            btnLamMoi.Text = "&Làm Mới ";
+            btnLamMoi.UseVisualStyleBackColor = true;
+            btnLamMoi.Click += btnLamMoi_Click;
+            // 
+            // btnDong
+            // 
+            btnDong.FlatStyle = FlatStyle.Flat;
+            btnDong.Location = new Point(487, 71);
+            btnDong.Name = "btnDong";
+            btnDong.Size = new Size(112, 34);
+            btnDong.TabIndex = 28;
+            btnDong.Text = "&Đóng";
+            btnDong.UseVisualStyleBackColor = true;
+            btnDong.Click += btnDong_Click;
+            // 
+            // MovieForm
+            // 
+            AutoScaleDimensions = new SizeF(13F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "Form1";
-            Text = "Form1";
+            ClientSize = new Size(1448, 607);
+            Controls.Add(btnDong);
+            Controls.Add(btnLamMoi);
+            Controls.Add(btnSua);
+            Controls.Add(btnXoa);
+            Controls.Add(btnThem);
+            Controls.Add(label11);
+            Controls.Add(dgvPhim);
+            Controls.Add(mstCapNhat);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(mstNgayKetThuc);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(mstThoiLuong);
+            Controls.Add(mstNgayKhoiChieu);
+            Controls.Add(cboDangPhim);
+            Controls.Add(cboTheLoai);
+            Controls.Add(label6);
+            Controls.Add(txtNhaSanXuat);
+            Controls.Add(label5);
+            Controls.Add(txtTenPhim);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtMa);
+            Controls.Add(label1);
+            Font = new Font("Times New Roman", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(5, 4, 5, 4);
+            Name = "MovieForm";
+            Text = "Quản Lý Phim";
+            FormClosing += MovieForm_FormClosing;
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvPhim).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private TextBox txtMa;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private TextBox txtTenPhim;
+        private Label label5;
+        private TextBox txtNhaSanXuat;
+        private Label label6;
+        private ComboBox cboTheLoai;
+        private ComboBox cboDangPhim;
+        private MaskedTextBox mstNgayKhoiChieu;
+        private MaskedTextBox mstThoiLuong;
+        private Label label7;
+        private Label label8;
+        private MaskedTextBox mstNgayKetThuc;
+        private Label label9;
+        private Label label10;
+        private MaskedTextBox mstCapNhat;
+        private DataGridView dgvPhim;
+        private Label label11;
+        private Button btnThem;
+        private Button btnXoa;
+        private Button btnSua;
+        private Button btnLamMoi;
+        private Button btnDong;
     }
 }

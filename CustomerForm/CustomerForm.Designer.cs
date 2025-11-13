@@ -61,7 +61,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(463, -1);
+            label1.ForeColor = SystemColors.Highlight;
+            label1.Location = new Point(461, 9);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(481, 41);
@@ -186,51 +187,56 @@
             // 
             // btnThem
             // 
+            btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.Location = new Point(30, 54);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(112, 34);
             btnThem.TabIndex = 16;
-            btnThem.Text = "Thêm";
+            btnThem.Text = "&Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(171, 54);
+            button2.FlatStyle = FlatStyle.Flat;
+            button2.Location = new Point(148, 54);
             button2.Name = "button2";
             button2.Size = new Size(112, 34);
             button2.TabIndex = 17;
-            button2.Text = "Xóa";
+            button2.Text = "&Xóa";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(316, 54);
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Location = new Point(266, 54);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(112, 34);
             btnSua.TabIndex = 18;
-            btnSua.Text = "Sửa";
+            btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(463, 54);
+            btnLoad.FlatStyle = FlatStyle.Flat;
+            btnLoad.Location = new Point(384, 54);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(112, 34);
             btnLoad.TabIndex = 19;
-            btnLoad.Text = "Làm Mới";
+            btnLoad.Text = "&Làm Mới";
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
             // 
             // btnDong
             // 
-            btnDong.Location = new Point(606, 54);
+            btnDong.FlatStyle = FlatStyle.Flat;
+            btnDong.Location = new Point(502, 54);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(112, 34);
             btnDong.TabIndex = 20;
-            btnDong.Text = "Đóng";
+            btnDong.Text = "&Đóng";
             btnDong.UseVisualStyleBackColor = true;
             btnDong.Click += btnDong_Click;
             // 

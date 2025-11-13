@@ -80,7 +80,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(647, 136);
+            label2.Location = new Point(553, 133);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(106, 27);
@@ -89,7 +89,7 @@
             // 
             // txtTenHang
             // 
-            txtTenHang.Location = new Point(815, 136);
+            txtTenHang.Location = new Point(667, 125);
             txtTenHang.Margin = new Padding(4, 3, 4, 3);
             txtTenHang.Name = "txtTenHang";
             txtTenHang.Size = new Size(194, 35);
@@ -106,7 +106,7 @@
             // 
             // txtUuDai
             // 
-            txtUuDai.Location = new Point(815, 207);
+            txtUuDai.Location = new Point(667, 212);
             txtUuDai.Margin = new Padding(4, 3, 4, 3);
             txtUuDai.Name = "txtUuDai";
             txtUuDai.Size = new Size(194, 35);
@@ -125,7 +125,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(647, 215);
+            label5.Location = new Point(553, 215);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
             label5.Size = new Size(78, 27);
@@ -143,67 +143,73 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Times New Roman", 16F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label6.Location = new Point(482, 9);
+            label6.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.Highlight;
+            label6.Location = new Point(497, 9);
             label6.Name = "label6";
-            label6.Size = new Size(350, 36);
+            label6.Size = new Size(397, 41);
             label6.TabIndex = 10;
             label6.Text = "Quản Lý Hạng Thành Viên";
             // 
             // btnThem
             // 
+            btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.Location = new Point(59, 75);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(112, 34);
             btnThem.TabIndex = 11;
-            btnThem.Text = "Thêm";
+            btnThem.Text = "&Thêm";
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
             // btnXoa
             // 
-            btnXoa.Location = new Point(224, 75);
+            btnXoa.FlatStyle = FlatStyle.Flat;
+            btnXoa.Location = new Point(177, 75);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(112, 34);
             btnXoa.TabIndex = 12;
-            btnXoa.Text = "Xóa";
+            btnXoa.Text = "&Xóa";
             btnXoa.UseVisualStyleBackColor = true;
             btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
-            btnSua.Location = new Point(384, 75);
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.Location = new Point(295, 75);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(112, 34);
             btnSua.TabIndex = 13;
-            btnSua.Text = "Sửa";
+            btnSua.Text = "&Sửa";
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(542, 75);
+            btnLoad.FlatStyle = FlatStyle.Flat;
+            btnLoad.Location = new Point(413, 75);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(112, 34);
             btnLoad.TabIndex = 14;
-            btnLoad.Text = "Load";
+            btnLoad.Text = "&Làm mới";
             btnLoad.UseVisualStyleBackColor = true;
             btnLoad.Click += btnLoad_Click;
             // 
             // btnDong
             // 
-            btnDong.Location = new Point(689, 75);
+            btnDong.FlatStyle = FlatStyle.Flat;
+            btnDong.Location = new Point(531, 75);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(112, 34);
             btnDong.TabIndex = 15;
-            btnDong.Text = "Đóng";
+            btnDong.Text = "&Đóng";
             btnDong.UseVisualStyleBackColor = true;
             btnDong.Click += btnDong_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(1036, 144);
+            label7.Location = new Point(903, 128);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(69, 27);
@@ -212,7 +218,7 @@
             // 
             // txtMoTa
             // 
-            txtMoTa.Location = new Point(1116, 133);
+            txtMoTa.Location = new Point(980, 130);
             txtMoTa.Margin = new Padding(4, 3, 4, 3);
             txtMoTa.Multiline = true;
             txtMoTa.Name = "txtMoTa";

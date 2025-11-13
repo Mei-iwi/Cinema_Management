@@ -41,7 +41,8 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(443, 29);
+            label1.ForeColor = SystemColors.Highlight;
+            label1.Location = new Point(469, 20);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(248, 41);
@@ -75,6 +76,7 @@
             // 
             // btnTim
             // 
+            btnTim.FlatStyle = FlatStyle.Flat;
             btnTim.Location = new Point(833, 111);
             btnTim.Name = "btnTim";
             btnTim.Size = new Size(228, 34);

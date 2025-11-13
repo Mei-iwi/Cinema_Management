@@ -18,6 +18,16 @@ namespace StaffForm
         {
             InitializeComponent();
             conn = new SqlConnection("Data Source=DESKTOP-IQCO6JU\\SQLEXPRESS;Initial catalog=QL_RAP_PHIM;User ID=sa;Password=123");
+            //conn = new SqlConnection("Data Source=34.133.93.201;Initial catalog=QL_RAP_PHIM;User ID=sqlserver;Password=123456789");
+            //---------------------------------------------------------------------------------------------------------------------------------//
+            ////---------------------------------Kết nối sever mở--------------------------------------------------------------///
+            //// string connectionString = ConnectionHelper.CreateConnectionString(
+            //     "34.133.93.201",      // Tên server giống CinemaRooms
+            //     "QL_RAP_PHIM",        // Tên cơ sở dữ liệu
+            //     "sqlserver",          // Tài khoản SQL
+            //     "123456789"           // Mật khẩu SQL
+            // );
+            // conn = new SqlConnection(connectionString);
         }
         private void TimNhanVien_Load(object sender, EventArgs e)
         {
