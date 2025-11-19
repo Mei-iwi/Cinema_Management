@@ -7,6 +7,31 @@ namespace MainForm
         public MainFormForManegement()
         {
             InitializeComponent();
+
+            // Truy đến folder solution
+            string root = Path.GetFullPath(Application.StartupPath + @"..\..\..\..");
+
+            // Đường dẫn chính xác đến hình ảnh
+
+            string imagePath = System.IO.Path.Combine(root, "MainForm", "Images", "20250715_2120_Logo Mèo Mei_simple_compose_01k07796fdf8jbnfwc2qbqe8tn.png");
+
+            // Kiểm tra nếu file hình ảnh tồn tại
+
+            if (File.Exists(imagePath))
+            {
+                // Tải ảnh và clone để giải phóng file ngay
+                using (var img = Image.FromFile(imagePath))
+                {
+                    pictureBox1.Image = new Bitmap(img);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Hình ảnh nền không tồn tại tại đường dẫn: " + imagePath);
+            }
+
+            pictureBox1.Dock = DockStyle.Fill;
+
         }
 
         private void quảnLýPhòngChiếuToolStripMenuItem_Click(object sender, EventArgs e)

@@ -46,7 +46,9 @@
             thôngTinCáNhânToolStripMenuItem = new ToolStripMenuItem();
             đổiMậtKhẩuToolStripMenuItem = new ToolStripMenuItem();
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
+            pictureBox1 = new PictureBox();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // phimĐangChiếuToolStripMenuItem
@@ -185,17 +187,29 @@
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Location = new Point(0, 31);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(926, 456);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // MainFormForManegement
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(926, 450);
+            ClientSize = new Size(926, 487);
+            Controls.Add(pictureBox1);
             Controls.Add(menuStrip1);
             Name = "MainFormForManegement";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainFormManager";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,5 +234,6 @@
         private ToolStripMenuItem thôngTinCáNhânToolStripMenuItem;
         private ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
         private ToolStripMenuItem đăngXuấtToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }
