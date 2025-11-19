@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Common;
 
 
 namespace MainForm
@@ -24,7 +25,7 @@ namespace MainForm
 
             // Đường dẫn chính xác đến hình ảnh
 
-            string imagePath = System.IO.Path.Combine(root,"MainForm", "Images", "20250715_2120_Logo Mèo Mei_simple_compose_01k07796fdf8jbnfwc2qbqe8tn.png");
+            string imagePath = System.IO.Path.Combine(root, "MainForm", "Images", "20250715_2120_Logo Mèo Mei_simple_compose_01k07796fdf8jbnfwc2qbqe8tn.png");
 
             // Kiểm tra nếu file hình ảnh tồn tại
 
@@ -44,7 +45,7 @@ namespace MainForm
             pictureBox1.Dock = DockStyle.Fill;
 
 
-            
+
         }
 
         private void phimĐangChiếuToolStripMenuItem_Click(object sender, EventArgs e)
@@ -89,6 +90,21 @@ namespace MainForm
                 MessageBox.Show("Lỗi đăng xuất, vui lòng chạy lại ứng dụng");
                 this.Close();
             }
+        }
+
+        private void MenuND_Click(object sender, EventArgs e)
+        {
+            string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+
+
+            Authentication authForm = new Authentication();
+
+            Customer cus = null;
+
+            Employee em = authForm.getInfomation(connectionString, GlobalData.UserID);
+
+            ProfileForm.ProfileForm profileForm = new ProfileForm.ProfileForm(cus, em, 1);
+            profileForm.ShowDialog();
         }
     }
 }

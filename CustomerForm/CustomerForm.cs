@@ -63,7 +63,7 @@ namespace CustomerForm
                         KH.DIACHI,
                         KH.NGAYSINH,
                         KH.EMAIL,
-                        KH.TICHDIEM,
+                        KH.DIEMTICHLUY,
                         H.TENHANG,
                         H.DIEMTOITHIEU
                     FROM KHACHHANG KH
@@ -189,7 +189,7 @@ namespace CustomerForm
                 if (conn.State == ConnectionState.Closed) conn.Open();
 
                 string query = @"INSERT INTO KHACHHANG
-                    (MAKH, MAHANG, HOTENKH, PHAI, SDT, DIACHI, NGAYSINH, EMAIL, TICHDIEM)
+                    (MAKH, MAHANG, HOTENKH, PHAI, SDT, DIACHI, NGAYSINH, EMAIL, DIEMTICHLUY)
                     VALUES
                     (@MAKH, @MAHANG, @HOTENKH, @PHAI, @SDT, @DIACHI, @NGAYSINH, @EMAIL, @TICHDIEM)";
 
@@ -281,7 +281,7 @@ namespace CustomerForm
                 string oldDiaChi = reader["DIACHI"].ToString();
                 string oldEmail = reader["EMAIL"].ToString();
                 string oldMaHang = reader["MAHANG"].ToString();
-                int oldTichDiem = Convert.ToInt32(reader["TICHDIEM"]);
+                int oldTichDiem = Convert.ToInt32(reader["DIEMTICHLUY"]);
                 DateTime? oldNgaySinh = reader["NGAYSINH"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["NGAYSINH"]);
 
                 reader.Close();
@@ -311,7 +311,7 @@ namespace CustomerForm
                 DIACHI=@DIACHI,
                 NGAYSINH=@NGAYSINH,
                 EMAIL=@EMAIL,
-                TICHDIEM=@TICHDIEM,
+                DIEMTICHLUY=@TICHDIEM,
                 MAHANG=@MAHANG
             WHERE MAKH=@MAKH";
 

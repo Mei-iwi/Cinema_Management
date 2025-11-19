@@ -33,7 +33,7 @@
             phimĐangChiếuToolStripMenuItem = new ToolStripMenuItem();
             dịchVụKháchHàngToolStripMenuItem = new ToolStripMenuItem();
             ngườiDùngToolStripMenuItem = new ToolStripMenuItem();
-            đăngNhậpToolStripMenuItem = new ToolStripMenuItem();
+            menuNguoidung = new ToolStripMenuItem();
             đăngKýToolStripMenuItem = new ToolStripMenuItem();
             thayĐổiMâToolStripMenuItem = new ToolStripMenuItem();
             cSKHToolStripMenuItem = new ToolStripMenuItem();
@@ -81,17 +81,18 @@
             // 
             // ngườiDùngToolStripMenuItem
             // 
-            ngườiDùngToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { đăngNhậpToolStripMenuItem, đăngKýToolStripMenuItem, thayĐổiMâToolStripMenuItem });
+            ngườiDùngToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { menuNguoidung, đăngKýToolStripMenuItem, thayĐổiMâToolStripMenuItem });
             ngườiDùngToolStripMenuItem.ForeColor = Color.White;
             ngườiDùngToolStripMenuItem.Name = "ngườiDùngToolStripMenuItem";
             ngườiDùngToolStripMenuItem.Size = new Size(122, 27);
             ngườiDùngToolStripMenuItem.Text = "Người dùng";
             // 
-            // đăngNhậpToolStripMenuItem
+            // menuNguoidung
             // 
-            đăngNhậpToolStripMenuItem.Name = "đăngNhậpToolStripMenuItem";
-            đăngNhậpToolStripMenuItem.Size = new Size(272, 28);
-            đăngNhậpToolStripMenuItem.Text = "Thông tin người dùng";
+            menuNguoidung.Name = "menuNguoidung";
+            menuNguoidung.Size = new Size(272, 28);
+            menuNguoidung.Text = "Thông tin người dùng";
+            menuNguoidung.Click += đăngNhậpToolStripMenuItem_Click;
             // 
             // đăngKýToolStripMenuItem
             // 
@@ -181,7 +182,7 @@
         private ToolStripMenuItem phimĐangChiếuToolStripMenuItem;
         private ToolStripMenuItem dịchVụKháchHàngToolStripMenuItem;
         private ToolStripMenuItem ngườiDùngToolStripMenuItem;
-        private ToolStripMenuItem đăngNhậpToolStripMenuItem;
+        private ToolStripMenuItem menuNguoidung;
         private ToolStripMenuItem đăngKýToolStripMenuItem;
         private ToolStripMenuItem thayĐổiMâToolStripMenuItem;
         private FlowLayoutPanel flowLayout;

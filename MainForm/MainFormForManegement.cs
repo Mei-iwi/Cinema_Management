@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Common;
+using System.Diagnostics;
 
 namespace MainForm
 {
@@ -120,6 +121,22 @@ namespace MainForm
         {
             StaffForm.StaffForm form = new StaffForm.StaffForm();
             form.ShowDialog();
+        }
+
+        private void menuND_Click(object sender, EventArgs e)
+        {
+
+            string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+
+
+            Authentication authForm = new Authentication();
+
+            Customer cus = null;
+
+            Employee em = authForm.getInfomation(connectionString, GlobalData.UserID); 
+
+            ProfileForm.ProfileForm profileForm = new ProfileForm.ProfileForm(cus, em, 2);
+            profileForm.ShowDialog();
         }
     }
 }

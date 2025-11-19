@@ -203,6 +203,19 @@ namespace MainForm
         private void dịchVụKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
         }
+
+        private void đăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Authentication authForm = new Authentication();
+
+            Customer cus = authForm.getCustomerInfomation(connectionString, GlobalData.UserID);
+
+            Employee em = null;
+
+            ProfileForm.ProfileForm profileForm = new ProfileForm.ProfileForm(cus, em, 0);
+            profileForm.ShowDialog();
+        }
     }
 }
 
