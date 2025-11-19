@@ -18,7 +18,7 @@ namespace Common
 
         }
         //Tạo chuỗi kết nối động
-        public static string CreateConnectionString(string server, string database, string userId, string password)
+        public static string CreateConnectionString(string server, string database, string userId = "JustWatch", string password = "Abc12345!")
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
             {

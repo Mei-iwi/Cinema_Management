@@ -44,6 +44,7 @@ namespace Cinema_Management
             if (checkUser)
             {
 
+                GlobalData.getGlobalData(username, password, position);
 
                 Authentication auth = new Authentication(username, password, strcon);
 
@@ -95,7 +96,6 @@ namespace Cinema_Management
                         MessageBox.Show("Người dùng không có quyền truy cập hệ thống.", "Lỗi đăng nhập", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                GlobalData.getGlobalData(username, password, position);
 
             }
             else
