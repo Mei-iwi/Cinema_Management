@@ -9,15 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
+using Common;
 namespace StaffForm
 {
     public partial class TimNhanVien : Form
     {
         SqlConnection conn;
+        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+
         public TimNhanVien()
         {
             InitializeComponent();
-            conn = new SqlConnection("Data Source=DESKTOP-IQCO6JU\\SQLEXPRESS;Initial catalog=QL_RAP_PHIM;User ID=sa;Password=123");
+            conn = new SqlConnection(str);
             //conn = new SqlConnection("Data Source=34.133.93.201;Initial catalog=QL_RAP_PHIM;User ID=sqlserver;Password=123456789");
             //---------------------------------------------------------------------------------------------------------------------------------//
             ////---------------------------------Kết nối sever mở--------------------------------------------------------------///

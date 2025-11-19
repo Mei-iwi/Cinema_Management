@@ -154,9 +154,9 @@ namespace ServiceForm
 
             oldPictue = txtAh.Text;
 
-            string SolutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\.."));
+            string SolutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\.."));
 
-            string DestinationFolder = Path.Combine(SolutionFolder, "Images", "Services");
+            string DestinationFolder = Path.Combine(SolutionFolder, "ServiceForm", "Images", "Services");
 
             string imagePath = Path.Combine(DestinationFolder, txtAh.Text);
 
@@ -167,7 +167,7 @@ namespace ServiceForm
             }
             else
             {
-                imagePath = Path.Combine(SolutionFolder, "Images", "Default", "Default.png");
+                imagePath = Path.Combine(SolutionFolder, "ServiceForm", "Images", "Default", "Default.png");
                 pictureBox1.Image = Image.FromFile(imagePath);
             }
         }

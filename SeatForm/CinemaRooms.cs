@@ -5,7 +5,7 @@ namespace SeatForm
 {
     public partial class CinemaRooms : Form
     {
-        string connectionString = ConnectionHelper.CreateConnectionString("34.133.93.201", "QL_RAP_PHIM", "sqlserver", "123456789");
+        string connectionString = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
         SqlConnection con;
         DataSet ds;
         SqlDataAdapter da_Phong, da_Ghe, da_CTPG;

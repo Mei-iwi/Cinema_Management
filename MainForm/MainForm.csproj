@@ -10,7 +10,21 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\CustomerForm\CustomerForm.csproj" />
+    <ProjectReference Include="..\CustomerServiceForm\CustomerServiceForm.csproj" />
+    <ProjectReference Include="..\FormSupportCustomer\FormSupportCustomer.csproj" />
+    <ProjectReference Include="..\MemberTierForm\MemberTierForm.csproj" />
+    <ProjectReference Include="..\MovieForm\MovieForm.csproj" />
     <ProjectReference Include="..\ProfileForm\ProfileForm.csproj" />
+    <ProjectReference Include="..\ReportForm\ReportForm.csproj" />
+    <ProjectReference Include="..\SeatForm\SeatForm.csproj" />
+    <ProjectReference Include="..\ServiceForm\ServiceForm.csproj" />
+    <ProjectReference Include="..\ServiceRegistrationForm\ServiceRegistrationForm.csproj" />
+    <ProjectReference Include="..\ShowtimeForm\ShowtimeForm.csproj" />
+    <ProjectReference Include="..\StaffForm\StaffForm.csproj" />
+    <ProjectReference Include="..\TheaterRoomForm\TheaterRoomForm.csproj" />
+    <ProjectReference Include="..\TicketForm\TicketForm.csproj" />
+    <ProjectReference Include="..\TicketTypeForm\TicketTypeForm.csproj" />
   </ItemGroup>
 
   <ItemGroup>

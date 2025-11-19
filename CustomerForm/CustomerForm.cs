@@ -6,11 +6,13 @@ namespace CustomerForm
     public partial class CustomerForm : Form
     {
         SqlConnection conn;
+        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+
         public CustomerForm()
         {
             InitializeComponent();
             //conn = new SqlConnection("Data Source=34.133.93.201;Initial catalog=QL_RAP_PHIM;User ID=sqlserver;Password=123456789");
-            conn = new SqlConnection("Data Source=DESKTOP-IQCO6JU\\SQLEXPRESS;Initial catalog=QL_RAP_PHIM;User ID=sa;Password=123");
+            conn = new SqlConnection(str);
             ////Kết nối sever mở///
             //// string connectionString = ConnectionHelper.CreateConnectionString(
             //     "34.133.93.201",      // Tên server giống CinemaRooms
@@ -86,7 +88,7 @@ namespace CustomerForm
                 dgvThongTinKhachHang.Columns["DIACHI"].HeaderText = "Địa chỉ";
                 dgvThongTinKhachHang.Columns["NGAYSINH"].HeaderText = "Ngày sinh";
                 dgvThongTinKhachHang.Columns["EMAIL"].HeaderText = "Email";
-                dgvThongTinKhachHang.Columns["TICHDIEM"].HeaderText = "Tích điểm";
+                dgvThongTinKhachHang.Columns["DIEMTICHLUY"].HeaderText = "Tích điểm";
                 dgvThongTinKhachHang.Columns["TENHANG"].HeaderText = "Hạng TV";
                 dgvThongTinKhachHang.Columns["DIEMTOITHIEU"].HeaderText = "Điểm hiện tại";
             }

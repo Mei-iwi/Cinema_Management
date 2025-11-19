@@ -38,10 +38,10 @@
             thayĐổiMâToolStripMenuItem = new ToolStripMenuItem();
             cSKHToolStripMenuItem = new ToolStripMenuItem();
             gửiGópYToolStripMenuItem = new ToolStripMenuItem();
-            tableLayoutPanel = new TableLayoutPanel();
             liênHệToolStripMenuItem = new ToolStripMenuItem();
             liênHệHỗTrợToolStripMenuItem = new ToolStripMenuItem();
             đóngGópÝKiếnToolStripMenuItem = new ToolStripMenuItem();
+            tableLayoutPanel = new TableLayoutPanel();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -77,6 +77,7 @@
             dịchVụKháchHàngToolStripMenuItem.Name = "dịchVụKháchHàngToolStripMenuItem";
             dịchVụKháchHàngToolStripMenuItem.Size = new Size(181, 27);
             dịchVụKháchHàngToolStripMenuItem.Text = "Dịch vụ khách hàng";
+            dịchVụKháchHàngToolStripMenuItem.Click += dịchVụKháchHàngToolStripMenuItem_Click;
             // 
             // ngườiDùngToolStripMenuItem
             // 
@@ -103,6 +104,7 @@
             thayĐổiMâToolStripMenuItem.Name = "thayĐổiMâToolStripMenuItem";
             thayĐổiMâToolStripMenuItem.Size = new Size(272, 28);
             thayĐổiMâToolStripMenuItem.Text = "Đăng xuất";
+            thayĐổiMâToolStripMenuItem.Click += Logout;
             // 
             // cSKHToolStripMenuItem
             // 
@@ -117,21 +119,7 @@
             gửiGópYToolStripMenuItem.Name = "gửiGópYToolStripMenuItem";
             gửiGópYToolStripMenuItem.Size = new Size(240, 28);
             gửiGópYToolStripMenuItem.Text = "Ý kiến khách hàng";
-            // 
-            // tableLayoutPanel
-            // 
-            tableLayoutPanel.AutoScroll = true;
-            tableLayoutPanel.ColumnCount = 2;
-            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.Dock = DockStyle.Fill;
-            tableLayoutPanel.Location = new Point(0, 31);
-            tableLayoutPanel.Name = "tableLayoutPanel";
-            tableLayoutPanel.RowCount = 2;
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel.Size = new Size(800, 419);
-            tableLayoutPanel.TabIndex = 2;
+            gửiGópYToolStripMenuItem.Click += gửiGópYToolStripMenuItem_Click;
             // 
             // liênHệToolStripMenuItem
             // 
@@ -152,6 +140,21 @@
             đóngGópÝKiếnToolStripMenuItem.Name = "đóngGópÝKiếnToolStripMenuItem";
             đóngGópÝKiếnToolStripMenuItem.Size = new Size(228, 28);
             đóngGópÝKiếnToolStripMenuItem.Text = "Đóng góp ý kiến";
+            // 
+            // tableLayoutPanel
+            // 
+            tableLayoutPanel.AutoScroll = true;
+            tableLayoutPanel.ColumnCount = 2;
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.Dock = DockStyle.Fill;
+            tableLayoutPanel.Location = new Point(0, 31);
+            tableLayoutPanel.Name = "tableLayoutPanel";
+            tableLayoutPanel.RowCount = 2;
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel.Size = new Size(800, 419);
+            tableLayoutPanel.TabIndex = 2;
             // 
             // MainFormForCustomer
             // 

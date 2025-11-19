@@ -7,11 +7,13 @@ namespace MovieForm
     public partial class MovieForm : Form
     {
         SqlConnection conn;
+        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+
         public MovieForm()
         {
             InitializeComponent();
             //conn = new SqlConnection("Data Source=34.133.93.201;Initial catalog=QL_RAP_PHIM;User ID=sqlserver;Password=123456789");
-            conn = new SqlConnection("Data Source=DESKTOP-IQCO6JU\\SQLEXPRESS;Initial catalog=QL_RAP_PHIM;User ID=sa;Password=123");
+            conn = new SqlConnection(str);
             ////Kết nối sever mở///
             //// string connectionString = ConnectionHelper.CreateConnectionString(
             //     "34.133.93.201",      // Tên server giống CinemaRooms

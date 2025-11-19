@@ -35,8 +35,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProfileForm", "ProfileForm\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerServiceForm", "CustomerServiceForm\CustomerServiceForm.csproj", "{AF63FD67-26B7-4371-A4B0-9B6023D328BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerFeedbackForm", "CustomerFeedbackForm\CustomerFeedbackForm.csproj", "{A8EDAC63-7465-4541-B597-F731030C1571}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReportForm", "ReportForm\ReportForm.csproj", "{774899A9-F05D-4443-B993-2F50D5E97907}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormSupportCustomer", "FormSupportCustomer\FormSupportCustomer.csproj", "{B1B38EB0-539A-480E-8DDB-16DDCD1C8F65}"
@@ -111,10 +109,6 @@ Global
 		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF63FD67-26B7-4371-A4B0-9B6023D328BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A8EDAC63-7465-4541-B597-F731030C1571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A8EDAC63-7465-4541-B597-F731030C1571}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A8EDAC63-7465-4541-B597-F731030C1571}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A8EDAC63-7465-4541-B597-F731030C1571}.Release|Any CPU.Build.0 = Release|Any CPU
 		{774899A9-F05D-4443-B993-2F50D5E97907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{774899A9-F05D-4443-B993-2F50D5E97907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{774899A9-F05D-4443-B993-2F50D5E97907}.Release|Any CPU.ActiveCfg = Release|Any CPU
