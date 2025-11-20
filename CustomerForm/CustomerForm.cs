@@ -11,28 +11,10 @@ namespace CustomerForm
         public CustomerForm()
         {
             InitializeComponent();
-            //conn = new SqlConnection("Data Source=34.133.93.201;Initial catalog=QL_RAP_PHIM;User ID=sqlserver;Password=123456789");
             conn = new SqlConnection(str);
-            ////Kết nối sever mở///
-            //// string connectionString = ConnectionHelper.CreateConnectionString(
-            //     "34.133.93.201",      // Tên server giống CinemaRooms
-            //     "QL_RAP_PHIM",        // Tên cơ sở dữ liệu
-            //     "sqlserver",          // Tài khoản SQL
-            //     "123456789"           // Mật khẩu SQL
-            // );
-            // conn = new SqlConnection(connectionString);
-
         }
-
         private void CustomerForm_Load(object sender, EventArgs e)
         {
-            //if (GlobalData.Positon != 2)
-            //{
-            //    MessageBox.Show("❌ Bạn không có quyền truy cập vào khu vực Quản lý!",
-            //                    "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    this.Close();
-            //    return;
-            //}
             mstNgay.ValidatingType = typeof(DateTime);
             cboPhai.Items.Add("Nam");
             cboPhai.Items.Add("Nữ");

@@ -269,5 +269,10 @@ namespace StaffForm
                              // this.Close(); nếu muốn đóng hẳn StaffForm
             };
         }
+
+        private void txtLuong_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
