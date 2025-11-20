@@ -36,6 +36,7 @@
             lblUsername = new Label();
             lblTitle = new Label();
             linkLabel1 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
             SuspendLayout();
             // 
             // btnCancel
@@ -103,7 +104,7 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
-            linkLabel1.Location = new Point(192, 248);
+            linkLabel1.Location = new Point(198, 282);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(152, 20);
             linkLabel1.TabIndex = 14;
@@ -111,11 +112,23 @@
             linkLabel1.Text = "Tôi đã quên mật khẩu";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.Location = new Point(237, 249);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(63, 20);
+            linkLabel2.TabIndex = 15;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "Đăng ký";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            // 
             // Login
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(467, 287);
+            ClientSize = new Size(467, 320);
+            Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
             Controls.Add(btnCancel);
             Controls.Add(btnLogin);
@@ -143,5 +156,6 @@
         private Label lblUsername;
         private Label lblTitle;
         private LinkLabel linkLabel1;
+        private LinkLabel linkLabel2;
     }
 }

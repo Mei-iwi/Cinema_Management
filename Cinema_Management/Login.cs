@@ -37,7 +37,7 @@ namespace Cinema_Management
                 return;
             }
 
-            string strcon = Common.ConnectionHelper.CreateConnectionString(GlobalData.DataSource,GlobalData.InitialCatalog, txtUsername.Text.Trim(), txtPassword.Text.Trim());
+            string strcon = Common.ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, txtUsername.Text.Trim(), txtPassword.Text.Trim());
 
             bool checkUser = DataAccess.DataProvider.TestConnection(strcon);
 
@@ -119,6 +119,13 @@ namespace Cinema_Management
             ChangePassword change = new ChangePassword();
 
             change.Show();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            Registration registration = new Registration();
+            registration.Show();
         }
     }
 }
