@@ -18,6 +18,7 @@ namespace Cinema_Management
     {
         int pass = 0;
         int passAgain = 0;
+
         public Registration()
         {
             InitializeComponent();

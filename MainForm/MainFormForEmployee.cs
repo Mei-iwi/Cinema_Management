@@ -106,5 +106,14 @@ namespace MainForm
             ProfileForm.ProfileForm profileForm = new ProfileForm.ProfileForm(cus, em, 1);
             profileForm.ShowDialog();
         }
+
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChangePasswordUser changePasswordUser = new ChangePasswordUser(1);
+            changePasswordUser.ShowDialog();
+
+
+        }
     }
 }

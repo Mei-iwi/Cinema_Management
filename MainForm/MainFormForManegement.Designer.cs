@@ -44,7 +44,7 @@
             menuStrip1 = new MenuStrip();
             ngườiDùngToolStripMenuItem1 = new ToolStripMenuItem();
             menuND = new ToolStripMenuItem();
-            đổiMậtKhẩuToolStripMenuItem = new ToolStripMenuItem();
+            menuChangePas = new ToolStripMenuItem();
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
             menuStrip1.SuspendLayout();
@@ -162,7 +162,7 @@
             // 
             // ngườiDùngToolStripMenuItem1
             // 
-            ngườiDùngToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { menuND, đổiMậtKhẩuToolStripMenuItem, đăngXuấtToolStripMenuItem });
+            ngườiDùngToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { menuND, menuChangePas, đăngXuấtToolStripMenuItem });
             ngườiDùngToolStripMenuItem1.ForeColor = Color.White;
             ngườiDùngToolStripMenuItem1.Name = "ngườiDùngToolStripMenuItem1";
             ngườiDùngToolStripMenuItem1.Size = new Size(122, 27);
@@ -175,11 +175,12 @@
             menuND.Text = "Thông tin cá nhân";
             menuND.Click += menuND_Click;
             // 
-            // đổiMậtKhẩuToolStripMenuItem
+            // menuChangePas
             // 
-            đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
-            đổiMậtKhẩuToolStripMenuItem.Size = new Size(238, 28);
-            đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
+            menuChangePas.Name = "menuChangePas";
+            menuChangePas.Size = new Size(238, 28);
+            menuChangePas.Text = "Đổi mật khẩu";
+            menuChangePas.Click += menuChangePas_Click;
             // 
             // đăngXuấtToolStripMenuItem
             // 
@@ -233,7 +234,7 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem ngườiDùngToolStripMenuItem1;
         private ToolStripMenuItem menuND;
-        private ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
+        private ToolStripMenuItem menuChangePas;
         private ToolStripMenuItem đăngXuấtToolStripMenuItem;
         private PictureBox pictureBox1;
     }

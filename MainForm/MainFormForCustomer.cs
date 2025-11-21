@@ -216,6 +216,13 @@ namespace MainForm
             ProfileForm.ProfileForm profileForm = new ProfileForm.ProfileForm(cus, em, 0);
             profileForm.ShowDialog();
         }
+
+        private void đăngKýToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChangePasswordUser changePasswordUser = new ChangePasswordUser(0);
+            changePasswordUser.ShowDialog();
+        }
     }
 }
 

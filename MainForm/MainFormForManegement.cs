@@ -133,10 +133,17 @@ namespace MainForm
 
             Customer cus = null;
 
-            Employee em = authForm.getInfomation(connectionString, GlobalData.UserID); 
+            Employee em = authForm.getInfomation(connectionString, GlobalData.UserID);
 
             ProfileForm.ProfileForm profileForm = new ProfileForm.ProfileForm(cus, em, 2);
             profileForm.ShowDialog();
+        }
+
+        private void menuChangePas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ChangePasswordUser changePasswordUser = new ChangePasswordUser(2);
+            changePasswordUser.ShowDialog();
         }
     }
 }
