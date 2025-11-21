@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormForEmployee));
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            phimĐangChiếuToolStripMenuItem = new ToolStripMenuItem();
+            MenuTicket = new ToolStripMenuItem();
             dịchVụKháchHàngToolStripMenuItem = new ToolStripMenuItem();
             liênHệToolStripMenuItem = new ToolStripMenuItem();
             liênHệHỗTrợToolStripMenuItem = new ToolStripMenuItem();
@@ -50,7 +50,7 @@
             menuStrip1.BackColor = Color.Blue;
             menuStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, phimĐangChiếuToolStripMenuItem, dịchVụKháchHàngToolStripMenuItem, liênHệToolStripMenuItem, ngườiDùngToolStripMenuItem1 });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, MenuTicket, dịchVụKháchHàngToolStripMenuItem, liênHệToolStripMenuItem, ngườiDùngToolStripMenuItem1 });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -64,13 +64,13 @@
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(14, 27);
             // 
-            // phimĐangChiếuToolStripMenuItem
+            // MenuTicket
             // 
-            phimĐangChiếuToolStripMenuItem.ForeColor = Color.White;
-            phimĐangChiếuToolStripMenuItem.Name = "phimĐangChiếuToolStripMenuItem";
-            phimĐangChiếuToolStripMenuItem.Size = new Size(152, 27);
-            phimĐangChiếuToolStripMenuItem.Text = "Lập vé, hóa đơn";
-            phimĐangChiếuToolStripMenuItem.Click += phimĐangChiếuToolStripMenuItem_Click;
+            MenuTicket.ForeColor = Color.White;
+            MenuTicket.Name = "MenuTicket";
+            MenuTicket.Size = new Size(152, 27);
+            MenuTicket.Text = "Lập vé, hóa đơn";
+            MenuTicket.Click += phimĐangChiếuToolStripMenuItem_Click;
             // 
             // dịchVụKháchHàngToolStripMenuItem
             // 
@@ -163,7 +163,7 @@
 
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem phimĐangChiếuToolStripMenuItem;
+        private ToolStripMenuItem MenuTicket;
         private ToolStripMenuItem dịchVụKháchHàngToolStripMenuItem;
         private ToolStripMenuItem liênHệToolStripMenuItem;
         private ToolStripMenuItem liênHệHỗTrợToolStripMenuItem;
