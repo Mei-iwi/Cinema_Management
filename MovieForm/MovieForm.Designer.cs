@@ -53,8 +53,9 @@
             btnThem = new Button();
             btnXoa = new Button();
             btnSua = new Button();
-            btnLamMoi = new Button();
+            btnLuu = new Button();
             btnDong = new Button();
+            btnSave1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPhim).BeginInit();
             SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(605, 9);
+            label1.Location = new Point(648, 9);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(225, 41);
@@ -80,7 +81,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(4, 163);
+            label2.Location = new Point(13, 163);
             label2.Name = "label2";
             label2.Size = new Size(107, 26);
             label2.TabIndex = 2;
@@ -217,14 +218,14 @@
             mstCapNhat.Location = new Point(173, 273);
             mstCapNhat.Mask = "00/00/0000";
             mstCapNhat.Name = "mstCapNhat";
-            mstCapNhat.Size = new Size(161, 35);
+            mstCapNhat.Size = new Size(215, 35);
             mstCapNhat.TabIndex = 21;
             // 
             // dgvPhim
             // 
             dgvPhim.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvPhim.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPhim.Location = new Point(79, 361);
+            dgvPhim.Location = new Point(74, 370);
             dgvPhim.Name = "dgvPhim";
             dgvPhim.RowHeadersWidth = 62;
             dgvPhim.Size = new Size(1402, 584);
@@ -235,7 +236,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Times New Roman", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label11.ForeColor = SystemColors.MenuHighlight;
-            label11.Location = new Point(536, 307);
+            label11.Location = new Point(595, 307);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
             label11.Size = new Size(345, 41);
@@ -275,21 +276,21 @@
             btnSua.UseVisualStyleBackColor = true;
             btnSua.Click += btnSua_Click;
             // 
-            // btnLamMoi
+            // btnLuu
             // 
-            btnLamMoi.FlatStyle = FlatStyle.Flat;
-            btnLamMoi.Location = new Point(394, 68);
-            btnLamMoi.Name = "btnLamMoi";
-            btnLamMoi.Size = new Size(121, 33);
-            btnLamMoi.TabIndex = 27;
-            btnLamMoi.Text = "&Làm Mới ";
-            btnLamMoi.UseVisualStyleBackColor = true;
-            btnLamMoi.Click += btnLamMoi_Click;
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.Location = new Point(521, 68);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(121, 33);
+            btnLuu.TabIndex = 27;
+            btnLuu.Text = "&Làm Mới ";
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLamMoi_Click;
             // 
             // btnDong
             // 
             btnDong.FlatStyle = FlatStyle.Flat;
-            btnDong.Location = new Point(521, 68);
+            btnDong.Location = new Point(648, 68);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(121, 33);
             btnDong.TabIndex = 28;
@@ -297,13 +298,25 @@
             btnDong.UseVisualStyleBackColor = true;
             btnDong.Click += btnDong_Click;
             // 
+            // btnSave1
+            // 
+            btnSave1.FlatStyle = FlatStyle.Flat;
+            btnSave1.Location = new Point(394, 68);
+            btnSave1.Name = "btnSave1";
+            btnSave1.Size = new Size(121, 33);
+            btnSave1.TabIndex = 29;
+            btnSave1.Text = "&Lưu";
+            btnSave1.UseVisualStyleBackColor = true;
+            btnSave1.Click += btnSave1_Click;
+            // 
             // MovieForm
             // 
             AutoScaleDimensions = new SizeF(14F, 26F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1559, 966);
+            Controls.Add(btnSave1);
             Controls.Add(btnDong);
-            Controls.Add(btnLamMoi);
+            Controls.Add(btnLuu);
             Controls.Add(btnSua);
             Controls.Add(btnXoa);
             Controls.Add(btnThem);
@@ -336,8 +349,6 @@
             Name = "MovieForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Quản Lý Phim";
-            FormClosing += MovieForm_FormClosing;
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dgvPhim).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -369,7 +380,8 @@
         private Button btnThem;
         private Button btnXoa;
         private Button btnSua;
-        private Button btnLamMoi;
+        private Button btnLuu;
         private Button btnDong;
+        private Button btnSave1;
     }
 }

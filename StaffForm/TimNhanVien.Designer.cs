@@ -35,6 +35,7 @@
             label2 = new Label();
             btnTim = new Button();
             btnLoadAll = new Button();
+            btnLuu = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvNhanVien).BeginInit();
             SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             dgvNhanVien.Location = new Point(13, 160);
             dgvNhanVien.Name = "dgvNhanVien";
             dgvNhanVien.RowHeadersWidth = 62;
-            dgvNhanVien.Size = new Size(1189, 241);
+            dgvNhanVien.Size = new Size(1189, 254);
             dgvNhanVien.TabIndex = 1;
             // 
             // txtMa
@@ -94,19 +95,30 @@
             // btnLoadAll
             // 
             btnLoadAll.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            btnLoadAll.Location = new Point(956, 406);
+            btnLoadAll.Location = new Point(957, 414);
             btnLoadAll.Name = "btnLoadAll";
-            btnLoadAll.Size = new Size(246, 65);
+            btnLoadAll.Size = new Size(246, 64);
             btnLoadAll.TabIndex = 5;
             btnLoadAll.Text = "Load lại dữ liệu";
             btnLoadAll.UseVisualStyleBackColor = true;
             btnLoadAll.Click += btnLoadAll_Click;
             // 
+            // btnLuu
+            // 
+            btnLuu.Location = new Point(829, 414);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(112, 64);
+            btnLuu.TabIndex = 6;
+            btnLuu.Text = "&Lưu";
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
+            // 
             // TimNhanVien
             // 
             AutoScaleDimensions = new SizeF(14F, 26F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1215, 468);
+            ClientSize = new Size(1215, 481);
+            Controls.Add(btnLuu);
             Controls.Add(btnLoadAll);
             Controls.Add(btnTim);
             Controls.Add(label2);
@@ -135,5 +147,6 @@
         private Label label2;
         private Button btnTim;
         private Button btnLoadAll;
+        private Button btnLuu;
     }
 }

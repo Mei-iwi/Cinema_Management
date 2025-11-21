@@ -47,6 +47,7 @@
             btnDong = new Button();
             label7 = new Label();
             txtMoTa = new TextBox();
+            btnLuu = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvHienThi).BeginInit();
             SuspendLayout();
             // 
@@ -54,11 +55,11 @@
             // 
             dgvHienThi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvHienThi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvHienThi.Location = new Point(62, 240);
+            dgvHienThi.Location = new Point(339, 251);
             dgvHienThi.Margin = new Padding(4, 3, 4, 3);
             dgvHienThi.Name = "dgvHienThi";
             dgvHienThi.RowHeadersWidth = 62;
-            dgvHienThi.Size = new Size(1410, 271);
+            dgvHienThi.Size = new Size(936, 260);
             dgvHienThi.TabIndex = 0;
             // 
             // txtMaHang
@@ -193,7 +194,7 @@
             // btnLoad
             // 
             btnLoad.FlatStyle = FlatStyle.Flat;
-            btnLoad.Location = new Point(393, 72);
+            btnLoad.Location = new Point(519, 72);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(121, 33);
             btnLoad.TabIndex = 14;
@@ -204,7 +205,7 @@
             // btnDong
             // 
             btnDong.FlatStyle = FlatStyle.Flat;
-            btnDong.Location = new Point(520, 72);
+            btnDong.Location = new Point(646, 72);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(121, 33);
             btnDong.TabIndex = 15;
@@ -232,11 +233,23 @@
             txtMoTa.Size = new Size(222, 108);
             txtMoTa.TabIndex = 17;
             // 
+            // btnLuu
+            // 
+            btnLuu.FlatStyle = FlatStyle.Flat;
+            btnLuu.Location = new Point(392, 72);
+            btnLuu.Name = "btnLuu";
+            btnLuu.Size = new Size(121, 33);
+            btnLuu.TabIndex = 18;
+            btnLuu.Text = "&Lưu";
+            btnLuu.UseVisualStyleBackColor = true;
+            btnLuu.Click += btnLuu_Click;
+            // 
             // MemberTierForm
             // 
             AutoScaleDimensions = new SizeF(14F, 26F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1549, 517);
+            Controls.Add(btnLuu);
             Controls.Add(txtMoTa);
             Controls.Add(label7);
             Controls.Add(btnDong);
@@ -289,5 +302,6 @@
         private Button btnDong;
         private Label label7;
         private TextBox txtMoTa;
+        private Button btnLuu;
     }
 }

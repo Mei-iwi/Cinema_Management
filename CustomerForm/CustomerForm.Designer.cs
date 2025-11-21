@@ -55,6 +55,7 @@
             cboMaHang = new ComboBox();
             txtTichDiem = new TextBox();
             label11 = new Label();
+            btnSave = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvThongTinKhachHang).BeginInit();
             SuspendLayout();
             // 
@@ -81,7 +82,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(25, 124);
+            label2.Location = new Point(28, 129);
             label2.Name = "label2";
             label2.Size = new Size(183, 26);
             label2.TabIndex = 2;
@@ -144,14 +145,14 @@
             // txtTen
             // 
             txtTen.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtTen.Location = new Point(1021, 124);
+            txtTen.Location = new Point(1021, 115);
             txtTen.Name = "txtTen";
             txtTen.Size = new Size(161, 35);
             txtTen.TabIndex = 10;
             // 
             // txtSDT
             // 
-            txtSDT.Location = new Point(1360, 121);
+            txtSDT.Location = new Point(1360, 120);
             txtSDT.Name = "txtSDT";
             txtSDT.Size = new Size(161, 35);
             txtSDT.TabIndex = 11;
@@ -180,7 +181,6 @@
             mstNgay.Name = "mstNgay";
             mstNgay.Size = new Size(216, 35);
             mstNgay.TabIndex = 14;
-            mstNgay.TypeValidationCompleted += mstNgay_TypeValidationCompleted;
             // 
             // dgvThongTinKhachHang
             // 
@@ -232,7 +232,7 @@
             // 
             btnLoad.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnLoad.FlatStyle = FlatStyle.Flat;
-            btnLoad.Location = new Point(384, 52);
+            btnLoad.Location = new Point(512, 52);
             btnLoad.Name = "btnLoad";
             btnLoad.Size = new Size(121, 33);
             btnLoad.TabIndex = 19;
@@ -244,7 +244,7 @@
             // 
             btnDong.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnDong.FlatStyle = FlatStyle.Flat;
-            btnDong.Location = new Point(511, 52);
+            btnDong.Location = new Point(639, 52);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(121, 33);
             btnDong.TabIndex = 20;
@@ -283,7 +283,7 @@
             // 
             cboMaHang.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             cboMaHang.FormattingEnabled = true;
-            cboMaHang.Location = new Point(606, 126);
+            cboMaHang.Location = new Point(606, 116);
             cboMaHang.Name = "cboMaHang";
             cboMaHang.Size = new Size(196, 34);
             cboMaHang.TabIndex = 24;
@@ -305,11 +305,24 @@
             label11.TabIndex = 26;
             label11.Text = "Tích điểm";
             // 
+            // btnSave
+            // 
+            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Location = new Point(385, 52);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(121, 33);
+            btnSave.TabIndex = 27;
+            btnSave.Text = "&Lưu";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
+            // 
             // CustomerForm
             // 
             AutoScaleDimensions = new SizeF(14F, 26F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1546, 634);
+            Controls.Add(btnSave);
             Controls.Add(label11);
             Controls.Add(txtTichDiem);
             Controls.Add(cboMaHang);
@@ -379,5 +392,6 @@
         private ComboBox cboMaHang;
         private TextBox txtTichDiem;
         private Label label11;
+        private Button btnSave;
     }
 }

@@ -236,7 +236,6 @@
             txtLuong.Name = "txtLuong";
             txtLuong.Size = new Size(208, 35);
             txtLuong.TabIndex = 18;
-            txtLuong.TextChanged += txtLuong_TextChanged;
             // 
             // txtEmail
             // 
@@ -271,7 +270,6 @@
             mtxtNgaySinh.Name = "mtxtNgaySinh";
             mtxtNgaySinh.Size = new Size(209, 35);
             mtxtNgaySinh.TabIndex = 22;
-            mtxtNgaySinh.TypeValidationCompleted += mtxtNgaySinh_TypeValidationCompleted;
             // 
             // cboPhai
             // 
@@ -327,7 +325,7 @@
             // btnHienThiTatCa
             // 
             btnHienThiTatCa.FlatStyle = FlatStyle.Flat;
-            btnHienThiTatCa.Location = new Point(359, 98);
+            btnHienThiTatCa.Location = new Point(358, 98);
             btnHienThiTatCa.Name = "btnHienThiTatCa";
             btnHienThiTatCa.Size = new Size(345, 34);
             btnHienThiTatCa.TabIndex = 28;
