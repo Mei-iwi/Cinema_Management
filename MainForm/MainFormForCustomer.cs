@@ -31,6 +31,9 @@ namespace MainForm
         {
             InitializeComponent();
 
+            this.Icon = Properties.Resources.house;
+
+
             con = new SqlConnection(connectionString);
 
             string sql = "SELECT MAPHIM, TENPHIM, NHASX, HINH_ANH, TENTHELOAI FROM PHIM P INNER JOIN THELOAIPHIM TL ON TL.MATHELOAI = P.MATHELOAI";

@@ -44,6 +44,7 @@ namespace MainForm
 
             pictureBox1.Dock = DockStyle.Fill;
 
+            this.Icon = Properties.Resources.house;
 
 
         }

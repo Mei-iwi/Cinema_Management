@@ -22,6 +22,9 @@ namespace MainForm
         {
             InitializeComponent();
 
+            this.Icon = Properties.Resources.house;
+
+
             pictureBox1.Image = new Bitmap(Properties.Resources.nen, new Size(100, 100));
 
             foreach (Button btn in tableLayoutPanel1.Controls.OfType<Button>())
@@ -33,6 +36,7 @@ namespace MainForm
             txtPassOld.UseSystemPasswordChar = true;
             this.position = position;
         }
+
 
         private void btnPassOld_Click(object sender, EventArgs e)
         {
