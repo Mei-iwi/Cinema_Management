@@ -31,7 +31,6 @@
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             phimĐangChiếuToolStripMenuItem = new ToolStripMenuItem();
-            dịchVụKháchHàngToolStripMenuItem = new ToolStripMenuItem();
             ngườiDùngToolStripMenuItem = new ToolStripMenuItem();
             menuNguoidung = new ToolStripMenuItem();
             menuChangePas = new ToolStripMenuItem();
@@ -50,7 +49,7 @@
             menuStrip1.BackColor = Color.Blue;
             menuStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, phimĐangChiếuToolStripMenuItem, dịchVụKháchHàngToolStripMenuItem, ngườiDùngToolStripMenuItem, cSKHToolStripMenuItem, liênHệToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, phimĐangChiếuToolStripMenuItem, ngườiDùngToolStripMenuItem, cSKHToolStripMenuItem, liênHệToolStripMenuItem });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -70,14 +69,6 @@
             phimĐangChiếuToolStripMenuItem.Name = "phimĐangChiếuToolStripMenuItem";
             phimĐangChiếuToolStripMenuItem.Size = new Size(158, 27);
             phimĐangChiếuToolStripMenuItem.Text = "Phim đang chiếu";
-            // 
-            // dịchVụKháchHàngToolStripMenuItem
-            // 
-            dịchVụKháchHàngToolStripMenuItem.ForeColor = Color.White;
-            dịchVụKháchHàngToolStripMenuItem.Name = "dịchVụKháchHàngToolStripMenuItem";
-            dịchVụKháchHàngToolStripMenuItem.Size = new Size(181, 27);
-            dịchVụKháchHàngToolStripMenuItem.Text = "Dịch vụ khách hàng";
-            dịchVụKháchHàngToolStripMenuItem.Click += dịchVụKháchHàngToolStripMenuItem_Click;
             // 
             // ngườiDùngToolStripMenuItem
             // 
@@ -181,7 +172,6 @@
         private MenuStrip menuStrip1;
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem phimĐangChiếuToolStripMenuItem;
-        private ToolStripMenuItem dịchVụKháchHàngToolStripMenuItem;
         private ToolStripMenuItem ngườiDùngToolStripMenuItem;
         private ToolStripMenuItem menuNguoidung;
         private ToolStripMenuItem menuChangePas;

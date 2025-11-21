@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Common;
 using System.Diagnostics;
+using CustomerServiceForm;
 
 namespace MainForm
 {
@@ -127,9 +128,16 @@ namespace MainForm
                 btnBuy.Top = 230;
                 btnBuy.Width = 150;
                 btnBuy.Height = 50;
+                btnBuy.BackColor = Color.Yellow;
                 btnBuy.Click += (s, e) =>
                 {
-                    MessageBox.Show("Mua vé: " + dataRow["TENPHIM"].ToString());
+                   if (MessageBox.Show("Mua vé: " + dataRow["TENPHIM"].ToString(), "Mua vé", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                    {
+                        BuyServiceAndFilm buyServiceAndFilmForm = new BuyServiceAndFilm(dataRow["MAPHIM"].ToString(), dataRow["TENPHIM"].ToString());
+                        buyServiceAndFilmForm.Show();
+                    }
+
+
                 };
 
                 panel.Controls.Add(pb);
@@ -205,6 +213,8 @@ namespace MainForm
 
         private void dịchVụKháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            CustomerServiceForm.CustomerServiceForm serviceForm = new CustomerServiceForm.CustomerServiceForm();
+            serviceForm.ShowDialog();
         }
 
         private void đăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)

@@ -33,8 +33,9 @@
             txtSearch = new TextBox();
             btnSearch = new Button();
             label1 = new Label();
+            errorProvider = new ErrorProvider(components);
+            openFileDialog = new OpenFileDialog();
             dgv_Service = new DataGridView();
-            btnRestart = new Button();
             btnAdd = new Button();
             btnDelete = new Button();
             btnUpdate = new Button();
@@ -50,12 +51,11 @@
             pictureBox1 = new PictureBox();
             btnDuyet = new Button();
             grpChucnag = new GroupBox();
-            errorProvider = new ErrorProvider(components);
-            openFileDialog = new OpenFileDialog();
+            btnRestart = new Button();
+            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Service).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             grpChucnag.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
             // txtSearch
@@ -89,6 +89,14 @@
             label1.Text = "QUẢN LÝ DỊCH VỤ";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // errorProvider
+            // 
+            errorProvider.ContainerControl = this;
+            // 
+            // openFileDialog
+            // 
+            openFileDialog.FileName = "openFileDialog1";
+            // 
             // dgv_Service
             // 
             dgv_Service.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -99,17 +107,6 @@
             dgv_Service.Size = new Size(881, 245);
             dgv_Service.TabIndex = 3;
             dgv_Service.CellClick += dgv_Service_CellClick;
-            // 
-            // btnRestart
-            // 
-            btnRestart.Anchor = AnchorStyles.Top;
-            btnRestart.Location = new Point(663, 57);
-            btnRestart.Name = "btnRestart";
-            btnRestart.Size = new Size(94, 29);
-            btnRestart.TabIndex = 5;
-            btnRestart.Text = "Tất cả";
-            btnRestart.UseVisualStyleBackColor = true;
-            btnRestart.Click += btnRestart_Click;
             // 
             // btnAdd
             // 
@@ -266,13 +263,16 @@
             grpChucnag.TabStop = false;
             grpChucnag.Text = "Chức năng";
             // 
-            // errorProvider
+            // btnRestart
             // 
-            errorProvider.ContainerControl = this;
-            // 
-            // openFileDialog
-            // 
-            openFileDialog.FileName = "openFileDialog1";
+            btnRestart.Anchor = AnchorStyles.Top;
+            btnRestart.Location = new Point(663, 57);
+            btnRestart.Name = "btnRestart";
+            btnRestart.Size = new Size(94, 29);
+            btnRestart.TabIndex = 5;
+            btnRestart.Text = "Tất cả";
+            btnRestart.UseVisualStyleBackColor = true;
+            btnRestart.Click += btnRestart_Click;
             // 
             // ServiceForm
             // 
@@ -289,11 +289,11 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ServiceForm ";
             Load += ServiceForm_Load;
+            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_Service).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             grpChucnag.ResumeLayout(false);
             grpChucnag.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -303,24 +303,24 @@
         private TextBox txtSearch;
         private Button btnSearch;
         private Label label1;
-        private DataGridView dgv_Service;
-        private Button btnRestart;
-        private Button btnAdd;
-        private Button btnDelete;
-        private Button btnUpdate;
-        private Button btnSave;
-        private Label label2;
-        private Label label3;
-        private Label label5;
-        private Label label6;
-        private TextBox txtMaDV;
-        private TextBox txtTenDV;
-        private TextBox txtDonGia;
-        private TextBox txtAh;
-        private PictureBox pictureBox1;
-        private Button btnDuyet;
-        private GroupBox grpChucnag;
         private ErrorProvider errorProvider;
         private OpenFileDialog openFileDialog;
+        private GroupBox grpChucnag;
+        private Button btnDuyet;
+        private PictureBox pictureBox1;
+        private TextBox txtAh;
+        private TextBox txtDonGia;
+        private TextBox txtTenDV;
+        private TextBox txtMaDV;
+        private Label label6;
+        private Label label5;
+        private Label label3;
+        private Label label2;
+        private Button btnSave;
+        private Button btnUpdate;
+        private Button btnDelete;
+        private Button btnAdd;
+        private Button btnRestart;
+        private DataGridView dgv_Service;
     }
 }
