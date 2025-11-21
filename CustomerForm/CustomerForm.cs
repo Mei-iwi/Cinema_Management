@@ -18,9 +18,6 @@ namespace CustomerForm
         {
             InitializeComponent();
             conn = new SqlConnection(str);
-
-            this.Load += CustomerForm_Load;
-            this.FormClosing += CustomerForm_FormClosing;
         }
 
         // 1. LOAD FORM
