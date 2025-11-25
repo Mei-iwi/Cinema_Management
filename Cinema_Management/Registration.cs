@@ -107,7 +107,7 @@ namespace Cinema_Management
         {
             string sql = "SELECT TOP 1 MAKH FROM KHACHHANG ORDER BY MAKH DESC";
 
-            SqlConnection con = new SqlConnection(ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "Aa@123456789"));
+            SqlConnection con = new SqlConnection(ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, FullAccount.UserID, FullAccount.Password));
 
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -206,7 +206,7 @@ namespace Cinema_Management
             try
             {
                 string sql = "INSERT INTO KHACHHANG(MAKH, MAHANG, HOTENKH, SDT, DIACHI, NGAYSINH, EMAIL, HINH_ANH, PHAI, DIEMTICHLUY) VALUES(@makh, 'H00000001', @ten, @dt, @dc, @ns, @email, @anh, @phai, 0)";
-                string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "Aa@123456789");
+                string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, FullAccount.UserID, FullAccount.Password);
                 if (!string.IsNullOrEmpty(txtImage.Text))
                 {
                     string originalFilePath = txtImage.Text.Trim(); // giữ đường dẫn gốc

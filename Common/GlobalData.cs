@@ -8,7 +8,7 @@ namespace Common
 {
     public static class GlobalData
     {
-        public static string DataSource = "34.133.93.201";
+        public static string DataSource = "MEI\\SQLEXPRESS";
 
         public static string InitialCatalog = "QL_RAP_PHIM";
 
