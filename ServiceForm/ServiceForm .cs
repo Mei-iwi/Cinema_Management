@@ -391,9 +391,9 @@ namespace ServiceForm
                 // đi lên 3 cấp tới thư mục chứa .sln
                 uniqueName = Guid.NewGuid().ToString() + Path.GetExtension(fileName);
 
-                string solutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\.."));
+                string solutionFolder = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\.."));
 
-                string destinationFolder = Path.Combine(solutionFolder, "Images", "Services");
+                string destinationFolder = Path.Combine(solutionFolder,"ServiceForm", "Images", "Services");
 
                 if (!Directory.Exists(destinationFolder))
                     Directory.CreateDirectory(destinationFolder);

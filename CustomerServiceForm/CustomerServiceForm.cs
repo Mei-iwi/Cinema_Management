@@ -91,7 +91,7 @@ namespace CustomerServiceForm
                 panel.Margin = new Padding(10);
 
                 string projectRoot = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\..\.."));
-                string destinationPath = Path.Combine(projectRoot, "CustomerServiceForm", "Images");
+                string destinationPath = Path.Combine(projectRoot, "ServiceForm", "Images", "Services");
 
                 PictureBox pb = new PictureBox();
                 pb.Width = 150;

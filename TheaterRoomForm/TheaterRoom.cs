@@ -153,10 +153,10 @@ namespace TheaterRoomForm
 
         private void TheaterRoom_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn đóng cửa sổ này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
+            //if (MessageBox.Show("Bạn có chắc chắn muốn đóng cửa sổ này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
