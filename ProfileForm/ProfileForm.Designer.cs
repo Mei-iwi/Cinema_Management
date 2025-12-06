@@ -328,7 +328,7 @@
             lblVaiTro.AutoSize = true;
             lblVaiTro.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVaiTro.ForeColor = Color.Blue;
-            lblVaiTro.Location = new Point(0, 200);
+            lblVaiTro.Location = new Point(12, 308);
             lblVaiTro.Name = "lblVaiTro";
             lblVaiTro.Size = new Size(59, 20);
             lblVaiTro.TabIndex = 0;
@@ -349,9 +349,9 @@
             picAvatarfull.Cursor = Cursors.No;
             picAvatarfull.Enabled = false;
             picAvatarfull.Image = (Image)resources.GetObject("picAvatarfull.Image");
-            picAvatarfull.Location = new Point(12, 234);
+            picAvatarfull.Location = new Point(0, 0);
             picAvatarfull.Name = "picAvatarfull";
-            picAvatarfull.Size = new Size(202, 284);
+            picAvatarfull.Size = new Size(228, 284);
             picAvatarfull.SizeMode = PictureBoxSizeMode.StretchImage;
             picAvatarfull.TabIndex = 25;
             picAvatarfull.TabStop = false;
