@@ -48,6 +48,7 @@
             btnreload = new Button();
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             tableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv).BeginInit();
             tableLayoutPanel1.SuspendLayout();
@@ -221,7 +222,7 @@
             // 
             // btnIn
             // 
-            btnIn.Location = new Point(372, 475);
+            btnIn.Location = new Point(251, 475);
             btnIn.Name = "btnIn";
             btnIn.Size = new Size(206, 56);
             btnIn.TabIndex = 6;
@@ -251,7 +252,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(616, 475);
+            button1.Location = new Point(667, 475);
             button1.Name = "button1";
             button1.Size = new Size(206, 56);
             button1.TabIndex = 11;
@@ -261,7 +262,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(123, 475);
+            button2.Location = new Point(43, 475);
             button2.Name = "button2";
             button2.Size = new Size(206, 56);
             button2.TabIndex = 12;
@@ -269,11 +270,22 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // button3
+            // 
+            button3.Location = new Point(459, 475);
+            button3.Name = "button3";
+            button3.Size = new Size(206, 56);
+            button3.TabIndex = 13;
+            button3.Text = "Xem In";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+            // 
             // ReportForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(916, 562);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(btnreload);
@@ -319,5 +331,6 @@
         private Button btnreload;
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }

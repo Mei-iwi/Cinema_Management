@@ -2,6 +2,7 @@
 using Common;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing.Printing;
 
 namespace ReportForm
@@ -276,6 +277,28 @@ namespace ReportForm
             PrintPreviewDialog preview = new PrintPreviewDialog();
             preview.Document = printDoc;
             preview.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+
+            // Truy đến folder solution
+            string root = Path.GetFullPath(Path.Combine(baseDir, @"..\..\..\..\.."));
+
+            // Đường dẫn chính xác đến LoginForm.exe
+            string exePath = Path.Combine(root, "CrystalReport", "CrystalReport", "bin", "Debug", "CrystalReport.exe");
+
+            if (File.Exists(exePath))
+            {
+                Process.Start(exePath);
+                //this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Lỗi kết nối ứng dụng");
+                this.Close();
+            }
         }
     }
 }
