@@ -30,14 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             grpInfo = new GroupBox();
-            numSL = new NumericUpDown();
-            TimeSuatChieu = new DateTimePicker();
-            label10 = new Label();
-            dateNgayChieu = new DateTimePicker();
-            label9 = new Label();
             txtLoaiGhe = new TextBox();
             label8 = new Label();
-            label7 = new Label();
             txtDonGia = new TextBox();
             txtTenVe = new TextBox();
             txtMaLV = new TextBox();
@@ -53,7 +47,6 @@
             label11 = new Label();
             errorProvider = new ErrorProvider(components);
             grpInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numSL).BeginInit();
             grpChucnag.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Ve).BeginInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
@@ -62,14 +55,8 @@
             // grpInfo
             // 
             grpInfo.Anchor = AnchorStyles.Top;
-            grpInfo.Controls.Add(numSL);
-            grpInfo.Controls.Add(TimeSuatChieu);
-            grpInfo.Controls.Add(label10);
-            grpInfo.Controls.Add(dateNgayChieu);
-            grpInfo.Controls.Add(label9);
             grpInfo.Controls.Add(txtLoaiGhe);
             grpInfo.Controls.Add(label8);
-            grpInfo.Controls.Add(label7);
             grpInfo.Controls.Add(txtDonGia);
             grpInfo.Controls.Add(txtTenVe);
             grpInfo.Controls.Add(txtMaLV);
@@ -83,53 +70,6 @@
             grpInfo.TabIndex = 0;
             grpInfo.TabStop = false;
             grpInfo.Text = "Thông tin loại vé";
-            // 
-            // numSL
-            // 
-            numSL.Location = new Point(985, 168);
-            numSL.Name = "numSL";
-            numSL.Size = new Size(87, 30);
-            numSL.TabIndex = 28;
-            // 
-            // TimeSuatChieu
-            // 
-            TimeSuatChieu.CustomFormat = "HH:mm";
-            TimeSuatChieu.DropDownAlign = LeftRightAlignment.Right;
-            TimeSuatChieu.Format = DateTimePickerFormat.Custom;
-            TimeSuatChieu.Location = new Point(676, 170);
-            TimeSuatChieu.Name = "TimeSuatChieu";
-            TimeSuatChieu.RightToLeft = RightToLeft.No;
-            TimeSuatChieu.ShowUpDown = true;
-            TimeSuatChieu.Size = new Size(160, 30);
-            TimeSuatChieu.TabIndex = 27;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(871, 170);
-            label10.Name = "label10";
-            label10.Size = new Size(83, 23);
-            label10.TabIndex = 26;
-            label10.Text = "Số lượng";
-            // 
-            // dateNgayChieu
-            // 
-            dateNgayChieu.CustomFormat = "dd/MM/yyyy";
-            dateNgayChieu.DropDownAlign = LeftRightAlignment.Right;
-            dateNgayChieu.Format = DateTimePickerFormat.Custom;
-            dateNgayChieu.Location = new Point(676, 110);
-            dateNgayChieu.Name = "dateNgayChieu";
-            dateNgayChieu.Size = new Size(396, 30);
-            dateNgayChieu.TabIndex = 25;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(562, 110);
-            label9.Name = "label9";
-            label9.Size = new Size(99, 23);
-            label9.TabIndex = 24;
-            label9.Text = "Ngày chiếu";
             // 
             // txtLoaiGhe
             // 
@@ -148,19 +88,10 @@
             label8.TabIndex = 21;
             label8.Text = "Loại ghế";
             // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(562, 177);
-            label7.Name = "label7";
-            label7.Size = new Size(93, 23);
-            label7.TabIndex = 22;
-            label7.Text = "Suất chiếu";
-            // 
             // txtDonGia
             // 
             txtDonGia.BorderStyle = BorderStyle.FixedSingle;
-            txtDonGia.Location = new Point(132, 164);
+            txtDonGia.Location = new Point(676, 144);
             txtDonGia.Name = "txtDonGia";
             txtDonGia.Size = new Size(396, 30);
             txtDonGia.TabIndex = 6;
@@ -168,7 +99,7 @@
             // txtTenVe
             // 
             txtTenVe.BorderStyle = BorderStyle.FixedSingle;
-            txtTenVe.Location = new Point(132, 107);
+            txtTenVe.Location = new Point(132, 150);
             txtTenVe.Name = "txtTenVe";
             txtTenVe.Size = new Size(396, 30);
             txtTenVe.TabIndex = 5;
@@ -184,7 +115,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(18, 170);
+            label3.Location = new Point(562, 150);
             label3.Name = "label3";
             label3.Size = new Size(74, 23);
             label3.TabIndex = 2;
@@ -193,7 +124,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(18, 110);
+            label2.Location = new Point(18, 153);
             label2.Name = "label2";
             label2.Size = new Size(94, 23);
             label2.TabIndex = 1;
@@ -306,7 +237,6 @@
             Load += TicketTypeForm_Load;
             grpInfo.ResumeLayout(false);
             grpInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numSL).EndInit();
             grpChucnag.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv_Ve).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
@@ -329,14 +259,8 @@
         private Button btnDelete;
         private Button btnAdd;
         private Label label11;
-        private NumericUpDown numSL;
-        private DateTimePicker TimeSuatChieu;
-        private Label label10;
-        private DateTimePicker dateNgayChieu;
-        private Label label9;
         private TextBox txtLoaiGhe;
         private Label label8;
-        private Label label7;
         private ErrorProvider errorProvider;
     }
 }

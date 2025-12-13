@@ -131,7 +131,7 @@ namespace MainForm
                 btnBuy.BackColor = Color.Yellow;
                 btnBuy.Click += (s, e) =>
                 {
-                   if (MessageBox.Show("Mua vé: " + dataRow["TENPHIM"].ToString(), "Mua vé", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+                    if (MessageBox.Show("Mua vé: " + dataRow["TENPHIM"].ToString(), "Mua vé", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         BuyServiceAndFilm buyServiceAndFilmForm = new BuyServiceAndFilm(dataRow["MAPHIM"].ToString(), dataRow["TENPHIM"].ToString());
                         buyServiceAndFilmForm.Show();
@@ -235,6 +235,13 @@ namespace MainForm
             this.Hide();
             ChangePasswordUser changePasswordUser = new ChangePasswordUser(0);
             changePasswordUser.ShowDialog();
+        }
+
+        private void menuHistory_Click(object sender, EventArgs e)
+        {
+            HistoryTickets historyTicketsForm = new HistoryTickets();
+            historyTicketsForm.ShowDialog();
+
         }
     }
 }

@@ -175,7 +175,7 @@ namespace MainForm
 
                 string sql = "PROC_DOI_MK_SQLLOGIN";
 
-                string strAdmin = Common.ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "Aa@123456789");
+                string strAdmin = Common.ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sa", "123");
 
                 using (SqlConnection con = new SqlConnection(strAdmin))
                 {

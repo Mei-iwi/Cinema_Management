@@ -9,6 +9,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
+using QRCoder;
+
 
 namespace CustomerServiceForm
 {
@@ -69,7 +72,6 @@ namespace CustomerServiceForm
             };
             ds.Tables["PHONGCHIEU"].PrimaryKey = new DataColumn[] { ds.Tables["PHONGCHIEU"].Columns["MASUAT"] };
             ds.Tables["LOAIVE"].PrimaryKey = new DataColumn[] { ds.Tables["LOAIVE"].Columns["MALV"] };
-
 
 
         }
@@ -351,6 +353,21 @@ namespace CustomerServiceForm
             {
                 txtDG.Text = "";
             }
+
+            //double total = numSL.Value * double.Parse(txtDG.Text);
+
+            if (!string.IsNullOrEmpty(txtDG.Text))
+            {
+                if (!string.IsNullOrEmpty(txtDGSP.Text))
+                {
+                    lblMoney.Text = (decimal.Parse(txtDG.Text) + decimal.Parse(txtDGSP.Text) * numSL.Value).ToString() + "VNĐ";
+                }
+                else
+                {
+                    lblMoney.Text = (decimal.Parse(txtDG.Text)).ToString() + "VNĐ";
+                }
+            }
+
         }
 
         private void txtChonPhim_Click(object sender, EventArgs e)
@@ -368,8 +385,10 @@ namespace CustomerServiceForm
                     // Lấy giá trị đã chọn
                     txtMaSP.Text = serviceForm.SelectedServiceID;
                     txtTenSP.Text = serviceForm.SelectedServiceName;
+                    txtDGSP.Text = serviceForm.SelectedPrice;
                 }
             }
+            lblMoney.Text = (decimal.Parse(txtDG.Text) + decimal.Parse(txtDGSP.Text) * numSL.Value).ToString() + "VNĐ";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -383,7 +402,7 @@ namespace CustomerServiceForm
         {
             string sql = "SELECT TOP 1 MAVE FROM VE ORDER BY MAVE DESC";
 
-            SqlConnection con = new SqlConnection(ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "Aa@123456789"));
+            SqlConnection con = new SqlConnection(ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sa", "123"));
 
             con.Open();
             SqlCommand cmd = new SqlCommand(sql, con);
@@ -416,46 +435,44 @@ namespace CustomerServiceForm
 
             return "V" + newID.ToString("D8");
         }
-     
 
-        private void button1_Click(object sender, EventArgs e)
+        string currentTransactionId;
+        private void SaveTicketToDatabase()
         {
-            if (string.IsNullOrEmpty(selectedSeat) || string.IsNullOrEmpty(maPhongHienTai))
-            {
-                MessageBox.Show("Vui lòng chọn ghế trước khi mua.");
-                return;
-            }
+            SqlConnection con = new SqlConnection(
+                ConnectionHelper.CreateConnectionString(
+                    GlobalData.DataSource,
+                    GlobalData.InitialCatalog,
+                    "sa", "123"));
+
+            con.Open();
+            SqlTransaction tran = con.BeginTransaction();
 
             try
             {
-                SqlConnection con = new SqlConnection(ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sqlserver", "Aa@123456789"));
-
-                con.Open();
-                SqlTransaction tran = con.BeginTransaction();
-
-                // 1. Tạo MAVE tự động (ví dụ: "V" + datetime + random 3 số)
                 string mave = createdID();
 
-                // 2. Thêm vé vào bảng VE
                 string sqlVe = @"
-            INSERT INTO VE (MASUAT, MALV, MAKH, MAVE, MAGHE, NGAYBANVE)
-            VALUES (@masuat, @malv, @makh, @mave, @maghe, @ngaybanve)";
+        INSERT INTO VE (MASUAT, MALV, MAKH, MAVE, MAGHE, NGAYBANVE)
+        VALUES (@masuat, @malv, @makh, @mave, @maghe, @ngaybanve)";
+
                 SqlCommand cmdVe = new SqlCommand(sqlVe, con, tran);
-                cmdVe.Parameters.AddWithValue("@masuat", suatchieu); // hoặc MASUAT thực tế
+                cmdVe.Parameters.AddWithValue("@masuat", suatchieu);
                 cmdVe.Parameters.AddWithValue("@malv", cboLoave.SelectedValue);
-                cmdVe.Parameters.AddWithValue("@makh", GlobalData.UserID); // Mã khách hàng
-               // cmdVe.Parameters.AddWithValue("@manv", null); // Mã nhân viên đang đăng nhập
+                cmdVe.Parameters.AddWithValue("@makh", GlobalData.UserID);
                 cmdVe.Parameters.AddWithValue("@mave", mave);
                 cmdVe.Parameters.AddWithValue("@maghe", selectedSeat);
                 cmdVe.Parameters.AddWithValue("@ngaybanve", DateTime.Now);
                 cmdVe.ExecuteNonQuery();
 
-                // 3. Nếu có dịch vụ được chọn, thêm vào bảng DANGKY
-                if (!string.IsNullOrEmpty(txtMaSP.Text) && int.TryParse(numSL.Value.ToString(), out int soLuong) && soLuong > 0)
+                if (!string.IsNullOrEmpty(txtMaSP.Text)
+                    && int.TryParse(numSL.Value.ToString(), out int soLuong)
+                    && soLuong > 0)
                 {
                     string sqlDK = @"
-                INSERT INTO DANGKY (MASP, MAVE, SOLUONG)
-                VALUES (@masp, @mave, @soluong)";
+            INSERT INTO DANGKY (MASP, MAVE, SOLUONG)
+            VALUES (@masp, @mave, @soluong)";
+
                     SqlCommand cmdDK = new SqlCommand(sqlDK, con, tran);
                     cmdDK.Parameters.AddWithValue("@masp", txtMaSP.Text);
                     cmdDK.Parameters.AddWithValue("@mave", mave);
@@ -463,11 +480,11 @@ namespace CustomerServiceForm
                     cmdDK.ExecuteNonQuery();
                 }
 
-                // 4. Cập nhật trạng thái ghế trong CT_GHE_PHONG
                 string sqlUpdateGhe = @"
-            UPDATE CT_GHE_PHONG
-            SET TRANGTHAI = 'true'
-            WHERE MAGHE = @maghe AND MAPHONG = @maphong";
+        UPDATE CT_GHE_PHONG
+        SET TRANGTHAI = 'true'
+        WHERE MAGHE = @maghe AND MAPHONG = @maphong";
+
                 SqlCommand cmdUpdateGhe = new SqlCommand(sqlUpdateGhe, con, tran);
                 cmdUpdateGhe.Parameters.AddWithValue("@maghe", selectedSeat);
                 cmdUpdateGhe.Parameters.AddWithValue("@maphong", maPhongHienTai);
@@ -477,26 +494,74 @@ namespace CustomerServiceForm
 
                 MessageBox.Show("Mua vé thành công! Mã vé: " + mave);
 
-                // Reset ghế đã chọn
                 selectedSeat = null;
                 maPhongHienTai = null;
                 lblGheHienTai.Text = "Ghế đang chọn: None";
                 da_CTPG.Fill(ds, "CT_GHE_PHONG");
                 pnlSeats.Invalidate();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Lỗi khi lưu giao dịch: " + ex.Message);
+                tran.Rollback();
+                throw;
             }
             finally
             {
                 con.Close();
             }
         }
+        private void ShowQRCode(string qrText)
+        {
+            QRCodeGenerator generator = new QRCodeGenerator();
+            QRCodeData data = generator.CreateQrCode(qrText, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(data);
+
+            Bitmap qrImage = qrCode.GetGraphic(20);
+            picQR.Image = qrImage;
+        }
+
+        private static Dictionary<string, bool> fakeConfirmStorage = new Dictionary<string, bool>();
+        private Task CreatePendingTransaction(string tx)
+        {
+            if (!fakeConfirmStorage.ContainsKey(tx))
+                fakeConfirmStorage.Add(tx, false);
+
+            return Task.CompletedTask;
+        }
+
+     
+       
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(selectedSeat) || string.IsNullOrEmpty(maPhongHienTai))
+            {
+                MessageBox.Show("Vui lòng chọn ghế trước khi mua.");
+                return;
+            }
+
+            if (MessageBox.Show(
+                $"Thanh toán hóa đơn phim {txtTenPhim.Text} với chi phí {lblMoney.Text}",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+
+            SaveTicketToDatabase();
+        }
 
         private void cboPhong_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void numSL_ValueChanged(object sender, EventArgs e)
+        {
+            if(numSL.Value > 0)
+            {
+                lblMoney.Text = (decimal.Parse(txtDG.Text) + decimal.Parse(txtDGSP.Text) * numSL.Value).ToString() + "VNĐ";
+            }
         }
     }
 }

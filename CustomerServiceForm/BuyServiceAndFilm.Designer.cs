@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            txtDGSP = new TextBox();
             label2 = new Label();
-            numSL = new NumericUpDown();
             txtMaSP = new TextBox();
+            label5 = new Label();
             txtTenSP = new TextBox();
+            label4 = new Label();
+            numSL = new NumericUpDown();
             txtDG = new TextBox();
             cboLoave = new ComboBox();
             txtTenPhim = new TextBox();
             txtMaphim = new TextBox();
             label7 = new Label();
             label8 = new Label();
-            label5 = new Label();
             label6 = new Label();
-            label4 = new Label();
             label3 = new Label();
             txtChonDichVu = new Button();
             label1 = new Label();
@@ -53,6 +54,8 @@
             lblGheHienTai = new Label();
             cboPhong = new ComboBox();
             label9 = new Label();
+            lblTotal = new Label();
+            lblMoney = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numSL).BeginInit();
             pnlSeats.SuspendLayout();
@@ -60,19 +63,20 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtDGSP);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(numSL);
             groupBox1.Controls.Add(txtMaSP);
+            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(txtTenSP);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(numSL);
             groupBox1.Controls.Add(txtDG);
             groupBox1.Controls.Add(cboLoave);
             groupBox1.Controls.Add(txtTenPhim);
             groupBox1.Controls.Add(txtMaphim);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(txtChonDichVu);
             groupBox1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -83,6 +87,14 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Xác nhận thông tin";
             // 
+            // txtDGSP
+            // 
+            txtDGSP.Location = new Point(772, 63);
+            txtDGSP.Name = "txtDGSP";
+            txtDGSP.ReadOnly = true;
+            txtDGSP.Size = new Size(221, 27);
+            txtDGSP.TabIndex = 30;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -92,28 +104,47 @@
             label2.TabIndex = 29;
             label2.Text = "Số lượng";
             // 
+            // txtMaSP
+            // 
+            txtMaSP.Location = new Point(772, 63);
+            txtMaSP.Name = "txtMaSP";
+            txtMaSP.ReadOnly = true;
+            txtMaSP.Size = new Size(221, 27);
+            txtMaSP.TabIndex = 27;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(668, 63);
+            label5.Name = "label5";
+            label5.Size = new Size(63, 20);
+            label5.TabIndex = 18;
+            label5.Text = "Đơn giá";
+            // 
+            // txtTenSP
+            // 
+            txtTenSP.Location = new Point(772, 23);
+            txtTenSP.Name = "txtTenSP";
+            txtTenSP.ReadOnly = true;
+            txtTenSP.Size = new Size(221, 27);
+            txtTenSP.TabIndex = 26;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(666, 30);
+            label4.Name = "label4";
+            label4.Size = new Size(106, 20);
+            label4.TabIndex = 16;
+            label4.Text = "Tên sản phẩm";
+            // 
             // numSL
             // 
             numSL.Location = new Point(892, 103);
             numSL.Name = "numSL";
             numSL.Size = new Size(77, 27);
             numSL.TabIndex = 28;
-            // 
-            // txtMaSP
-            // 
-            txtMaSP.Location = new Point(746, 23);
-            txtMaSP.Name = "txtMaSP";
-            txtMaSP.ReadOnly = true;
-            txtMaSP.Size = new Size(221, 27);
-            txtMaSP.TabIndex = 27;
-            // 
-            // txtTenSP
-            // 
-            txtTenSP.Location = new Point(748, 63);
-            txtTenSP.Name = "txtTenSP";
-            txtTenSP.ReadOnly = true;
-            txtTenSP.Size = new Size(221, 27);
-            txtTenSP.TabIndex = 26;
+            numSL.ValueChanged += numSL_ValueChanged;
             // 
             // txtDG
             // 
@@ -165,15 +196,6 @@
             label8.TabIndex = 19;
             label8.Text = "Đơn giá";
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(642, 23);
-            label5.Name = "label5";
-            label5.Size = new Size(103, 20);
-            label5.TabIndex = 18;
-            label5.Text = "Mã sản phẩm";
-            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -182,15 +204,6 @@
             label6.Size = new Size(71, 20);
             label6.TabIndex = 17;
             label6.Text = "Mã phim";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(642, 70);
-            label4.Name = "label4";
-            label4.Size = new Size(106, 20);
-            label4.TabIndex = 16;
-            label4.Text = "Tên sản phẩm";
             // 
             // label3
             // 
@@ -227,6 +240,7 @@
             // 
             pnlSeats.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlSeats.BorderStyle = BorderStyle.FixedSingle;
+            pnlSeats.Controls.Add(picQR);
             pnlSeats.Controls.Add(lblSuatChieu);
             pnlSeats.Location = new Point(12, 224);
             pnlSeats.Name = "pnlSeats";
@@ -309,11 +323,38 @@
             label9.TabIndex = 6;
             label9.Text = "Danh sách phòng chiếu";
             // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTotal.ForeColor = Color.Blue;
+            lblTotal.Location = new Point(390, 767);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(114, 28);
+            lblTotal.TabIndex = 16;
+            lblTotal.Text = "Tổng tiền: ";
+            // 
+            // lblMoney
+            // 
+            lblMoney.AutoSize = true;
+            lblMoney.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMoney.ForeColor = Color.Red;
+            lblMoney.Location = new Point(510, 772);
+            lblMoney.Name = "lblMoney";
+            lblMoney.Size = new Size(62, 23);
+            lblMoney.TabIndex = 17;
+            lblMoney.Text = "0 VNĐ";
+            // 
+            // picQR
+            // 
+            // 
             // BuyServiceAndFilm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1100, 809);
+            Controls.Add(lblMoney);
+            Controls.Add(lblTotal);
             Controls.Add(btnTim);
             Controls.Add(cboPhong);
             Controls.Add(label9);
@@ -363,5 +404,9 @@
         private Label lblSuatChieu;
         private Label label2;
         private NumericUpDown numSL;
+        private Label lblTotal;
+        private Label lblMoney;
+        private TextBox txtDGSP;
+        private PictureBox picQR;
     }
 }

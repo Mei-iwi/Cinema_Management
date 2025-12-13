@@ -71,8 +71,10 @@ namespace MainForm
 
         private void dịchVụKháchHàngToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ServiceForm.ServiceForm form = new ServiceForm.ServiceForm();
-            form.ShowDialog();
+            TicketTypeForm.TicketTypeForm ticketType = new TicketTypeForm.TicketTypeForm();
+            ticketType.ShowDialog();
+            //ServiceForm.ServiceForm form = new ServiceForm.ServiceForm();
+            //form.ShowDialog();
         }
 
         private void cSKHToolStripMenuItem_Click(object sender, EventArgs e)

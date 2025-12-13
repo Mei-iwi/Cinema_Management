@@ -21,6 +21,8 @@ namespace CustomerServiceForm
         public string SelectedServiceName { get; private set; }
         public string SelectedServiceID { get; private set; }
 
+        public string SelectedPrice { get; private set; }
+
         DataColumn[] key = new DataColumn[1];
         public CustomerServiceForm()
         {
@@ -123,6 +125,7 @@ namespace CustomerServiceForm
                     {
                         SelectedServiceName = dataRow["TENSP"].ToString();
                         SelectedServiceID = dataRow["MASP"].ToString();
+                        SelectedPrice = dataRow["DONGIA"].ToString();
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     };

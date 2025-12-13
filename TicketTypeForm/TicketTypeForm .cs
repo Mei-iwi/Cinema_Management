@@ -5,7 +5,7 @@ namespace TicketTypeForm
 {
     public partial class TicketTypeForm : Form
     {
-        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, GlobalData.UserID, GlobalData.Password);
+        string str = ConnectionHelper.CreateConnectionString(GlobalData.DataSource, GlobalData.InitialCatalog, "sa", "123");
 
         SqlConnection con;
 
@@ -61,7 +61,7 @@ namespace TicketTypeForm
 
             key[0] = ds_Ve.Tables["VE"].Columns[0];
 
-            ds_Ve.Tables["VE"].PrimaryKey = key;
+            //ds_Ve.Tables["VE"].PrimaryKey = key;
 
             key_LV[0] = ds_Ve.Tables["LV"].Columns[0];
 
@@ -79,15 +79,15 @@ namespace TicketTypeForm
 
             dgv_Ve.Columns[1].HeaderText = "Tên loại vé";
 
-            dgv_Ve.Columns[2].HeaderText = "Giá vé";
+            dgv_Ve.Columns[2].HeaderText = "Đơn giá";
 
             dgv_Ve.Columns[3].HeaderText = "Loại ghế";
 
-            dgv_Ve.Columns[4].HeaderText = "Suất chiếu";
+            dgv_Ve.Columns[4].Visible = false; 
 
-            dgv_Ve.Columns[5].HeaderText = "Ngày chiếu";
+            dgv_Ve.Columns[5].Visible = false;
 
-            dgv_Ve.Columns[6].HeaderText = "Số lượng";
+            dgv_Ve.Columns[6].Visible = false;
         }
 
 
@@ -111,22 +111,7 @@ namespace TicketTypeForm
 
             txtLoaiGhe.DataBindings.Add("Text", dt, "LOAIGHE");
 
-            TimeSuatChieu.DataBindings.Clear();
-
-            TimeSuatChieu.DataBindings.Add("Text", dt, "GIOBATDAU");
-
-            dateNgayChieu.DataBindings.Clear();
-
-            dateNgayChieu.DataBindings.Add("Value", dt, "NGAYCHIEU", true, DataSourceUpdateMode.OnPropertyChanged)
-                    .Format += (s, e) =>
-                    {
-                        if (e.Value == DBNull.Value || e.Value == null)
-                            e.Value = DateTime.Now;
-                    };
-
-            numSL.DataBindings.Clear();
-
-            numSL.DataBindings.Add("Text", dt, "SOLUONG");
+           
 
         }
 
@@ -136,9 +121,6 @@ namespace TicketTypeForm
             {
                 ctrl.Enabled = enable;
             }
-            TimeSuatChieu.Enabled = false;
-            dateNgayChieu.Enabled = false;
-            numSL.Enabled = false;
         }
 
         void EnableButton(bool enable = false)

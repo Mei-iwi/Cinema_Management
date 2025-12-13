@@ -44,7 +44,7 @@
             btnCancel.Location = new Point(281, 198);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(120, 35);
-            btnCancel.TabIndex = 7;
+            btnCancel.TabIndex = 3;
             btnCancel.Text = "Thoát";
             btnCancel.UseVisualStyleBackColor = true;
             btnCancel.Click += btnCancel_Click;
@@ -54,7 +54,7 @@
             btnLogin.Location = new Point(151, 198);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(120, 35);
-            btnLogin.TabIndex = 8;
+            btnLogin.TabIndex = 2;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
@@ -64,14 +64,14 @@
             txtPassword.Location = new Point(151, 136);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(250, 27);
-            txtPassword.TabIndex = 9;
+            txtPassword.TabIndex = 1;
             // 
             // txtUsername
             // 
             txtUsername.Location = new Point(151, 86);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(250, 27);
-            txtUsername.TabIndex = 10;
+            txtUsername.TabIndex = 0;
             // 
             // lblPassword
             // 

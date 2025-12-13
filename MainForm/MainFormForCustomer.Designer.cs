@@ -31,6 +31,7 @@
             menuStrip1 = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
             phimĐangChiếuToolStripMenuItem = new ToolStripMenuItem();
+            menuHistory = new ToolStripMenuItem();
             ngườiDùngToolStripMenuItem = new ToolStripMenuItem();
             menuNguoidung = new ToolStripMenuItem();
             menuChangePas = new ToolStripMenuItem();
@@ -49,7 +50,7 @@
             menuStrip1.BackColor = Color.Blue;
             menuStrip1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, phimĐangChiếuToolStripMenuItem, ngườiDùngToolStripMenuItem, cSKHToolStripMenuItem, liênHệToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1, phimĐangChiếuToolStripMenuItem, menuHistory, ngườiDùngToolStripMenuItem, cSKHToolStripMenuItem, liênHệToolStripMenuItem });
             menuStrip1.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -69,6 +70,14 @@
             phimĐangChiếuToolStripMenuItem.Name = "phimĐangChiếuToolStripMenuItem";
             phimĐangChiếuToolStripMenuItem.Size = new Size(158, 27);
             phimĐangChiếuToolStripMenuItem.Text = "Phim đang chiếu";
+            // 
+            // menuHistory
+            // 
+            menuHistory.ForeColor = Color.White;
+            menuHistory.Name = "menuHistory";
+            menuHistory.Size = new Size(134, 27);
+            menuHistory.Text = "Lịch sử đặt vé";
+            menuHistory.Click += menuHistory_Click;
             // 
             // ngườiDùngToolStripMenuItem
             // 
@@ -183,5 +192,6 @@
         private ToolStripMenuItem liênHệToolStripMenuItem;
         private ToolStripMenuItem liênHệHỗTrợToolStripMenuItem;
         private ToolStripMenuItem đóngGópÝKiếnToolStripMenuItem;
+        private ToolStripMenuItem menuHistory;
     }
 }
