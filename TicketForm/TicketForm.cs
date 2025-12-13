@@ -1,6 +1,7 @@
 ﻿using Common;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 namespace TicketForm
 {
     public partial class TicketForm : Form
@@ -258,143 +259,91 @@ namespace TicketForm
         // ==================================================================
         // 5. NÚT LƯU (QUAN TRỌNG)
         // ==================================================================
-        private void btnLuu_Click(object sender, EventArgs e)
+
+
+        private void SaveChangesToDatabase()
         {
-            string maVe = txtMaVe.Text.Trim();
-            if (string.IsNullOrEmpty(maVe))
+            if (conn.State != ConnectionState.Open)
+                conn.Open();
+
+            DataTable changes = dt.GetChanges();
+            if (changes == null)
             {
-                MessageBox.Show("Mã vé không được trống");
+                conn.Close();
                 return;
             }
 
-            // Tìm xem có tồn tại không
-            DataRow row = dt.AsEnumerable()
-                .FirstOrDefault(x => x["MAVE"].ToString() == maVe);
-
-            bool isNew = row == null;
-
-            if (isNew)
+            foreach (DataRow row in changes.Rows)
             {
-                row = dt.NewRow();
-                row["MAVE"] = maVe;
-                dt.Rows.Add(row);
-            }
-
-            row["MASUAT"] = cboMaSuat.SelectedValue;
-            row["MALV"] = cboMaLoaiVe.SelectedValue;
-            row["MAKH"] = cboMaKhachHang.SelectedValue;
-            row["MANV"] = cboMaNhanVien.SelectedValue;
-            row["MAGHE"] = cboMaGhe.SelectedValue;
-
-            DateTime ngay;
-            if (DateTime.TryParseExact(mstNgayBan.Text, "dd/MM/yyyy",
-                System.Globalization.CultureInfo.InvariantCulture,
-                System.Globalization.DateTimeStyles.None, out ngay))
-            {
-                row["NGAYBANVE"] = ngay;
-            }
-
-            SaveChangesToDatabase();
-            BuildTreeView();
-
-            MessageBox.Show(isNew ? "Đã thêm vé mới" : "Đã cập nhật vé");
-        }
-        private void ExecuteInsertOrUpdate(string sql, DataRow row, SqlConnection conn)
-        {
-            using (SqlCommand cmd = new SqlCommand(sql, conn))
-            {
-                cmd.Parameters.AddWithValue("@MA", row["MAVE"]);
-                cmd.Parameters.AddWithValue("@SUAT", row["MASUAT"]);
-                cmd.Parameters.AddWithValue("@LV", row["MALV"]);
-                cmd.Parameters.AddWithValue("@KH", row["MAKH"]);
-                cmd.Parameters.AddWithValue("@NV", row["MANV"]);
-                cmd.Parameters.AddWithValue("@GHE", row["MAGHE"]);
-                cmd.Parameters.AddWithValue("@NGAY", row["NGAYBANVE"]);
-
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        private void SaveChangesToDatabase()
-        {// Mở kết nối một lần
-            conn.Open();
-
-            DataTable changes = dt.GetChanges();
-
-            if (changes != null)
-            {
-                foreach (DataRow row in changes.Rows)
+                if (row.RowState == DataRowState.Added)
                 {
-                    if (row.RowState == DataRowState.Added)
+                    string sql = @"INSERT INTO VE
+                (MAVE, MASUAT, MALV, MAKH, MANV, MAGHE, NGAYBANVE)
+                VALUES (@MA, @SUAT, @LV, @KH, @NV, @GHE, @NGAY)";
+                    ExecuteInsertOrUpdate(sql, row);
+                }
+                else if (row.RowState == DataRowState.Modified)
+                {
+                    string sql = @"UPDATE VE SET
+                MASUAT=@SUAT, MALV=@LV, MAKH=@KH,
+                MANV=@NV, MAGHE=@GHE, NGAYBANVE=@NGAY
+                WHERE MAVE=@MA";
+                    ExecuteInsertOrUpdate(sql, row);
+                }
+                else if (row.RowState == DataRowState.Deleted)
+                {
+                    try
                     {
-                        string sql = @"INSERT INTO VE (MAVE, MASUAT, MALV, MAKH, MANV, MAGHE, NGAYBANVE)
-                           VALUES (@MA, @SUAT, @LV, @KH, @NV, @GHE, @NGAY)";
-                        ExecuteInsertOrUpdate(sql, row, conn);
+                        using SqlCommand cmd = new SqlCommand(
+                       "DELETE FROM VE WHERE MAVE=@MA", conn);
+                        cmd.Parameters.Add("@MA", SqlDbType.VarChar)
+                           .Value = row["MAVE", DataRowVersion.Original];
+                        cmd.ExecuteNonQuery();
                     }
-                    else if (row.RowState == DataRowState.Modified)
+                    catch
                     {
-                        string sql = @"UPDATE VE SET 
-                               MASUAT=@SUAT, 
-                               MALV=@LV, 
-                               MAKH=@KH, 
-                               MANV=@NV, 
-                               MAGHE=@GHE, 
-                               NGAYBANVE=@NGAY
-                           WHERE MAVE=@MA";
-                        ExecuteInsertOrUpdate(sql, row, conn);
-                    }
-                    else if (row.RowState == DataRowState.Deleted)
-                    {
-                        string oldMa = row["MAVE", DataRowVersion.Original].ToString();
-
-                        using (SqlCommand cmd = new SqlCommand("DELETE FROM VE WHERE MAVE=@MA", conn))
-                        {
-                            cmd.Parameters.AddWithValue("@MA", oldMa);
-                            cmd.ExecuteNonQuery();
-                        }
+                        MessageBox.Show("Không thể xóa vé vì có dữ liệu liên quan.");
+                        return;
                     }
                 }
             }
 
-            conn.Close();
-
-            // Chỉ AcceptChanges sau khi lưu thành công
             dt.AcceptChanges();
-
+            conn.Close();
         }
 
 
-        private void ExecuteInsertOrUpdate(string sql, DataRow row)
-        {
-            using (SqlCommand cmd = new SqlCommand(sql, conn))
-            {
-                DataRowVersion ver = DataRowVersion.Current;
+        //private void ExecuteInsertOrUpdate(string sql, DataRow row)
+        //{
+        //    using (SqlCommand cmd = new SqlCommand(sql, conn))
+        //    {
+        //        DataRowVersion ver = DataRowVersion.Current;
 
-                cmd.Parameters.AddWithValue("@MA", row["MAVE", ver]);
-                cmd.Parameters.AddWithValue("@SUAT", row["MASUAT", ver] ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@LV", row["MALV", ver] ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@KH", row["MAKH", ver] ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@NV", row["MANV", ver] ?? DBNull.Value);
-                cmd.Parameters.AddWithValue("@GHE", row["MAGHE", ver] ?? DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@MA", row["MAVE", ver]);
+        //        cmd.Parameters.AddWithValue("@SUAT", row["MASUAT", ver] ?? DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@LV", row["MALV", ver] ?? DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@KH", row["MAKH", ver] ?? DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@NV", row["MANV", ver] ?? DBNull.Value);
+        //        cmd.Parameters.AddWithValue("@GHE", row["MAGHE", ver] ?? DBNull.Value);
 
-                // Xử lý Ngày
-                object valNgay = row["NGAYBANVE", ver];
-                if (valNgay != null && valNgay != DBNull.Value && !string.IsNullOrEmpty(valNgay.ToString()))
-                {
-                    DateTime dtNgay;
-                    if (valNgay is DateTime) dtNgay = (DateTime)valNgay;
-                    else DateTime.TryParseExact(valNgay.ToString(), "dd/MM/yyyy",
-                        System.Globalization.CultureInfo.InvariantCulture,
-                        System.Globalization.DateTimeStyles.None, out dtNgay);
+        //        // Xử lý Ngày
+        //        object valNgay = row["NGAYBANVE", ver];
+        //        if (valNgay != null && valNgay != DBNull.Value && !string.IsNullOrEmpty(valNgay.ToString()))
+        //        {
+        //            DateTime dtNgay;
+        //            if (valNgay is DateTime) dtNgay = (DateTime)valNgay;
+        //            else DateTime.TryParseExact(valNgay.ToString(), "dd/MM/yyyy",
+        //                System.Globalization.CultureInfo.InvariantCulture,
+        //                System.Globalization.DateTimeStyles.None, out dtNgay);
 
-                    if (dtNgay != DateTime.MinValue) cmd.Parameters.AddWithValue("@NGAY", dtNgay);
-                    else cmd.Parameters.AddWithValue("@NGAY", DBNull.Value);
-                }
-                else cmd.Parameters.AddWithValue("@NGAY", DBNull.Value);
+        //            if (dtNgay != DateTime.MinValue) cmd.Parameters.AddWithValue("@NGAY", dtNgay);
+        //            else cmd.Parameters.AddWithValue("@NGAY", DBNull.Value);
+        //        }
+        //        else cmd.Parameters.AddWithValue("@NGAY", DBNull.Value);
 
-                cmd.ExecuteNonQuery();
-            }
-        }
+        //        cmd.ExecuteNonQuery();
+        //    }
+        //}
 
 
         private void dgvTicket_CellEnter(object sender, DataGridViewCellEventArgs e)
@@ -467,111 +416,86 @@ namespace TicketForm
             }
         }
 
+        private void SetControlsEditable()
+        {
+            txtMaVe.ReadOnly = false;
+            mstNgayBan.ReadOnly = false;
+            mstNgayBan.Enabled = true;
+
+            cboMaSuat.Enabled = true;
+            cboMaLoaiVe.Enabled = true;
+            cboMaKhachHang.Enabled = true;
+            cboMaNhanVien.Enabled = true;
+            cboMaGhe.Enabled = true;
+        }
+
+        
+
         private void btnThem_Click_1(object sender, EventArgs e)
         {
-            try
-            {
-                // Chuyển sang chế độ thêm: bật các control để nhập
-                txtMaVe.ReadOnly = false;
-                mstNgayBan.ReadOnly = false;
-                mstNgayBan.Enabled = true;
 
-                cboMaSuat.Enabled = true;
-                cboMaLoaiVe.Enabled = true;
-                cboMaKhachHang.Enabled = true;
-                cboMaNhanVien.Enabled = true;
-                cboMaGhe.Enabled = true;
+            SetControlsEditable();
 
-                // Reset dữ liệu cũ
-                txtMaVe.Clear();
-                mstNgayBan.Clear();
+            txtMaVe.Clear();
+            mstNgayBan.Clear();
 
-                cboMaSuat.SelectedIndex = -1;
-                cboMaLoaiVe.SelectedIndex = -1;
-                cboMaKhachHang.SelectedIndex = -1;
-                cboMaNhanVien.SelectedIndex = -1;
-                cboMaGhe.SelectedIndex = -1;
+            cboMaSuat.SelectedIndex = -1;
+            cboMaLoaiVe.SelectedIndex = -1;
+            cboMaKhachHang.SelectedIndex = -1;
+            cboMaNhanVien.SelectedIndex = -1;
+            cboMaGhe.SelectedIndex = -1;
 
-                // Vô hiệu hóa các nút không cần thiết khi đang thêm
-                btnThem.Enabled = false;
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
+            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
+            dgvTicket.Enabled = false;
 
-                // Bật các nút Lưu/Hủy (nếu có)
-                btnLuu.Enabled = true;
-
-                // Khóa DataGridView để tránh thay đổi trong khi nhập
-                dgvTicket.Enabled = false;
-
-                // Đưa con trỏ vào mã vé để nhập
-                txtMaVe.Focus();
-
-                MessageBox.Show("Chuyển sang chế độ THÊM. Nhập thông tin và nhấn Lưu hoặc Hủy.", "Thông báo");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi chuyển sang chế độ thêm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // đảm bảo trạng thái an toàn nếu có lỗi
-                txtMaVe.ReadOnly = true;
-                mstNgayBan.ReadOnly = true;
-                mstNgayBan.Enabled = false;
-                cboMaSuat.Enabled = false;
-                cboMaLoaiVe.Enabled = false;
-                cboMaKhachHang.Enabled = false;
-                cboMaNhanVien.Enabled = false;
-                cboMaGhe.Enabled = false;
-                btnThem.Enabled = true;
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                btnLuu.Enabled = false;
-                dgvTicket.Enabled = true;
-            }
+            txtMaVe.Focus();
         }
 
 
 
 
-        private void btnLuu_Click_1(object sender, EventArgs e)
-        {
-            string maVe = txtMaVe.Text.Trim();
-            if (string.IsNullOrEmpty(maVe))
-            {
-                MessageBox.Show("Mã vé không được trống");
-                return;
-            }
+        //private void btnLuu_Click_1(object sender, EventArgs e)
+        //{
+        //    string maVe = txtMaVe.Text.Trim();
+        //    if (string.IsNullOrEmpty(maVe))
+        //    {
+        //        MessageBox.Show("Mã vé không được trống");
+        //        return;
+        //    }
 
-            // Tìm xem có tồn tại không
-            DataRow row = dt.AsEnumerable()
-                .FirstOrDefault(x => x["MAVE"].ToString() == maVe);
+        //    // Tìm xem có tồn tại không
+        //    DataRow row = dt.AsEnumerable()
+        //        .FirstOrDefault(x => x["MAVE"].ToString() == maVe);
 
-            bool isNew = row == null;
+        //    bool isNew = row == null;
 
-            if (isNew)
-            {
-                row = dt.NewRow();
-                row["MAVE"] = maVe;
-                dt.Rows.Add(row);
-            }
+        //    if (isNew)
+        //    {
+        //        row = dt.NewRow();
+        //        row["MAVE"] = maVe;
+        //        dt.Rows.Add(row);
+        //    }
 
-            row["MASUAT"] = cboMaSuat.SelectedValue;
-            row["MALV"] = cboMaLoaiVe.SelectedValue;
-            row["MAKH"] = cboMaKhachHang.SelectedValue;
-            row["MANV"] = cboMaNhanVien.SelectedValue;
-            row["MAGHE"] = cboMaGhe.SelectedValue;
+        //    row["MASUAT"] = cboMaSuat.SelectedValue;
+        //    row["MALV"] = cboMaLoaiVe.SelectedValue;
+        //    row["MAKH"] = cboMaKhachHang.SelectedValue;
+        //    row["MANV"] = cboMaNhanVien.SelectedValue;
+        //    row["MAGHE"] = cboMaGhe.SelectedValue;
 
-            DateTime ngay;
-            if (DateTime.TryParseExact(mstNgayBan.Text, "dd/MM/yyyy",
-                System.Globalization.CultureInfo.InvariantCulture,
-                System.Globalization.DateTimeStyles.None, out ngay))
-            {
-                row["NGAYBANVE"] = ngay;
-            }
+        //    DateTime ngay;
+        //    if (DateTime.TryParseExact(mstNgayBan.Text, "dd/MM/yyyy",
+        //        System.Globalization.CultureInfo.InvariantCulture,
+        //        System.Globalization.DateTimeStyles.None, out ngay))
+        //    {
+        //        row["NGAYBANVE"] = ngay;
+        //    }
 
-            SaveChangesToDatabase();
-            BuildTreeView();
+        //    SaveChangesToDatabase();
+        //    BuildTreeView();
 
-            MessageBox.Show(isNew ? "Đã thêm vé mới" : "Đã cập nhật vé");
-        }
+        //    MessageBox.Show(isNew ? "Đã thêm vé mới" : "Đã cập nhật vé");
+        //}
 
 
 
@@ -623,5 +547,73 @@ namespace TicketForm
         {
             this.Close();
         }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtMaVe.Text))
+            {
+                MessageBox.Show("Mã vé không được trống");
+                return;
+            }
+
+            //if (!DateTime.TryParseExact(
+            //    mstNgayBan.Text, "dd/MM/yyyy",
+            //    CultureInfo.InvariantCulture,
+            //    DateTimeStyles.None,
+            //    out DateTime ngay))
+            //{
+            //    MessageBox.Show("Ngày không hợp lệ (dd/MM/yyyy)");
+            //    return;
+            //}
+
+            // KIỂM TRA TỒN TẠI
+            DataRow row = dt.AsEnumerable()
+                .FirstOrDefault(r => r.RowState != DataRowState.Deleted &&
+                                     r["MAVE"].ToString() == txtMaVe.Text.Trim());
+
+            bool isNew = row == null;
+
+            if (isNew)
+            {
+                row = dt.NewRow();        // 🔥 tạo row ở đây
+                row["MAVE"] = txtMaVe.Text.Trim();
+                dt.Rows.Add(row);
+            }
+
+            row["MASUAT"] = cboMaSuat.SelectedValue;
+            row["MALV"] = cboMaLoaiVe.SelectedValue;
+            row["MAKH"] = cboMaKhachHang.SelectedValue;
+            row["MANV"] = cboMaNhanVien.SelectedValue;
+            row["MAGHE"] = cboMaGhe.SelectedValue;
+            row["NGAYBANVE"] = DateTime.Now;
+
+            SaveChangesToDatabase();
+            BuildTreeView();
+
+            SetControlsReadOnly();
+            btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
+            btnLuu.Enabled = false;
+            dgvTicket.Enabled = true;
+
+            MessageBox.Show(isNew ? "Đã thêm vé mới" : "Đã cập nhật vé");
+        }
+        private void ExecuteInsertOrUpdate(string sql, DataRow row)
+        {
+            using SqlCommand cmd = new SqlCommand(sql, conn);
+
+            DataRowVersion ver = DataRowVersion.Current;
+
+            cmd.Parameters.Add("@MA", SqlDbType.VarChar).Value = row["MAVE"];
+            cmd.Parameters.Add("@SUAT", SqlDbType.VarChar).Value = row["MASUAT"];
+            cmd.Parameters.Add("@LV", SqlDbType.VarChar).Value = row["MALV"];
+            cmd.Parameters.Add("@KH", SqlDbType.VarChar).Value = row["MAKH"];
+            cmd.Parameters.Add("@NV", SqlDbType.VarChar).Value = row["MANV"];
+            cmd.Parameters.Add("@GHE", SqlDbType.VarChar).Value = row["MAGHE"];
+            cmd.Parameters.Add("@NGAY", SqlDbType.Date).Value = row["NGAYBANVE"];
+
+
+            cmd.ExecuteNonQuery();
+        }
+
     }
 }

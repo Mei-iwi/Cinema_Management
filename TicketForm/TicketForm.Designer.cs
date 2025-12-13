@@ -182,7 +182,7 @@
             // btnDong
             // 
             btnDong.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnDong.Location = new Point(1175, 226);
+            btnDong.Location = new Point(1168, 226);
             btnDong.Margin = new Padding(4, 3, 4, 3);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(157, 35);
@@ -216,19 +216,19 @@
             // btnLuu
             // 
             btnLuu.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnLuu.Location = new Point(1010, 226);
+            btnLuu.Location = new Point(892, 226);
             btnLuu.Margin = new Padding(4, 3, 4, 3);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(157, 35);
             btnLuu.TabIndex = 54;
             btnLuu.Text = "Lưu";
             btnLuu.UseVisualStyleBackColor = true;
-            btnLuu.Click += btnLuu_Click_1;
+            btnLuu.Click += btnLuu_Click;
             // 
             // btnSua
             // 
             btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnSua.Location = new Point(845, 226);
+            btnSua.Location = new Point(630, 226);
             btnSua.Margin = new Padding(4, 3, 4, 3);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(157, 35);
@@ -240,7 +240,7 @@
             // btnXoa
             // 
             btnXoa.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnXoa.Location = new Point(680, 226);
+            btnXoa.Location = new Point(610, 323);
             btnXoa.Margin = new Padding(4, 3, 4, 3);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(157, 35);
@@ -252,7 +252,7 @@
             // btnThem
             // 
             btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnThem.Location = new Point(511, 226);
+            btnThem.Location = new Point(488, 323);
             btnThem.Margin = new Padding(4, 3, 4, 3);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(157, 35);
